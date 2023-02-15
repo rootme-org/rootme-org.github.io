@@ -1,0 +1,10 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Root-Me Blog</title>
+        <link>https://blog.root-me.org/</link>
+        <description>This is my cool site</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster>
+            <atom:link href="https://blog.root-me.org/index.xml" rel="self" type="application/rss+xml" />
+        </channel>
+</rss>
