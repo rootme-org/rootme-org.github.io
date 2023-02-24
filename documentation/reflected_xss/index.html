@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Documentation - Reflected XSS - Root-Me Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Documentation - Reflected XSS" />
+<meta property="og:description" content="Le Cross Site Scripting, ou XSS, est la faille la plus présente sur le web, et d’assez loin. Elle est désignée par quantité de noms, parmi lesquels &ldquo;faille des livres d’or&rdquo;, tout simplement car ceux-ci ont permi une généralisation de ces vulnérabilités faille. La faille de type XSS se caractérise par une injection possible de code arbitraire dans le code HTML qui sera rendu au navigateur. Autrement dit, l’attaquant va être capable de modifier un aspect du site ou d’injecter des scripts dans ce que la victime va ensuite voir à l’écran." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.root-me.org/documentation/reflected_xss/" /><meta property="article:section" content="documentation" />
+<meta property="article:published_time" content="2023-02-21T17:46:16+01:00" />
+<meta property="article:modified_time" content="2023-02-21T17:46:16+01:00" /><meta property="og:site_name" content="Root-Me Blog" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Documentation - Reflected XSS"/>
+<meta name="twitter:description" content="Le Cross Site Scripting, ou XSS, est la faille la plus présente sur le web, et d’assez loin. Elle est désignée par quantité de noms, parmi lesquels &ldquo;faille des livres d’or&rdquo;, tout simplement car ceux-ci ont permi une généralisation de ces vulnérabilités faille. La faille de type XSS se caractérise par une injection possible de code arbitraire dans le code HTML qui sera rendu au navigateur. Autrement dit, l’attaquant va être capable de modifier un aspect du site ou d’injecter des scripts dans ce que la victime va ensuite voir à l’écran."/>
+<meta name="application-name" content="Root-Me Blog">
+<meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/documentation/reflected_xss/" /><link rel="prev" href="https://blog.root-me.org/documentation/stored_xss/" /><link rel="next" href="https://blog.root-me.org/documentation/couche_transport/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Documentation - Reflected XSS",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.root-me.org\/documentation\/reflected_xss\/"
+        },"genre": "documentation","keywords": "documentation, xss, reflected","wordcount":  515 ,
+        "url": "https:\/\/blog.root-me.org\/documentation\/reflected_xss\/","datePublished": "2023-02-21T17:46:16+01:00","dateModified": "2023-02-21T17:46:16+01:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Ruulian, Podalirius"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Root-Me Blog">Root-Me Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/documentation/"> Documentation </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Root-Me Blog">Root-Me Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/documentation/" title="">Documentation</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Documentation - Reflected XSS</h1><div class="content" id="content"><p>Le Cross Site Scripting, ou XSS, est la faille la plus présente sur le web, et d’assez loin. Elle est désignée par quantité de noms, parmi lesquels &ldquo;faille des livres d’or&rdquo;, tout simplement car ceux-ci ont permi une généralisation de ces vulnérabilités faille. La faille de type XSS se caractérise par une injection possible de code arbitraire dans le code HTML qui sera rendu au navigateur. Autrement dit, l’attaquant va être capable de modifier un aspect du site ou d’injecter des scripts dans ce que la victime va ensuite voir à l’écran.</p>
+<h2 id="prérequis">Prérequis</h2>
+<p>Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:</p>
+<ul>
+<li>Savoir coder en HTML</li>
+<li>Connaître les bases du PHP et du Javascript</li>
+<li>Savoir ce qu&rsquo;est une XSS</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Il existe plusieurs types de failes XSS :</p>
+<p>Les vulnérabilités XSS de type &ldquo;réfléchie&rdquo; ou reflected en anglais résultent de l&rsquo;utilisation de données fournies par l&rsquo;utilisateur dans un script quelconque, sans les modifier. Typiquement, une simulation en ligne ou une page de statistiques. Ainsi, si ces données ne sont pas modifiées, on peut ajouter du &ldquo;script dans le script&rdquo; qui sera lui-même éxécuté.</p>
+<p>Ceci dit, en modifiant les données qui doivent être traitées, le résultat du XSS ne va modifier que la page que peut afficher l&rsquo;utilisateur. Cela peut paraître bénin, mais ça l&rsquo;est beaucoup moins quand l&rsquo;attaquant utilise le Social Engineering et diffuse des pages piégées de cette façon. Ce genre de vulnérabilités est souvent utilisé pour lancer des campagnes de spam afin de ternir l&rsquo;image d&rsquo;un site (redirections, modifications d&rsquo;apprence) ou de voler des informations (phishing).</p>
+<h2 id="définition">Définition</h2>
+<p>Une XSS volatile (Reflected XSS) est un type de XSS où l&rsquo;entrée utilisateur est dans un paramètre de l&rsquo;url et que ce paramètre est affiché sur la page.</p>
+<h2 id="explication-de-la-faille">Explication de la faille</h2>
+<p>Prenons comme exemple une page d&rsquo;un site qui affiche les résultats de la recherche de l&rsquo;utilisateur.</p>
+<p>Voici le code PHP de la page vulnérable:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;</span><span class="nx">cadre</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&#34;php&#34;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&#34;get&#34;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;text&#34;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;search&#34;</span> <span class="nx">id</span><span class="o">=</span><span class="s2">&#34;search&#34;</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;submit&#34;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&#34;Search&#34;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;search&#39;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">&#39;Résultats pour la recherche &#34;&#39;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;search&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;&#34;&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="err">
+</span></code></pre></div><p>La partie intéressante dans ce code, est la fonction <!-- raw HTML omitted -->echo<!-- raw HTML omitted -->, qui affiche le contenu la recherche sans filtre. Ceci nous permet donc d&rsquo;entrer des balises qui vont être envoyées au navigateur sans filtres, et celui ci les interprétera comme n&rsquo;importe quelle autre balise HTML de la page.</p>
+<p>Par exemple si on tente d&rsquo;envoyer <code>&lt;u&gt;bonjour&lt;/u&gt;</code> dans le champ de recherce, le rendu sur la page sera: <!-- raw HTML omitted -->bonjour<!-- raw HTML omitted --></p>
+<p>La fonction <!-- raw HTML omitted -->echo<!-- raw HTML omitted --> a collé les balises HTML sans filtre dans la page, et le navigateur a interprété ces balises <!-- raw HTML omitted -->u<!-- raw HTML omitted -->.</p>
+<p>Vous vous demandez sûrement en quoi c&rsquo;est dangereux qu&rsquo;un utilisateur envoie un message souligné, et bien c&rsquo;est parce que si <!-- raw HTML omitted -->echo<!-- raw HTML omitted --> interprète les balises <!-- raw HTML omitted -->u<!-- raw HTML omitted -->, il va aussi interpréter les balises <!-- raw HTML omitted -->script<!-- raw HTML omitted -->.</p>
+<h2 id="exploitation">Exploitation</h2>
+<p>Maintenant qu&rsquo;on a la capacité d&rsquo;interpréter nos balises, on peut passer à l&rsquo;exploitation. En entrant <code>&lt;script&gt;alert()&lt;/script&gt;</code> au moment du chargement de la page le script va être exécuté, et l&rsquo;alert va être affiché. A partir du moment où on peut exécuter du Javascript on peut par exemple récupérer les cookies des autres utilisateurs.</p>
+<h2 id="références">Références</h2>
+<ul>
+<li><a href="https://portswigger.net/web-security/cross-site-scripting" target="_blank" rel="noopener noreffer ">https://portswigger.net/web-security/cross-site-scripting</a></li>
+<li><a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet" target="_blank" rel="noopener noreffer ">https://portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></li>
+</ul>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

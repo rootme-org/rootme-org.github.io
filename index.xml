@@ -4,7 +4,15 @@
         <link>https://blog.root-me.org/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</lastBuildDate>
             <atom:link href="https://blog.root-me.org/index.xml" rel="self" type="application/rss+xml" />
-        </channel>
+        <item>
+    <title>Interview de M4tou - 41 ans - Spécialiste de navigation maritime en reconversion</title>
+    <link>https://blog.root-me.org/posts/interview_m4tou/</link>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/posts/interview_m4tou/</guid>
+    <description><![CDATA[Interview de M4tou - 41 ans - Spécialiste de navigation maritime en reconversion Spécialiste en navigation maritime, M4tou a démarré une réorientation en 2017 afin de travailler à terme dans la sécurité informatique. C’est en parallèle de sa formation en conception d’architectures informatiques, parcours cyber, qu’il a découvert Root-Me. En 2022, grâce à son implication au sein de l’association, il intègre l’équipe QA qui veille à garder la plateforme et les challenges Root-Me opérationnels.]]></description>
+</item>
+</channel>
 </rss>

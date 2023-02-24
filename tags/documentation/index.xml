@@ -1,0 +1,53 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>documentation - Tag - Root-Me Blog</title>
+        <link>https://blog.root-me.org/tags/documentation/</link>
+        <description>documentation - Tag - Root-Me Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</lastBuildDate><atom:link href="https://blog.root-me.org/tags/documentation/" rel="self" type="application/rss+xml" /><item>
+    <title>Documentation - DOM-Based XSS</title>
+    <link>https://blog.root-me.org/documentation/dom_based_xss/</link>
+    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <author>Ruulian, Podalirius</author>
+    <guid>https://blog.root-me.org/documentation/dom_based_xss/</guid>
+    <description><![CDATA[Prérequis Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:
+ Savoir coder en HTML Connaître les bases du Javascript Connaître la définition d&rsquo;une XSS  Qu&rsquo;est-ce que le DOM ? Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d&rsquo;examiner et de modifier le contenu du navigateur web. On peut utiliser le DOM pour changer de couleur le texte au moment du clic d&rsquo;un bouton, ou encore rendre visible ou invisible certaines parties de la page en fonction des actions utilisateur.]]></description>
+</item>
+<item>
+    <title>Documentation - HTTP Response Splitting</title>
+    <link>https://blog.root-me.org/documentation/http_response_splitting/</link>
+    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <author>Ruulian, Podalirius</author>
+    <guid>https://blog.root-me.org/documentation/http_response_splitting/</guid>
+    <description><![CDATA[Brève explication de comment le cache fonctionne Pour exploiter cette vulnérabilité nous devrons comprendre comment le cache fonctionne. Pour augmenter la vitesse de réponse, le cache stocke les réponses du serveur associées aux requêtes comme ceci:
+/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page Donc quand on fait une requête sur /posts par exemple, le cache nous envoie la réponse du serveur qui est associée à /posts stockée en cache.]]></description>
+</item>
+<item>
+    <title>Documentation - La couche Transport</title>
+    <link>https://blog.root-me.org/documentation/couche_transport/</link>
+    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <author>n3rada</author>
+    <guid>https://blog.root-me.org/documentation/couche_transport/</guid>
+    <description><![CDATA[Introduction La couche transport est une pièce centrale de l&rsquo;architecture réseau en couches. Elle a le rôle critique de fournir des services de communication directement aux processus d&rsquo;application (i.e. communication logique) s&rsquo;exécutant sur différents hôtes.
+Les processus applicatifs utilisent la communication logique fournie par la couche transport pour s&rsquo;envoyer des messages, sans se soucier des détails de l&rsquo;infrastructure physique utilisée pour transporter ces messages (on n&rsquo;a à se soucier ni des NATs possiblement présents ni des redirections de ports).]]></description>
+</item>
+<item>
+    <title>Documentation - Reflected XSS</title>
+    <link>https://blog.root-me.org/documentation/reflected_xss/</link>
+    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <author>Ruulian, Podalirius</author>
+    <guid>https://blog.root-me.org/documentation/reflected_xss/</guid>
+    <description><![CDATA[Le Cross Site Scripting, ou XSS, est la faille la plus présente sur le web, et d’assez loin. Elle est désignée par quantité de noms, parmi lesquels &ldquo;faille des livres d’or&rdquo;, tout simplement car ceux-ci ont permi une généralisation de ces vulnérabilités faille. La faille de type XSS se caractérise par une injection possible de code arbitraire dans le code HTML qui sera rendu au navigateur. Autrement dit, l’attaquant va être capable de modifier un aspect du site ou d’injecter des scripts dans ce que la victime va ensuite voir à l’écran.]]></description>
+</item>
+<item>
+    <title>Documentation - Stored XSS</title>
+    <link>https://blog.root-me.org/documentation/stored_xss/</link>
+    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <author>Ruulian, Podalirius</author>
+    <guid>https://blog.root-me.org/documentation/stored_xss/</guid>
+    <description><![CDATA[Prérequis Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:
+ Savoir coder en HTML Connaître les bases du PHP et du Javascript Savoir ce qu&rsquo;est une XSS  Définition Une XSS stockée est possible lorsque l&rsquo;entrée utilisateur est stockée en base de données et afficher sur la page. On peut prendre comme exemple une page de forum.
+Explication de la faille Prenons comme exemple une page de forum qui affiche les messages postés.]]></description>
+</item>
+</channel>
+</rss>
