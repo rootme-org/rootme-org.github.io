@@ -4,32 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Documentation - La couche Transport - Root-Me Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Documentation - La couche Transport" />
-<meta property="og:description" content="Introduction La couche transport est une pièce centrale de l&rsquo;architecture réseau en couches. Elle a le rôle critique de fournir des services de communication directement aux processus d&rsquo;application (i.e. communication logique) s&rsquo;exécutant sur différents hôtes.
-Les processus applicatifs utilisent la communication logique fournie par la couche transport pour s&rsquo;envoyer des messages, sans se soucier des détails de l&rsquo;infrastructure physique utilisée pour transporter ces messages (on n&rsquo;a à se soucier ni des NATs possiblement présents ni des redirections de ports)." />
+        <title>Documentation - The Transport Layer - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic"><meta property="og:title" content="Documentation - The Transport Layer" />
+<meta property="og:description" content="Explanation of the transport layer (TCP, UDP, MPTCP)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.root-me.org/posts/couche_transport/" />
 <meta property="article:published_time" content="2023-02-21T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-02-21T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Documentation - La couche Transport"/>
-<meta name="twitter:description" content="Introduction La couche transport est une pièce centrale de l&rsquo;architecture réseau en couches. Elle a le rôle critique de fournir des services de communication directement aux processus d&rsquo;application (i.e. communication logique) s&rsquo;exécutant sur différents hôtes.
-Les processus applicatifs utilisent la communication logique fournie par la couche transport pour s&rsquo;envoyer des messages, sans se soucier des détails de l&rsquo;infrastructure physique utilisée pour transporter ces messages (on n&rsquo;a à se soucier ni des NATs possiblement présents ni des redirections de ports)."/>
+<meta name="twitter:title" content="Documentation - The Transport Layer"/>
+<meta name="twitter:description" content="Explanation of the transport layer (TCP, UDP, MPTCP)"/>
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/posts/couche_transport/" /><link rel="prev" href="https://blog.root-me.org/posts/reflected_xss/" /><link rel="next" href="https://blog.root-me.org/posts/http_response_splitting/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/posts/couche_transport/" /><link rel="prev" href="https://blog.root-me.org/posts/interview_m4tou/" /><link rel="next" href="https://blog.root-me.org/posts/stored_xss/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Documentation - La couche Transport",
+        "headline": "Documentation - The Transport Layer",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.root-me.org\/posts\/couche_transport\/"
-        },"genre": "posts","keywords": "documentation, couche transport, TCP, UDP, MPTCP","wordcount":  2072 ,
+        },"genre": "posts","keywords": "documentation, couche transport, TCP, UDP, MPTCP","wordcount":  1864 ,
         "url": "https:\/\/blog.root-me.org\/posts\/couche_transport\/","datePublished": "2023-02-21T00:00:00+00:00","dateModified": "2023-02-21T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -69,10 +67,10 @@ Les processus applicatifs utilisent la communication logique fournie par la couc
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Documentation - La couche Transport</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Documentation - The Transport Layer</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://www.root-me.org/n3rada" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>n3rada</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Documentation</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2072 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1864 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -80,132 +78,132 @@ Les processus applicatifs utilisent la communication logique fournie par la couc
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#terminologie">Terminologie</a></li>
-    <li><a href="#démultiplexage--multiplexage">Démultiplexage / Multiplexage</a></li>
-    <li><a href="#udp--transport-non-connecté-sans-état">UDP : transport non-connecté sans état</a></li>
-    <li><a href="#tcp--transport-connecté-avec-état">TCP : transport connecté avec état</a></li>
-    <li><a href="#contrôle-de-flux">Contrôle de flux</a></li>
-    <li><a href="#contrôle-de-congestion">Contrôle de congestion</a></li>
+    <li><a href="#terminology">Terminology</a></li>
+    <li><a href="#demultiplexing--multiplexing">Demultiplexing / Multiplexing</a></li>
+    <li><a href="#udp-stateless-unconnected-transport">UDP: stateless unconnected transport</a></li>
+    <li><a href="#tcp-connected-transport-with-state">TCP: connected transport with state</a></li>
+    <li><a href="#flow-control">Flow control</a></li>
+    <li><a href="#congestion-control">Congestion control</a></li>
     <li><a href="#mptcp">MPTCP</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="introduction">Introduction</h1>
-<p>La couche transport est une <strong>pièce centrale de l&rsquo;architecture réseau en couches</strong>. Elle a le <strong>rôle critique de fournir des services de communication directement aux processus d&rsquo;application (i.e. communication logique) s&rsquo;exécutant sur différents hôtes</strong>.</p>
-<p>Les processus applicatifs utilisent la communication logique fournie par la couche transport pour s&rsquo;envoyer des messages, <strong>sans se soucier des détails de l&rsquo;infrastructure physique utilisée pour transporter ces messages</strong> (on n&rsquo;a à se soucier ni des NATs possiblement présents ni des redirections de ports).</p>
-<h2 id="terminologie">Terminologie</h2>
+<p>The transport layer is a <strong>central part of the layered network architecture</strong>. It has the <strong>critical role of providing communication services directly to application processes (i.e. logical communication) running on different hosts</strong>.</p>
+<p>Application processes use the logical communication provided by the transport layer to send messages to each other, <strong>without worrying about the details of the physical infrastructure used to transport these messages</strong> (we don&rsquo;t have to worry about possible NATs or port forwarding).</p>
+<h2 id="terminology">Terminology</h2>
 <ul>
-<li><code>Segment</code> : nom donné au (T)PDU (Transport Protocol Data Unit) de la couche transport</li>
-<li><code>Datagramme</code> : terme utilisé pour parler des segments UDP</li>
-<li><code>Socket</code> : interface de communication offert par la couche transport. Porte par laquelle les données passent du réseau au processus et inversement.</li>
+<li><code>Segment</code> : name given to the (T)PDU (Transport Protocol Data Unit) of the transport layer</li>
+<li><code>Datagram</code> : a term used to refer to UDP segments</li>
+<li><code>Socket</code> : communication interface offered by the transport layer. Gateway through which data passes from the network to the process and vice versa.</li>
 </ul>
-<h2 id="démultiplexage--multiplexage">Démultiplexage / Multiplexage</h2>
-<p>La tâche la plus fondamentale d&rsquo;UDP et de TCP est d'étendre le service de livraison IP entre deux systèmes finaux à un service de livraison entre deux processus s&rsquo;exécutant sur les systèmes finaux. <strong>L&rsquo;extension de la transmission d&rsquo;hôte à hôte à la transmission de processus à processus est appelée multiplexage et démultiplexage de la couche de transport.</strong></p>
-<p>Le but ici est d&rsquo;avoir une solution pour permettre à plusieurs processus (e.g. YouTube + Zoom + Direct Download) de recevoir directement la donnée en utilisant les services de la couche réseau <strong>en même temps</strong>.</p>
-<p>Ok, reprenons :</p>
+<h2 id="demultiplexing--multiplexing">Demultiplexing / Multiplexing</h2>
+<p>The most fundamental task of UDP and TCP is to extend the IP delivery service between two end systems to a delivery service between two processes running on the end systems. <strong>The extension of host-to-host transmission to process-to-process transmission is called transport layer multiplexing and demultiplexing.</strong></p>
+<p>The goal here is to have a solution to allow several processes (e.g. YouTube + Zoom + Direct Download) to receive the data directly using the network layer services <strong>at the same time</strong>.</p>
+<p>Okay, let&rsquo;s start again:</p>
 <ul>
-<li>Démultiplexage</li>
+<li>Demultiplexing</li>
 </ul>
-<p>💡 Tâche consistant à acheminer les données d&rsquo;un segment de la couche de transport vers le bon socket.</p>
-<p>🏗️ Couche réseau vers plusieurs applications</p>
-<p><strong>Par analogie</strong>, le fait de recevoir une lettre à la maison et de regarder à qui la lettre est précisément adressée (e.g. mon frère) et de la lui transmettre directement est du démultiplexage.</p>
-<p>⚠️ <strong>Pour transmettre à la bonne application (démultiplexage), UDP se sert du tuple (IPdest,port_dest) tandis que TCP se sert du quadruplet (IPsource,port_src,IPdest,port_dest).</strong></p>
+<p>💡 The task of routing data from a transport layer segment to the correct socket.</p>
+<p>🏗️ Network layer to multiple applications</p>
+<p><strong>By analogy</strong>, receiving a letter at home and looking at who exactly the letter is addressed to (e.g. my brother) and passing it directly to him is demultiplexing.</p>
+<p>⚠️ <strong>To transmit to the right application (demultiplexing), UDP uses the tuple (IPdest,port_dest) while TCP uses the quadruplet (IPsource,port_src,IPdest,port_dest).</strong></p>
 <ul>
-<li>Multiplexage</li>
+<li>Multiplexing</li>
 </ul>
-<p>💡  Tâche consistant à rassembler des morceaux de données sur l&rsquo;hôte source à partir de différents sockets, à encapsuler chaque morceau de données avec des informations d&rsquo;en-tête (qui seront utilisées ultérieurement dans le démultiplexage) pour créer des segments, et à transmettre les segments à la couche réseau.</p>
-<p>🏗️️ Plusieurs applications vers une couche réseau</p>
-<p><strong>Par analogie</strong>, le fait de récolter toutes les lettres que notre famille veut envoyer et les donner au postier est du multiplexage.</p>
-<p>💡 Les sockets ont des identifiants uniques, les numéros de ports, qui permettent d&rsquo;identifier le processus source et destination.</p>
+<p>💡 The task of gathering chunks of data on the source host from different sockets, encapsulating each chunk of data with header information (to be used later in demultiplexing) to create segments, and passing the segments to the network layer.</p>
+<p>🏗️️ Multiple applications to one network layer</p>
+<p><strong>By analogy</strong>, collecting all the letters our family wants to send and giving them to the letter carrier is multiplexing.</p>
+<p>💡 Sockets have unique identifiers, port numbers, that identify the source and destination process.</p>
 <ul>
 <li>
-<p>Chaque numéro de port est écrit sur 16bits de 0 à 65535.</p>
+<p>Each port number is written on 16bits from 0 to 65535.</p>
 <ul>
 <li>
-<p><code>0-1023</code> : réservés à des protocoles standards</p>
-<p>🤔 Sur les systèmes d&rsquo;exploitation de type Unix, un processus doit s&rsquo;exécuter avec les privilèges de superutilisateur pour pouvoir lier un socket réseau à une adresse IP en utilisant l&rsquo;un de ces ports.</p>
+<p><code>0-1023</code> : reserved for standard protocols</p>
+<p>🤔 On Unix-like operating systems, a process must be running with superuser privileges in order to bind a network socket to an IP address using one of these ports.</p>
 </li>
 </ul>
 </li>
 <li>
-<p>On trouve une liste plus exhaustive <a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports" target="_blank" rel="noopener noreffer ">ici</a></p>
+<p>A more exhaustive list can be found <a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers#Well-known_ports" target="_blank" rel="noopener noreffer ">here</a></p>
 <ul>
-<li><code>1024-49151</code> : ports utilisateurs ou enregistrés</li>
-<li><code>49152-65535</code> : ports dynamiques ou éphémères</li>
+<li><code>1024-49151</code> : user or registered ports</li>
+<li><code>49152-65535</code> : dynamic or temporary ports</li>
 </ul>
 </li>
 </ul>
-<p>💭 Chaque socket de l&rsquo;hôte pourrait se voir attribuer un numéro de port et, lorsqu&rsquo;un segment arrive sur l&rsquo;hôte, la couche de transport examine le numéro de port de destination dans le segment et dirige le segment vers le socket correspondant. Les données du segment passent alors par le socket dans le processus attaché. C&rsquo;est en gros la façon dont UDP procède.
-Cependant c&rsquo;est un peu plus subtil pour TCP.</p>
-<h2 id="udp--transport-non-connecté-sans-état">UDP : transport non-connecté sans état</h2>
-<p>👉  Achemine au mieux, sans état et sans connexion. Il n&rsquo;ouvre pas de session et ne corrige pas les erreurs (checksum uniquement).</p>
-<p>En soi, lorsqu&rsquo;on choisit d&rsquo;utiliser UDP plutôt que TCP, l&rsquo;application parlera quasiment directement avec le protocole IP.</p>
-<ul>
-<li>
-<p>Et ça fonctionne comment ?</p>
-<p>UDP prend les messages du processus applicatif, attache les champs relatifs aux numéros de port source et destination pour le service de multiplexage/démultiplexage, et y ajoute deux autres petits champs, puis transmet le datagramme obtenu à la couche réseau. La couche réseau encapsule le datagramme de la couche transport dans un paquet IP, puis tente au mieux de livrer le datagramme à l&rsquo;hôte de destination. Si le datagramme arrive à celui-ci, le protocole UDP utilise le numéro de port de destination pour transmettre les données du segment au processus applicatif approprié.</p>
-</li>
-<li>
-<p>Le DNS est un bon exemple de protocole de la couche 4 (i.e. Application) qui utilise UDP.</p>
-<p>Lorsque l&rsquo;application DNS d&rsquo;un hôte souhaite effectuer une requête, elle construit un message de requête DNS et transmet le message à UDP. Sans effectuer de <a href="https://fr.wikipedia.org/wiki/Handshaking" target="_blank" rel="noopener noreffer ">handshake</a> avec l&rsquo;entité UDP s&rsquo;exécutant sur le système final de destination, l&rsquo;UDP côté hôte ajoute des champs d&rsquo;en-tête au message et transmet le datagramme obtenu à la couche réseau. La couche réseau encapsule le datagramme UDP dans un paquet et l&rsquo;envoie à un serveur de noms. L&rsquo;application DNS du client attend alors une réponse à sa requête. Si il ne reçoit pas de réponse (peut-être parce que le réseau sous-jacent a perdu la requête ou la réponse), il peut essayer de renvoyer la requête, de l&rsquo;envoyer à un autre DNS ou d&rsquo;informer l&rsquo;application qui l&rsquo;invoque qu&rsquo;elle ne peut pas obtenir de réponse.</p>
-</li>
-<li>
-<p>La structure du segment UDP est définie dans la <a href="https://tools.ietf.org/html/rfc768" target="_blank" rel="noopener noreffer ">RFC 768</a></p>
-</li>
-</ul>
-<p>🤔 On peut se demander pourquoi UDP propose un checksum étant donné que pas mal de protocoles de la couche de liaison (dont le célèbre protocole Ethernet) fournissent également une vérification des erreurs. La raison est qu&rsquo;il n&rsquo;y a <strong>aucune garantie que tous les liens entre la source et le destinataire proposent une correction d&rsquo;erreur</strong>. Et quand bien même, <strong>une erreur peut être introduite au niveau de la mémoire d&rsquo;un routeur</strong>.</p>
-<p>Comme le protocole IP est censé fonctionner sur à peu près n&rsquo;importe quel protocole de couche 2, il est utile que la couche de transport fournisse un contrôle d&rsquo;erreur par mesure de sécurité. <strong>Bien que le protocole UDP fournisse un contrôle d&rsquo;erreur, il ne fait rien pour récupérer une erreur</strong>. Certaines implémentations d&rsquo;UDP se contentent de rejeter le datagramme endommagé, d&rsquo;autres le transmettent à l&rsquo;application avec un avertissement.</p>
-<h2 id="tcp--transport-connecté-avec-état">TCP : transport connecté avec état</h2>
-<p>👉  Achemine avec un état (i.e. attend une réponse) avec établissement d&rsquo;une connexion.</p>
-<p>💡  Avec TCP, contrairement à UDP, on peut donc communiquer avec deux processus différents sur le même port tant que l&rsquo;on a une IP source différente !</p>
-<p>On dit que TCP est <strong>orienté connexion</strong> parce qu&rsquo;avant qu&rsquo;un processus applicatif puisse commencer à envoyer de la donnée à un autre, les deux doivent d&rsquo;abord se &ldquo;serrer la main&rdquo; (i.e. handshake).</p>
-<p>Une connexion TCP fournit un service <strong>full-duplex</strong> (i.e. les données circulent dans les deux sens) et <strong>point à point</strong> (i.e. entre une seule source et une seule destination - pas de multicast !).</p>
-<ul>
-<li>L&rsquo;ouverture de session TCP se fait via trois séquences</li>
-</ul>
-<p>💡  L&rsquo;<strong>isn</strong> ou <strong>Initial Sequence Number</strong> avait comme objectif d'éviter les superpositions de connexions. 2 connexions peuvent utiliser les mêmes numéros de ports ET des numéros de séquence proches. Aujourd&rsquo;hui cette séquence est &ldquo;complètement&rdquo; aléatoire. Il est codé sur 4 octets.</p>
-<p>TCP voit la donnée comme un flux déstructuré <strong>mais ordonné</strong> d&rsquo;octets. L&rsquo;utilisation des numéros de séquence par TCP reflète ce point de vue dans la mesure où <strong>les numéros de séquence portent sur le flux d&rsquo;octets transmis et non sur la série de segments transmis</strong>. Le numéro de séquence d&rsquo;un segment est donc le numéro du flux d&rsquo;octets du premier octet du segment.</p>
-<p>⚠️ <strong>Le n°seq est le n° du premier octet du segment envoyé !</strong></p>
-<p>⚠️ <strong>Le n°ack est le n° du prochain octet attendu !</strong></p>
-<p>La taille maximale du champ de données est fixée par le <strong>MSS (Maximum Segment Size)</strong>.</p>
-<p>💭 Le MSS est comme le MTU, mais utilisé avec TCP à la couche 4. En d&rsquo;autres termes, le MSS est la taille maximale que peut avoir la charge utile, après avoir soustrait l&rsquo;espace pour les en-têtes IP, TCP et autres. Ainsi, si la MTU est de 1500 octets et que les en-têtes IP et TCP sont de 20 octets chacun, le MSS est de 1460 octets.</p>
-<p>⚠️ Contrôle de flux ≠ contrôle de congestion</p>
-<p>💡  **Le contrôle de flux ** signifie essentiellement que TCP s&rsquo;assure qu&rsquo;un expéditeur ne submerge pas un destinataire en envoyant des paquets plus vite qu&rsquo;il ne peut les consommer. Il concerne le nœud final (place disponible dans le buffer).</p>
-<p>💡  <strong>Le contrôle de congestion</strong> vise à empêcher un nœud de submerger le réseau (c&rsquo;est-à-dire les liens entre deux nœuds).</p>
-<h2 id="contrôle-de-flux">Contrôle de flux</h2>
-<p>Le contrôle de flux consiste à s&rsquo;assurer qu&rsquo;on envoie pas plus de paquets lorsque le buffer de réception est déjà plein, car le destinataire ne serait pas en mesure de les gérer et devrait abandonner ces paquets.</p>
-<p>Pour contrôler la quantité de données que TCP peut envoyer, le destinataire annonce sa fenêtre de réception (Receive Window aka <code>rwnd</code>), c&rsquo;est-à-dire l&rsquo;espace libre dans le tampon de réception.</p>
-<p>Chaque fois que le TCP reçoit un paquet, il doit envoyer un message ack à l&rsquo;expéditeur, accusant réception de ce paquet correctement, et avec ce message ack, il envoie la valeur de la fenêtre de réception actuelle, afin que l&rsquo;expéditeur sache s&rsquo;il peut continuer à envoyer des données.</p>
-<p>💡  **TCP utilise un protocole de fenêtre glissante pour contrôler le nombre d&rsquo;octets en circulation qu&rsquo;il peut avoir. ** Autrement dit, le nombre d&rsquo;octets qui ont été envoyés mais qui n&rsquo;ont pas encore été acquittés.</p>
-<h2 id="contrôle-de-congestion">Contrôle de congestion</h2>
-<p><strong>La retransmission de paquets traite un symptôme de congestion du réseau</strong> (la perte d&rsquo;un segment spécifique de la couche de transport)** mais ne traite pas la cause de la congestion du réseau**, à savoir un trop grand nombre de sources qui tentent d&rsquo;envoyer des données à un débit trop élevé. Pour traiter la cause de la congestion du réseau, des mécanismes sont nécessaires pour limiter les émetteurs face à la congestion du réseau.</p>
-<p>Divers scénarios de congestion sont possibles:</p>
+<p>💭 Each socket on the host could be assigned a port number, and when a segment arrives at the host, the transport layer examines the destination port number in the segment and directs the segment to the corresponding socket. The data from the segment then passes through the socket into the attached process. This is basically how UDP works.
+However, it is a bit more subtle for TCP.</p>
+<h2 id="udp-stateless-unconnected-transport">UDP: stateless unconnected transport</h2>
+<p>👉 Routes at best, stateless and connectionless. It does not log in and does not correct errors (checksum only).</p>
+<p>In itself, when you choose to use UDP instead of TCP, the application will talk almost directly with the IP protocol.</p>
 <ul>
 <li>
-<p>Deux connexions qui partagent un seul saut (routeur) avec des buffers infinis
-💡  L&rsquo;un des coûts d&rsquo;un réseau congestionné : d&rsquo;importants retards de mise en file d&rsquo;attente se produisent lorsque le taux d&rsquo;arrivée des paquets approche de la capacité du lien.</p>
+<p>And how does it work?</p>
+<p>UDP takes the messages from the application process, attaches the source and destination port number fields for the multiplexing/demultiplexing service, and adds two other small fields, and then transmits the resulting datagram to the network layer. The network layer encapsulates the transport layer datagram in an IP packet, and then makes its best attempt to deliver the datagram to the destination host. If the datagram reaches the destination host, the UDP protocol uses the destination port number to forward the segment data to the appropriate application process.</p>
 </li>
 <li>
-<p>Deux hôtes (avec retransmissions) et un routeur avec des <em>buffers</em> finis
-💡  Autre coût d&rsquo;un réseau congestionné : l'émetteur doit effectuer des retransmissions afin de compenser les paquets abandonnés (perdus) en raison du dépassement de la mémoire tampon.</p>
+<p>DNS is a good example of a layer 4 (i.e. Application) protocol that uses UDP.</p>
+<p>When a host&rsquo;s DNS application wishes to perform a query, it constructs a DNS query message and forwards the message to UDP. Without performing a handshake (<a href="https://en.wikipedia.org/wiki/Handshake_(computing)">https://en.wikipedia.org/wiki/Handshake_(computing)</a>) with the UDP entity running on the destination end system, the host-side UDP adds header fields to the message and forwards the resulting datagram to the network layer. The network layer encapsulates the UDP datagram into a packet and sends it to a name server. The client&rsquo;s DNS application then waits for a response to its query. If it does not receive a response (perhaps because the underlying network has lost the query or response), it may try to resend the query, send it to another DNS, or inform the invoking application that it cannot get a response.</p>
 </li>
 <li>
-<p>Quatre émetteurs, des routeurs avec des tampons finis, et des chemins multi-sauts.
-💡  Un autre coût lié à l&rsquo;abandon d&rsquo;un paquet en raison de la congestion : lorsqu&rsquo;un paquet est abandonné le long d&rsquo;un chemin, la capacité de transmission qui a été utilisée sur chacun des liens en amont pour acheminer ce paquet jusqu&rsquo;au point où il est abandonné finit par être gaspillée.</p>
+<p>The UDP segment structure is defined in <a href="https://tools.ietf.org/html/rfc768" target="_blank" rel="noopener noreffer ">RFC 768</a></p>
 </li>
 </ul>
-<p>💡  <strong>La version de TCP normalisée</strong> (dans la <a href="https://www.rfc-editor.org/rfc/rfc5681.txt" target="_blank" rel="noopener noreffer ">RFC 5681</a>) <strong>utilise un contrôle de congestion de bout en bout plutôt qu&rsquo;un contrôle de congestion assisté par le réseau</strong>, puisque la couche IP ne fournit aucun retour d&rsquo;information explicite aux systèmes finaux concernant la congestion du réseau (buffer plein = paquet jetté).</p>
-<p>🆕 <strong>Dans le cas d&rsquo;ECN</strong> (<a href="https://en.wikipedia.org/wiki/Explicit_Congestion_Notification#Effects_on_performance" target="_blank" rel="noopener noreffer ">Explicit Congestion Notification</a>, le contrôle de congestion est assisté par la couche IP en combinaison avec une gestion active de file d&rsquo;attente (<a href="https://en.wikipedia.org/wiki/Active_queue_management" target="_blank" rel="noopener noreffer ">AQM</a>) en permettant à l'élément de transfert (e.g. routeur) de notifier le début de congestion mais il reste régulé par la couche transport.</p>
-<p>Plus récemment, des extensions d&rsquo;IP et de TCP (<a href="https://tools.ietf.org/html/rfc3168" target="_blank" rel="noopener noreffer ">RFC 3168</a> ont été proposées, mises en œuvre et déployées pour permettre au réseau de signaler explicitement la congestion à un émetteur et à un destinataire TCP. En outre, un certain nombre de variantes des protocoles de contrôle de congestion TCP ont été proposées pour déduire la congestion à partir du retard mesuré des paquets.</p>
-<p><strong>Explicit Congestion Notification</strong> (<a href="https://tools.ietf.org/html/rfc3168" target="_blank" rel="noopener noreffer ">RFC 3168</a>) est la forme de contrôle de congestion assistée par le réseau réalisée au sein d&rsquo;internet. Au niveau de la couche réseau, deux bits (avec quatre valeurs possibles, au total) dans le champ Type of Service de l&rsquo;en-tête du datagramme IP sont utilisés pour ECN.</p>
-<p>Un réglage des bits ECN est utilisé par un routeur pour indiquer qu&rsquo;il (le routeur) connaît une congestion.</p>
+<p>🤔 One may wonder why UDP provides a checksum since many link layer protocols (including the well-known Ethernet protocol) also provide error checking. The reason is that there is <strong>no guarantee that all links between the source and the destination provide error correction</strong>. And even then, <strong>an error can be introduced at the memory level of a router</strong>.</p>
+<p>Since IP is supposed to work on top of just about any Layer 2 protocol, it is useful for the transport layer to provide error checking as a security measure. <strong>Although UDP provides error checking, it does nothing to recover from an error</strong>. Some implementations of UDP simply discard the damaged datagram, others forward it to the application with a warning.</p>
+<h2 id="tcp-connected-transport-with-state">TCP: connected transport with state</h2>
+<p>👉 Routes with a state (i.e. waits for a response) with establishment of a connection.</p>
+<p>💡 With TCP, unlike UDP, you can communicate with two different processes on the same port as long as you have a different source IP!</p>
+<p>TCP is said to be <strong>connection oriented</strong> because before one application process can start sending data to another, the two must first &ldquo;shake hands&rdquo;.</p>
+<p>A TCP connection provides a <strong>full-duplex</strong> (i.e. data flows in both directions) and <strong>point-to-point</strong> (i.e. between a single source and a single destination - no multicast!) service.</p>
+<ul>
+<li>The TCP session opening is done via three sequences</li>
+</ul>
+<p>💡  The <strong>isn</strong> or <strong>Initial Sequence Number</strong> was intended to avoid overlapping connections. 2 connections can use the same port numbers AND close sequence numbers. Today this sequence is &ldquo;completely&rdquo; random. It is coded on 4 bytes.</p>
+<p>TCP sees data as an unstructured <strong>but ordered</strong> stream of bytes. TCP&rsquo;s use of sequence numbers reflects this view in that <strong>sequence numbers refer to the stream of bytes transmitted, not the series of segments transmitted</strong>. The sequence number of a segment is therefore the byte stream number of the first byte of the segment.</p>
+<p>⚠️ <strong>The n°seq is the n° of the first byte of the sent segment !</strong></p>
+<p>⚠️ <strong>The n°ack is the n° of the next expected byte !</strong></p>
+<p>The maximum size of the data field is set by the <strong>MSS (Maximum Segment Size)</strong>.</p>
+<p>💭 The MSS is like the MTU, but used with TCP at Layer 4. In other words, the MSS is the maximum size the payload can be, after subtracting space for IP, TCP, and other headers. So if the MTU is 1500 bytes and the IP and TCP headers are 20 bytes each, the MSS is 1460 bytes.</p>
+<p>⚠️ Flow control ≠ congestion control</p>
+<p>💡 <strong>Flow control</strong> essentially means that TCP ensures that a sender does not overwhelm a receiver by sending packets faster than it can consume them. It concerns the end node (available space in the buffer).</p>
+<p>💡 <strong>Congestion control</strong> aims to prevent a node from overwhelming the network (i.e. the links between two nodes).</p>
+<h2 id="flow-control">Flow control</h2>
+<p>Flow control consists of making sure that no more packets are sent when the receive buffer is already full, because the receiver would not be able to handle them and would have to drop them.</p>
+<p>To control the amount of data TCP can send, the receiver announces its Receive Window (aka <code>rwnd</code>), which is the amount of free space in the receive buffer.</p>
+<p>Each time TCP receives a packet, it must send an ack message to the sender, acknowledging receipt of that packet correctly, and with that ack message, it sends the value of the current receive window, so that the sender knows if it can continue sending data.</p>
+<p>💡 **TCP uses a sliding window protocol to control the number of outstanding bytes it can have. ** In other words, the number of bytes that have been sent but not yet acknowledged.</p>
+<h2 id="congestion-control">Congestion control</h2>
+<p><strong>Packet retransmission treats a symptom of network congestion</strong> (the loss of a specific segment of the transport layer) <strong>but does not treat the cause of network congestion</strong>, which is too many sources attempting to send data at too high a rate. To address the cause of network congestion, mechanisms are needed to limit senders in the face of network congestion.</p>
+<p>Various congestion scenarios are possible:</p>
+<ul>
+<li>
+<p>Two connections that share a single hop (router) with infinite buffers
+💡 One of the costs of a congested network: large queuing delays occur when the packet arrival rate approaches the link capacity.</p>
+</li>
+<li>
+<p>Two hosts (with retransmissions) and a router with finite <em>buffers</em>
+💡 Another cost of a congested network is that the sender must perform retransmissions to make up for packets dropped (lost) due to buffer overflow.</p>
+</li>
+<li>
+<p>Four transmitters, routers with finite buffers, and multi-hop paths.
+💡 Another cost associated with dropping a packet due to congestion: when a packet is dropped along a path, the transmission capacity that was used on each of the upstream links to get that packet to the point where it is dropped ends up being wasted.</p>
+</li>
+</ul>
+<p>💡 <strong>The standardized version of TCP</strong> (in <a href="https://www.rfc-editor.org/rfc/rfc5681.txt" target="_blank" rel="noopener noreffer ">RFC 5681</a>) <strong>uses end-to-end congestion control rather than network-assisted congestion control</strong>, since the IP layer provides no explicit feedback to end systems about network congestion (buffer full = packet discarded).</p>
+<p>🆕 <strong>In the case of ECN</strong> (<a href="https://en.wikipedia.org/wiki/Explicit_Congestion_Notification#Effects_on_performance" target="_blank" rel="noopener noreffer ">Explicit Congestion Notification</a>, congestion control is assisted by the IP layer in combination with active queue management (<a href="https://en.wikipedia.org/wiki/Active_queue_management" target="_blank" rel="noopener noreffer ">AQM</a>) by allowing the forwarding element (e.g. router) to notify the onset of congestion but it remains regulated by the transport layer.</p>
+<p>More recently, extensions to IP and TCP (<a href="https://tools.ietf.org/html/rfc3168" target="_blank" rel="noopener noreffer ">RFC 3168</a> have been proposed, implemented and deployed to allow the network to explicitly report congestion to a TCP sender and receiver. In addition, a number of variants of TCP congestion control protocols have been proposed to infer congestion from measured packet delay.</p>
+<p><strong>Explicit Congestion Notification</strong> (<a href="https://tools.ietf.org/html/rfc3168" target="_blank" rel="noopener noreffer ">RFC 3168</a>) is the form of network-assisted congestion control performed within the Internet. At the network layer, two bits (with four possible values, in total) in the Type of Service field of the IP datagram header are used for ECN.</p>
+<p>An ECN bit setting is used by a router to indicate that it (the router) is experiencing congestion.</p>
 <h2 id="mptcp">MPTCP</h2>
-<p>Extension de TCP pour permettre à des terminaux d'établir une communication et d'être capable d&rsquo;exploiter les ressources de plusieurs chemins à travers des sous-sessions TCP.</p>
+<p>Extension of TCP to allow terminals to establish communication and be able to exploit the resources of multiple paths through TCP sub-sessions.</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Multipath_TCP" target="_blank" rel="noopener noreffer ">Multipath TCP - Wikipedia</a></li>
 <li><a href="https://datatracker.ietf.org/doc/html/rfc6824" target="_blank" rel="noopener noreffer ">rfc6824</a></li>
 </ul>
-<p>👉 Vu que TCP, de base, se fiche de l&rsquo;ordre d&rsquo;arrivée des segments, on peut les faire arriver de n&rsquo;importe quelle source !</p>
-<p>💡  D&rsquo;autres déploiements utilisent TCP Multipath pour agréger la bande passante de différents réseaux. Par exemple, plusieurs types de smartphones, notamment en Corée, utilisent TCP Multipath pour relier le WiFi et la 4G par le biais de proxies SOCKS.</p>
+<p>👉 Since TCP basically doesn&rsquo;t care about the order of arrival of the segments, we can make them arrive from any source!</p>
+<p>💡 Other deployments use TCP Multipath to aggregate bandwidth from different networks. For example, several types of smartphones, particularly in Korea, use TCP Multipath to connect WiFi and 4G through SOCKS proxies.</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -215,7 +213,7 @@ Cependant c&rsquo;est un peu plus subtil pour TCP.</p>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.root-me.org/posts/couche_transport/" data-title="Documentation - La couche Transport" data-hashtags="documentation,couche transport,TCP,UDP,MPTCP"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.root-me.org/posts/couche_transport/" data-hashtag="documentation"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.root-me.org/posts/couche_transport/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.root-me.org/posts/couche_transport/" data-title="Documentation - The Transport Layer" data-via="rootme_org" data-hashtags="documentation,couche transport,TCP,UDP,MPTCP"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.root-me.org/posts/couche_transport/" data-hashtag="documentation"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.root-me.org/posts/couche_transport/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -227,8 +225,8 @@ Cependant c&rsquo;est un peu plus subtil pour TCP.</p>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/reflected_xss/" class="prev" rel="prev" title="Documentation - Reflected XSS"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Documentation - Reflected XSS</a>
-            <a href="/posts/http_response_splitting/" class="next" rel="next" title="Documentation - HTTP Response Splitting">Documentation - HTTP Response Splitting<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/posts/interview_m4tou/" class="prev" rel="prev" title="Interview of M4tou - 41 years old - Marine navigation specialist in reconversion"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Interview of M4tou - 41 years old - Marine navigation specialist in reconversion</a>
+            <a href="/posts/stored_xss/" class="next" rel="next" title="Documentation - Stored XSS">Documentation - Stored XSS<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

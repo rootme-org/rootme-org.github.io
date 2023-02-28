@@ -1,0 +1,174 @@
+---
+weight: 2
+title: "Writeup - Root-Me CTF 10k - Cheshire cat"
+date: 2023-02-28
+categories: "Writeups"
+summary: "Writeup of the 'Cheshire Cat' challenge during the Root-Me CTF 10k."
+author: "Nishacid"
+authorLink: "https://nishacid.guru"
+tags: 
+- writeups
+- CTF10k
+- Discord
+- Challenge
+---
+
+# Cheshire Cat
+
+![rm_ctf_logo](https://nishacid.guru/assets/images/writeups/rm_ctf/rm_ctf_logo.png)
+
+During the [Root-Me](https://root-me.org) CTF for the 10k members on Discord, I was able to create two Discord challenges, and here is a writeup for explaining how it works and how to exploit it.
+
+## Introduction
+
+- Name : `Cheshire Cat`
+- Category : `Misc`
+- Points : `500` -> `409`
+- Solves : `46`
+- Level : `easy`
+
+![cheshirecat-desc](https://nishacid.guru/assets/images/writeups/rm_ctf/cheshirecat_desc.png)
+
+
+## Exploitation 
+
+Like the description said, we can try to interact with the bot in the #ctf-bot channel. 
+We can try to **talk** with Cheshire, ask for **help** or **password**, but no interesting answer are given.
+
+![interactions](https://nishacid.guru/assets/images/writeups/rm_ctf/cheshire_interactions.png)
+
+It seems it only responds to his **master**, and here, his **master** is **Ech0**, the **owner** of the server.
+
+In the description, it said “It will only answer you in the `#ctf-bot` channel, but it will not give you any flags”, imagine that is real ? We can try to send him a private message to get a flag in DM, but it doesn’t seem to work, however he gives us a new interesting answer.
+
+![privatemessage](https://nishacid.guru/assets/images/writeups/rm_ctf/cheshire_privatemessage.png)
+
+Ok so, Cheshire doesn't like to talk in DM, he wants an invitation for a cup of tea. 
+We can try to invite him on our server for drinking a little cup of tea :tea:
+
+But, how can we invite the bot on our server ? He doesn’t have an “invitation” button, and it doesn’t seem to like the invitation link in the message.
+
+So we can look at the [discord OAuth2](https://discord.com/developers/docs/topics/oauth2) functionality. In the [bot section](https://discord.com/developers/docs/topics/oauth2#bots), we can see the `OAuth2` link to invite a bot on our server, but we need the `ID` of the bot to do this.
+
+Just need to activate the **Discord Developer Mode** in your application in `User Settings` > `Advanced` > `Developer Mode`, then just right-click on the bot profile and `Copy ID`.
+
+This is our final link to invite the bot on our server :
+
+```
+https://discord.com/oauth2/authorize?client_id=980846289723994122&scope=bot
+```
+
+And after the bot joined the server, we can ask him for the **password**
+
+![flag](https://nishacid.guru/assets/images/writeups/rm_ctf/cheshire_flag.png)
+
+Okay good, we’ve the flag, but how does it work ?
+
+## How it's work ?
+
+The code of the bot is very simple : 
+
+```python
+#!/usr/bin/env/python3
+
+from discord.ext import commands
+import discord # discord.py==1.7.3
+import random
+from os import getenv
+
+FLAG = getenv("FLAG")
+TOKEN = getenv("TOKEN")
+
+# #ctf-bot on the Root-Me channel
+CTF_BOT_CHANNEL = 1032971020807712768
+# Root-Me server id
+SERVER_ID = 700478419527270430
+
+bot = commands.Bot(command_prefix='!', help_command=None, connect=True)
+
+# DM messages and server spam prevention
+@bot.event
+async def on_message(message):
+    if bot.user != message.author:
+        if isinstance(message.channel, discord.channel.DMChannel):
+            await message.channel.send("I don't like to talk in DM, invite me for a cup of tea :teapot:")
+        elif message.guild.id == SERVER_ID and message.channel.id != CTF_BOT_CHANNEL:
+            return
+    await bot.process_commands(message)
+
+# !help
+@bot.command(name='help')
+async def help(ctx):
+    await ctx.send("```Avalaible commands:\n\t!help : Display this menu\n\t!password : A password for my master\n\t!talk : One of my favorite expressions```")
+
+# !password
+@bot.command(name='password')
+async def password(ctx):
+    if ctx.author.guild_permissions.administrator:
+        message = f"Hello master, here's your password: `{FLAG}` :zany_face:"
+    else:
+        message = "I only respond to my master... and you'r not !  :melting_face:"
+
+    await ctx.send(message)
+
+# !talk
+@bot.command(name='talk')
+async def talk(ctx):
+    expressions = ["Visit either you like: they're both mad.", 
+                    "We're all mad here. I'm mad. You're mad.", 
+                    "Imagination is the only weapon in the war with reality.", 
+                    "Only a few find the way, some don't recognize it when they do some… don't ever want to", 
+                    "I am not crazy, my reality is just different from yours.", 
+                    "Every adventure requires a first step.", 
+                    "Not all who wander are lost.", 
+                    "If you don't know where you are going any road can take you there."] 
+    await ctx.send(f"*{random.choice(expressions)}*")
+
+bot.run(TOKEN)
+```
+
+For resume, the bot will check if the user on the current server has the **administrator** permission (or owner), if yes, it will send the flag.
+
+Ok, seems secure, right ? In fact, yes.
+
+The vulnerability arises in the (default) misconfiguration of [Discord developers portal](https://discord.com/developers/applications). 
+By default, the Public Bot option is activated, so like Discord said, anyone can invite your Bot.
+
+> Public bots can be added by anyone. When unchecked, only you can join this bot to servers.
+
+![developers_portal](https://nishacid.guru/assets/images/writeups/rm_ctf/cheshire_developers_portal.png)
+
+This option can be very dangerous when the bot have administration features, and many bots doesn't have this option disable.
+
+So if you want to create a Discord Bot, don't forget to disable this option ! 
+
+## Setup of the challenge 
+
+> [Full architecture files here](https://nishacid.guru/assets/sources/cheshire_cat.zip)
+
+### Architecture
+
+The complete architecture of this challenge is very simple : 
+
+```bash
+.
+├── cheshire.py
+├── docker-compose.yml
+├── Dockerfile
+├── .env
+└── requirements.txt
+```
+
+- `cheshire.py` -> bot python code
+- `docker-compose.yml` -> docker-compose file to start the challenge
+- `Dockerfile` -> Docker image which runs the bot
+- `.env` -> contain the flag and the bot token
+- `requirements.txt` -> python's requirements for the bot 
+
+### Running
+
+```bash
+docker-compose -f docker-compose.yml up -d 
+```
+
+Thanks for reading, if you have any question about exploitation, configuration, the architecture or other you can DM me on [Twitter](https://twitter.com/Nishacid) or Discord `Nishacid#1337`. Also wanted to thank [Ruulian](https://0xhorizon.eu) for helping me to create this challenge !

