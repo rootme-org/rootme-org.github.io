@@ -8,10 +8,9 @@
 <meta property="og:description" content="Introduction La couche transport est une pièce centrale de l&rsquo;architecture réseau en couches. Elle a le rôle critique de fournir des services de communication directement aux processus d&rsquo;application (i.e. communication logique) s&rsquo;exécutant sur différents hôtes.
 Les processus applicatifs utilisent la communication logique fournie par la couche transport pour s&rsquo;envoyer des messages, sans se soucier des détails de l&rsquo;infrastructure physique utilisée pour transporter ces messages (on n&rsquo;a à se soucier ni des NATs possiblement présents ni des redirections de ports)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.root-me.org/documentation/couche_transport/" /><meta property="article:section" content="documentation" />
+<meta property="og:url" content="https://blog.root-me.org/posts/couche_transport/" />
 <meta property="article:published_time" content="2023-02-21T17:46:16+01:00" />
 <meta property="article:modified_time" content="2023-02-21T17:46:16+01:00" /><meta property="og:site_name" content="Root-Me Blog" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Documentation - La couche Transport"/>
 <meta name="twitter:description" content="Introduction La couche transport est une pièce centrale de l&rsquo;architecture réseau en couches. Elle a le rôle critique de fournir des services de communication directement aux processus d&rsquo;application (i.e. communication logique) s&rsquo;exécutant sur différents hôtes.
@@ -19,7 +18,7 @@ Les processus applicatifs utilisent la communication logique fournie par la couc
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/documentation/couche_transport/" /><link rel="prev" href="https://blog.root-me.org/documentation/reflected_xss/" /><link rel="next" href="https://blog.root-me.org/documentation/http_response_splitting/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/posts/couche_transport/" /><link rel="prev" href="https://blog.root-me.org/posts/reflected_xss/" /><link rel="next" href="https://blog.root-me.org/posts/http_response_splitting/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -29,9 +28,9 @@ Les processus applicatifs utilisent la communication logique fournie par la couc
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.root-me.org\/documentation\/couche_transport\/"
-        },"genre": "documentation","keywords": "documentation, couche transport, TCP, UDP, MPTCP","wordcount":  2072 ,
-        "url": "https:\/\/blog.root-me.org\/documentation\/couche_transport\/","datePublished": "2023-02-21T17:46:16+01:00","dateModified": "2023-02-21T17:46:16+01:00","publisher": {
+            "@id": "https:\/\/blog.root-me.org\/posts\/couche_transport\/"
+        },"genre": "posts","keywords": "documentation, couche transport, TCP, UDP, MPTCP","wordcount":  2072 ,
+        "url": "https:\/\/blog.root-me.org\/posts\/couche_transport\/","datePublished": "2023-02-21T17:46:16+01:00","dateModified": "2023-02-21T17:46:16+01:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -47,7 +46,7 @@ Les processus applicatifs utilisent la communication logique fournie par la couc
             <a href="/" title="Root-Me Blog">Root-Me Blog</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/documentation/"> Documentation </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -62,12 +61,35 @@ Les processus applicatifs utilisent la communication logique fournie par la couc
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/documentation/" title="">Documentation</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
-                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Documentation - La couche Transport</h1><div class="content" id="content"><h1 id="introduction">Introduction</h1>
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Documentation - La couche Transport</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://root-me.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>n3rada</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Documentation</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2072 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#terminologie">Terminologie</a></li>
+    <li><a href="#démultiplexage--multiplexage">Démultiplexage / Multiplexage</a></li>
+    <li><a href="#udp--transport-non-connecté-sans-état">UDP : transport non-connecté sans état</a></li>
+    <li><a href="#tcp--transport-connecté-avec-état">TCP : transport connecté avec état</a></li>
+    <li><a href="#contrôle-de-flux">Contrôle de flux</a></li>
+    <li><a href="#contrôle-de-congestion">Contrôle de congestion</a></li>
+    <li><a href="#mptcp">MPTCP</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="introduction">Introduction</h1>
 <p>La couche transport est une <strong>pièce centrale de l&rsquo;architecture réseau en couches</strong>. Elle a le <strong>rôle critique de fournir des services de communication directement aux processus d&rsquo;application (i.e. communication logique) s&rsquo;exécutant sur différents hôtes</strong>.</p>
 <p>Les processus applicatifs utilisent la communication logique fournie par la couche transport pour s&rsquo;envoyer des messages, <strong>sans se soucier des détails de l&rsquo;infrastructure physique utilisée pour transporter ces messages</strong> (on n&rsquo;a à se soucier ni des NATs possiblement présents ni des redirections de ports).</p>
 <h2 id="terminologie">Terminologie</h2>
@@ -77,7 +99,7 @@ Les processus applicatifs utilisent la communication logique fournie par la couc
 <li><code>Socket</code> : interface de communication offert par la couche transport. Porte par laquelle les données passent du réseau au processus et inversement.</li>
 </ul>
 <h2 id="démultiplexage--multiplexage">Démultiplexage / Multiplexage</h2>
-<p>La tâche la plus fondamentale d&rsquo;UDP et de TCP est d&rsquo;étendre le service de livraison IP entre deux systèmes finaux à un service de livraison entre deux processus s&rsquo;exécutant sur les systèmes finaux. <strong>L&rsquo;extension de la transmission d&rsquo;hôte à hôte à la transmission de processus à processus est appelée multiplexage et démultiplexage de la couche de transport.</strong></p>
+<p>La tâche la plus fondamentale d&rsquo;UDP et de TCP est d'étendre le service de livraison IP entre deux systèmes finaux à un service de livraison entre deux processus s&rsquo;exécutant sur les systèmes finaux. <strong>L&rsquo;extension de la transmission d&rsquo;hôte à hôte à la transmission de processus à processus est appelée multiplexage et démultiplexage de la couche de transport.</strong></p>
 <p>Le but ici est d&rsquo;avoir une solution pour permettre à plusieurs processus (e.g. YouTube + Zoom + Direct Download) de recevoir directement la donnée en utilisant les services de la couche réseau <strong>en même temps</strong>.</p>
 <p>Ok, reprenons :</p>
 <ul>
@@ -140,7 +162,7 @@ Cependant c&rsquo;est un peu plus subtil pour TCP.</p>
 <ul>
 <li>L&rsquo;ouverture de session TCP se fait via trois séquences</li>
 </ul>
-<p>💡  L'<strong>isn</strong> ou <strong>Initial Sequence Number</strong> avait comme objectif d&rsquo;éviter les superpositions de connexions. 2 connexions peuvent utiliser les mêmes numéros de ports ET des numéros de séquence proches. Aujourd&rsquo;hui cette séquence est &ldquo;complètement&rdquo; aléatoire. Il est codé sur 4 octets.</p>
+<p>💡  L&rsquo;<strong>isn</strong> ou <strong>Initial Sequence Number</strong> avait comme objectif d'éviter les superpositions de connexions. 2 connexions peuvent utiliser les mêmes numéros de ports ET des numéros de séquence proches. Aujourd&rsquo;hui cette séquence est &ldquo;complètement&rdquo; aléatoire. Il est codé sur 4 octets.</p>
 <p>TCP voit la donnée comme un flux déstructuré <strong>mais ordonné</strong> d&rsquo;octets. L&rsquo;utilisation des numéros de séquence par TCP reflète ce point de vue dans la mesure où <strong>les numéros de séquence portent sur le flux d&rsquo;octets transmis et non sur la série de segments transmis</strong>. Le numéro de séquence d&rsquo;un segment est donc le numéro du flux d&rsquo;octets du premier octet du segment.</p>
 <p>⚠️ <strong>Le n°seq est le n° du premier octet du segment envoyé !</strong></p>
 <p>⚠️ <strong>Le n°ack est le n° du prochain octet attendu !</strong></p>
@@ -164,7 +186,7 @@ Cependant c&rsquo;est un peu plus subtil pour TCP.</p>
 </li>
 <li>
 <p>Deux hôtes (avec retransmissions) et un routeur avec des <em>buffers</em> finis
-💡  Autre coût d&rsquo;un réseau congestionné : l&rsquo;émetteur doit effectuer des retransmissions afin de compenser les paquets abandonnés (perdus) en raison du dépassement de la mémoire tampon.</p>
+💡  Autre coût d&rsquo;un réseau congestionné : l'émetteur doit effectuer des retransmissions afin de compenser les paquets abandonnés (perdus) en raison du dépassement de la mémoire tampon.</p>
 </li>
 <li>
 <p>Quatre émetteurs, des routeurs avec des tampons finis, et des chemins multi-sauts.
@@ -172,19 +194,43 @@ Cependant c&rsquo;est un peu plus subtil pour TCP.</p>
 </li>
 </ul>
 <p>💡  <strong>La version de TCP normalisée</strong> (dans la <a href="https://www.rfc-editor.org/rfc/rfc5681.txt" target="_blank" rel="noopener noreffer ">RFC 5681</a>) <strong>utilise un contrôle de congestion de bout en bout plutôt qu&rsquo;un contrôle de congestion assisté par le réseau</strong>, puisque la couche IP ne fournit aucun retour d&rsquo;information explicite aux systèmes finaux concernant la congestion du réseau (buffer plein = paquet jetté).</p>
-<p>🆕 <strong>Dans le cas d&rsquo;ECN</strong> (<a href="https://en.wikipedia.org/wiki/Explicit_Congestion_Notification#Effects_on_performance" target="_blank" rel="noopener noreffer ">Explicit Congestion Notification</a>, le contrôle de congestion est assisté par la couche IP en combinaison avec une gestion active de file d&rsquo;attente (<a href="https://en.wikipedia.org/wiki/Active_queue_management" target="_blank" rel="noopener noreffer ">AQM</a>) en permettant à l&rsquo;élément de transfert (e.g. routeur) de notifier le début de congestion mais il reste régulé par la couche transport.</p>
+<p>🆕 <strong>Dans le cas d&rsquo;ECN</strong> (<a href="https://en.wikipedia.org/wiki/Explicit_Congestion_Notification#Effects_on_performance" target="_blank" rel="noopener noreffer ">Explicit Congestion Notification</a>, le contrôle de congestion est assisté par la couche IP en combinaison avec une gestion active de file d&rsquo;attente (<a href="https://en.wikipedia.org/wiki/Active_queue_management" target="_blank" rel="noopener noreffer ">AQM</a>) en permettant à l'élément de transfert (e.g. routeur) de notifier le début de congestion mais il reste régulé par la couche transport.</p>
 <p>Plus récemment, des extensions d&rsquo;IP et de TCP (<a href="https://tools.ietf.org/html/rfc3168" target="_blank" rel="noopener noreffer ">RFC 3168</a> ont été proposées, mises en œuvre et déployées pour permettre au réseau de signaler explicitement la congestion à un émetteur et à un destinataire TCP. En outre, un certain nombre de variantes des protocoles de contrôle de congestion TCP ont été proposées pour déduire la congestion à partir du retard mesuré des paquets.</p>
 <p><strong>Explicit Congestion Notification</strong> (<a href="https://tools.ietf.org/html/rfc3168" target="_blank" rel="noopener noreffer ">RFC 3168</a>) est la forme de contrôle de congestion assistée par le réseau réalisée au sein d&rsquo;internet. Au niveau de la couche réseau, deux bits (avec quatre valeurs possibles, au total) dans le champ Type of Service de l&rsquo;en-tête du datagramme IP sont utilisés pour ECN.</p>
 <p>Un réglage des bits ECN est utilisé par un routeur pour indiquer qu&rsquo;il (le routeur) connaît une congestion.</p>
 <h2 id="mptcp">MPTCP</h2>
-<p>Extension de TCP pour permettre à des terminaux d&rsquo;établir une communication et d&rsquo;être capable d&rsquo;exploiter les ressources de plusieurs chemins à travers des sous-sessions TCP.</p>
+<p>Extension de TCP pour permettre à des terminaux d'établir une communication et d'être capable d&rsquo;exploiter les ressources de plusieurs chemins à travers des sous-sessions TCP.</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Multipath_TCP" target="_blank" rel="noopener noreffer ">Multipath TCP - Wikipedia</a></li>
 <li><a href="https://datatracker.ietf.org/doc/html/rfc6824" target="_blank" rel="noopener noreffer ">rfc6824</a></li>
 </ul>
 <p>👉 Vu que TCP, de base, se fiche de l&rsquo;ordre d&rsquo;arrivée des segments, on peut les faire arriver de n&rsquo;importe quelle source !</p>
 <p>💡  D&rsquo;autres déploiements utilisent TCP Multipath pour agréger la bande passante de différents réseaux. Par exemple, plusieurs types de smartphones, notamment en Corée, utilisent TCP Multipath pour relier le WiFi et la 4G par le biais de proxies SOCKS.</p>
-</div></div></div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.root-me.org/posts/couche_transport/" data-title="Documentation - La couche Transport" data-hashtags="documentation,couche transport,TCP,UDP,MPTCP"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.root-me.org/posts/couche_transport/" data-hashtag="documentation"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.root-me.org/posts/couche_transport/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/documentation/">documentation</a>,&nbsp;<a href="/tags/couche-transport/">couche transport</a>,&nbsp;<a href="/tags/tcp/">TCP</a>,&nbsp;<a href="/tags/udp/">UDP</a>,&nbsp;<a href="/tags/mptcp/">MPTCP</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/reflected_xss/" class="prev" rel="prev" title="Documentation - Reflected XSS"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Documentation - Reflected XSS</a>
+            <a href="/posts/http_response_splitting/" class="next" rel="next" title="Documentation - HTTP Response Splitting">Documentation - HTTP Response Splitting<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
         </div>

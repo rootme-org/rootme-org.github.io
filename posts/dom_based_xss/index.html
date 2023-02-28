@@ -8,10 +8,9 @@
 <meta property="og:description" content="Prérequis Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:
  Savoir coder en HTML Connaître les bases du Javascript Connaître la définition d&rsquo;une XSS  Qu&rsquo;est-ce que le DOM ? Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d&rsquo;examiner et de modifier le contenu du navigateur web. On peut utiliser le DOM pour changer de couleur le texte au moment du clic d&rsquo;un bouton, ou encore rendre visible ou invisible certaines parties de la page en fonction des actions utilisateur." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.root-me.org/documentation/dom_based_xss/" /><meta property="article:section" content="documentation" />
+<meta property="og:url" content="https://blog.root-me.org/posts/dom_based_xss/" />
 <meta property="article:published_time" content="2023-02-21T17:46:16+01:00" />
 <meta property="article:modified_time" content="2023-02-21T17:46:16+01:00" /><meta property="og:site_name" content="Root-Me Blog" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Documentation - DOM-Based XSS"/>
 <meta name="twitter:description" content="Prérequis Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:
@@ -19,7 +18,7 @@
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/documentation/dom_based_xss/" /><link rel="prev" href="https://blog.root-me.org/documentation/http_response_splitting/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/posts/dom_based_xss/" /><link rel="prev" href="https://blog.root-me.org/posts/http_response_splitting/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -29,9 +28,9 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.root-me.org\/documentation\/dom_based_xss\/"
-        },"genre": "documentation","keywords": "documentation, xss, dom-based","wordcount":  367 ,
-        "url": "https:\/\/blog.root-me.org\/documentation\/dom_based_xss\/","datePublished": "2023-02-21T17:46:16+01:00","dateModified": "2023-02-21T17:46:16+01:00","publisher": {
+            "@id": "https:\/\/blog.root-me.org\/posts\/dom_based_xss\/"
+        },"genre": "posts","keywords": "documentation, xss, dom-based","wordcount":  367 ,
+        "url": "https:\/\/blog.root-me.org\/posts\/dom_based_xss\/","datePublished": "2023-02-21T17:46:16+01:00","dateModified": "2023-02-21T17:46:16+01:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -47,7 +46,7 @@
             <a href="/" title="Root-Me Blog">Root-Me Blog</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/documentation/"> Documentation </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -62,12 +61,39 @@
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/documentation/" title="">Documentation</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
-                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Documentation - DOM-Based XSS</h1><div class="content" id="content"><h2 id="prérequis">Prérequis</h2>
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Documentation - DOM-Based XSS</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://0xhorizon.eu" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Ruulian, Podalirius</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Documentation</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;367 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#prérequis">Prérequis</a></li>
+    <li><a href="#quest-ce-que-le-dom-">Qu&rsquo;est-ce que le DOM ?</a></li>
+    <li><a href="#définition">Définition</a></li>
+    <li><a href="#exploitation">Exploitation</a></li>
+    <li><a href="#petits-conseils-pour-les-xss-basées-sur-le-dom">Petits conseils pour les XSS Basées sur le DOM</a>
+      <ul>
+        <li><a href="#regardez-le-rendu-de-votre-entrée-sur-le-code-source">Regardez le rendu de votre entrée sur le code source.</a></li>
+        <li><a href="#regardez-les-erreurs-que-vous-affiche-la-console-de-votre-navigateur">Regardez les erreurs que vous affiche la console de votre navigateur.</a></li>
+      </ul>
+    </li>
+    <li><a href="#références">Références</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="prérequis">Prérequis</h2>
 <p>Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:</p>
 <ul>
 <li>Savoir coder en HTML</li>
@@ -82,7 +108,7 @@
 <h2 id="exploitation">Exploitation</h2>
 <p>Prenons pour exemple une page qui récupère l&rsquo;entrée utilisateur et la multiplie par 10.</p>
 <p>Voici le code la page :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">entrée</span> <span class="nx">utilisateur</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
@@ -95,14 +121,37 @@
 <h3 id="regardez-le-rendu-de-votre-entrée-sur-le-code-source">Regardez le rendu de votre entrée sur le code source.</h3>
 <p>Sur ce genre de faille, on a la possibilité de pouvoir visualiser nos actions et les répercussions qu&rsquo;elles ont. Par exemple, vérifier que des guillemets ont bien été échappés.</p>
 <h3 id="regardez-les-erreurs-que-vous-affiche-la-console-de-votre-navigateur">Regardez les erreurs que vous affiche la console de votre navigateur.</h3>
-<p>Les erreurs permettent de comprendre bien des choses sur le code, et souvent dans ce genre de XSS les erreurs, c&rsquo;est bon signe ! Ça signifie qu&rsquo;on a réussi à faire exécuter des choses au site qui n&rsquo;étaient pas prévues initialement. Regarder les erreurs est donc primordial.</p>
+<p>Les erreurs permettent de comprendre bien des choses sur le code, et souvent dans ce genre de XSS les erreurs, c&rsquo;est bon signe ! Ça signifie qu&rsquo;on a réussi à faire exécuter des choses au site qui n'étaient pas prévues initialement. Regarder les erreurs est donc primordial.</p>
 <h2 id="références">Références</h2>
 <ul>
-<li><a href="https://portswigger.net/web-security/cross-site-scripting" target="_blank" rel="noopener noreffer ">https://portswigger.net/web-security/cross-site-scripting</a></li>
-<li><a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet" target="_blank" rel="noopener noreffer ">https://portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></li>
-<li><a href="https://owasp.org/www-community/attacks/DOM_Based_XSS" target="_blank" rel="noopener noreffer ">https://owasp.org/www-community/attacks/DOM_Based_XSS</a></li>
+<li><a href="https://portswigger.net/web-security/cross-site-scripting">https://portswigger.net/web-security/cross-site-scripting</a></li>
+<li><a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet">https://portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></li>
+<li><a href="https://owasp.org/www-community/attacks/DOM_Based_XSS">https://owasp.org/www-community/attacks/DOM_Based_XSS</a></li>
 </ul>
-</div></div></div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.root-me.org/posts/dom_based_xss/" data-title="Documentation - DOM-Based XSS" data-hashtags="documentation,xss,dom-based"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.root-me.org/posts/dom_based_xss/" data-hashtag="documentation"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.root-me.org/posts/dom_based_xss/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/documentation/">documentation</a>,&nbsp;<a href="/tags/xss/">xss</a>,&nbsp;<a href="/tags/dom-based/">dom-based</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/http_response_splitting/" class="prev" rel="prev" title="Documentation - HTTP Response Splitting"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Documentation - HTTP Response Splitting</a></div>
+</div>
+</article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
         </div>

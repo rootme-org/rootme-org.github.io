@@ -2,19 +2,20 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://blog.root-me.org/documentation/dom_based_xss/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/documentation/http_response_splitting/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/documentation/couche_transport/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/documentation/reflected_xss/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/documentation/stored_xss/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/posts/dom_based_xss/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/posts/http_response_splitting/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/posts/couche_transport/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/posts/reflected_xss/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/posts/stored_xss/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
             <loc>https://blog.root-me.org/posts/interview_m4tou/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/privacy/</loc></url><url>
             <loc>https://blog.root-me.org/categories/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/couche-transport/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/tags/documentation/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
             <loc>https://blog.root-me.org/categories/documentation/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/documentation/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/documentation/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/dom-based/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/mptcp/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/posts/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/reflected/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/response-splitting/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
             <loc>https://blog.root-me.org/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
@@ -23,7 +24,6 @@
             <loc>https://blog.root-me.org/tags/tcp/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/udp/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/xss/</loc><lastmod>2023-02-21T17:46:16&#43;01:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/categories/interview/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/interview/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/posts/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/tags/posts/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/categories/posts/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url></urlset>
+            <loc>https://blog.root-me.org/tags/posts/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url></urlset>

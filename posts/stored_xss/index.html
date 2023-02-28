@@ -9,10 +9,9 @@
  Savoir coder en HTML Connaître les bases du PHP et du Javascript Savoir ce qu&rsquo;est une XSS  Définition Une XSS stockée est possible lorsque l&rsquo;entrée utilisateur est stockée en base de données et afficher sur la page. On peut prendre comme exemple une page de forum.
 Explication de la faille Prenons comme exemple une page de forum qui affiche les messages postés." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.root-me.org/documentation/stored_xss/" /><meta property="article:section" content="documentation" />
+<meta property="og:url" content="https://blog.root-me.org/posts/stored_xss/" />
 <meta property="article:published_time" content="2023-02-21T17:46:16+01:00" />
 <meta property="article:modified_time" content="2023-02-21T17:46:16+01:00" /><meta property="og:site_name" content="Root-Me Blog" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Documentation - Stored XSS"/>
 <meta name="twitter:description" content="Prérequis Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:
@@ -21,7 +20,7 @@ Explication de la faille Prenons comme exemple une page de forum qui affiche les
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/documentation/stored_xss/" /><link rel="next" href="https://blog.root-me.org/documentation/reflected_xss/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/posts/stored_xss/" /><link rel="prev" href="https://blog.root-me.org/posts/interview_m4tou/" /><link rel="next" href="https://blog.root-me.org/posts/reflected_xss/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -31,9 +30,9 @@ Explication de la faille Prenons comme exemple une page de forum qui affiche les
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/blog.root-me.org\/documentation\/stored_xss\/"
-        },"genre": "documentation","keywords": "documentation, xss, stored","wordcount":  268 ,
-        "url": "https:\/\/blog.root-me.org\/documentation\/stored_xss\/","datePublished": "2023-02-21T17:46:16+01:00","dateModified": "2023-02-21T17:46:16+01:00","publisher": {
+            "@id": "https:\/\/blog.root-me.org\/posts\/stored_xss\/"
+        },"genre": "posts","keywords": "documentation, xss, stored","wordcount":  268 ,
+        "url": "https:\/\/blog.root-me.org\/posts\/stored_xss\/","datePublished": "2023-02-21T17:46:16+01:00","dateModified": "2023-02-21T17:46:16+01:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -49,7 +48,7 @@ Explication de la faille Prenons comme exemple une page de forum qui affiche les
             <a href="/" title="Root-Me Blog">Root-Me Blog</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/documentation/"> Documentation </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
                 </a></div>
         </div>
@@ -64,12 +63,33 @@ Explication de la faille Prenons comme exemple une page de forum qui affiche les
                 <span></span><span></span><span></span>
             </div>
         </div>
-        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/documentation/" title="">Documentation</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
             </a></div>
     </div>
 </header><main class="main">
-                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Documentation - Stored XSS</h1><div class="content" id="content"><h2 id="prérequis">Prérequis</h2>
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Documentation - Stored XSS</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://0xhorizon.eu" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Ruulian, Podalirius</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Documentation</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;268 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#prérequis">Prérequis</a></li>
+    <li><a href="#définition">Définition</a></li>
+    <li><a href="#explication-de-la-faille">Explication de la faille</a></li>
+    <li><a href="#exploitation">Exploitation</a></li>
+    <li><a href="#références">Références</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="prérequis">Prérequis</h2>
 <p>Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:</p>
 <ul>
 <li>Savoir coder en HTML</li>
@@ -81,15 +101,15 @@ Explication de la faille Prenons comme exemple une page de forum qui affiche les
 <h2 id="explication-de-la-faille">Explication de la faille</h2>
 <p>Prenons comme exemple une page de forum qui affiche les messages postés.</p>
 <p>Voici la partie du code PHP qui affiche les messages :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="c1">//Connexion à la base de données//
-</span><span class="c1"></span>
-<span class="c1">// Récupération des informations grâce à une requête SQL
-</span><span class="c1"></span><span class="nv">$request</span> <span class="o">=</span> <span class="nv">$database</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;SELECT user, message FROM messages ORDER BY id DESC LIMIT 0, 5&#39;</span><span class="p">);</span>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">//Connexion à la base de données//
 
-<span class="c1">// Affichage des messages
-</span><span class="c1"></span><span class="k">while</span><span class="p">(</span><span class="nv">$data</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">()){</span>
-    <span class="k">echo</span> <span class="s2">&#34;&lt;p&gt;&#34;</span> <span class="o">.</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&#34;: &#34;</span> <span class="o">.</span> <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&#34;&lt;/p&gt;&#34;</span><span class="p">;</span>
-<span class="p">}</span>
+// Récupération des informations grâce à une requête SQL
+$request = $database-&gt;query(&#39;SELECT user, message FROM messages ORDER BY id DESC LIMIT 0, 5&#39;);
+
+// Affichage des messages
+while($data = $request-&gt;fetch()){
+    echo &#34;<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>&#34; . $data[&#39;user&#39;] . &#34;: &#34; . $data[&#39;message&#39;] . &#34;<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>&#34;;
+}
 </code></pre></div><p>La partie intéressante dans ce code, est la fonction <!-- raw HTML omitted -->echo<!-- raw HTML omitted -->, qui affiche les messages et les pseudos sans filtre. Ceci nous permet donc d&rsquo;entrer des balises qui vont par la suite être interprétées.</p>
 <p>Par exemple si on tente d&rsquo;injecter <code>&lt;u&gt;bonjour&lt;/u&gt;</code> le rendu sur la page sera: <!-- raw HTML omitted -->bonjour<!-- raw HTML omitted --></p>
 <p>La fonction <!-- raw HTML omitted -->echo<!-- raw HTML omitted --> interprète les balises.
@@ -98,10 +118,34 @@ Vous demandez sûrement en quoi c&rsquo;est dangereux qu&rsquo;un utilisateur en
 <p>Maintenant qu&rsquo;on a la capacité d&rsquo;interpréter nos balises, on peut passer à l&rsquo;exploitation. En entrant <!-- raw HTML omitted -->alert()<!-- raw HTML omitted --> au moment du chargement de la page le script va être exécuté, et l&rsquo;alert va être affiché. À partir du moment où on peut exécuter du Javascript on peut par exemple récupérer les cookies des autres utilisateurs. <!-- raw HTML omitted --></p>
 <h2 id="références">Références</h2>
 <ul>
-<li><a href="https://portswigger.net/web-security/cross-site-scripting" target="_blank" rel="noopener noreffer ">https://portswigger.net/web-security/cross-site-scripting</a></li>
-<li><a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet" target="_blank" rel="noopener noreffer ">https://portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></li>
+<li><a href="https://portswigger.net/web-security/cross-site-scripting">https://portswigger.net/web-security/cross-site-scripting</a></li>
+<li><a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet">https://portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></li>
 </ul>
-</div></div></div>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-21</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.root-me.org/posts/stored_xss/" data-title="Documentation - Stored XSS" data-hashtags="documentation,xss,stored"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.root-me.org/posts/stored_xss/" data-hashtag="documentation"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.root-me.org/posts/stored_xss/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/documentation/">documentation</a>,&nbsp;<a href="/tags/xss/">xss</a>,&nbsp;<a href="/tags/stored/">stored</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/interview_m4tou/" class="prev" rel="prev" title="Interview de M4tou - 41 ans - Spécialiste de navigation maritime en reconversion"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Interview de M4tou - 41 ans - Spécialiste de navigation maritime en reconversion</a>
+            <a href="/posts/reflected_xss/" class="next" rel="next" title="Documentation - Reflected XSS">Documentation - Reflected XSS<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
         </div>
