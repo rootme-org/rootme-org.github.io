@@ -5,14 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Documentation - Reflected XSS - Root-Me Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Documentation - Reflected XSS" />
-<meta property="og:description" content="Le Cross Site Scripting, ou XSS, est la faille la plus présente sur le web, et d’assez loin. Elle est désignée par quantité de noms, parmi lesquels &ldquo;faille des livres d’or&rdquo;, tout simplement car ceux-ci ont permi une généralisation de ces vulnérabilités faille. La faille de type XSS se caractérise par une injection possible de code arbitraire dans le code HTML qui sera rendu au navigateur. Autrement dit, l’attaquant va être capable de modifier un aspect du site ou d’injecter des scripts dans ce que la victime va ensuite voir à l’écran." />
+<meta property="og:description" content="Cross Site Scripting, or XSS, is the most present vulnerability on the web, by far. It is referred to by many names, among which &ldquo;Golden Book vulnerability&rdquo;, simply because these have allowed a generalization of these vulnerabilities. The XSS flaw is characterized by a possible injection of arbitrary code into the HTML code that will be rendered to the browser. In other words, the attacker will be able to modify an aspect of the site or to inject scripts in what the victim will then see on the screen." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.root-me.org/posts/reflected_xss/" />
-<meta property="article:published_time" content="2023-02-21T17:46:16+01:00" />
-<meta property="article:modified_time" content="2023-02-21T17:46:16+01:00" /><meta property="og:site_name" content="Root-Me Blog" />
+<meta property="article:published_time" content="2023-02-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-21T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Documentation - Reflected XSS"/>
-<meta name="twitter:description" content="Le Cross Site Scripting, ou XSS, est la faille la plus présente sur le web, et d’assez loin. Elle est désignée par quantité de noms, parmi lesquels &ldquo;faille des livres d’or&rdquo;, tout simplement car ceux-ci ont permi une généralisation de ces vulnérabilités faille. La faille de type XSS se caractérise par une injection possible de code arbitraire dans le code HTML qui sera rendu au navigateur. Autrement dit, l’attaquant va être capable de modifier un aspect du site ou d’injecter des scripts dans ce que la victime va ensuite voir à l’écran."/>
+<meta name="twitter:description" content="Cross Site Scripting, or XSS, is the most present vulnerability on the web, by far. It is referred to by many names, among which &ldquo;Golden Book vulnerability&rdquo;, simply because these have allowed a generalization of these vulnerabilities. The XSS flaw is characterized by a possible injection of arbitrary code into the HTML code that will be rendered to the browser. In other words, the attacker will be able to modify an aspect of the site or to inject scripts in what the victim will then see on the screen."/>
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -27,8 +27,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.root-me.org\/posts\/reflected_xss\/"
-        },"genre": "posts","keywords": "documentation, xss, reflected","wordcount":  516 ,
-        "url": "https:\/\/blog.root-me.org\/posts\/reflected_xss\/","datePublished": "2023-02-21T17:46:16+01:00","dateModified": "2023-02-21T17:46:16+01:00","publisher": {
+        },"genre": "posts","keywords": "documentation, xss, reflected","wordcount":  501 ,
+        "url": "https:\/\/blog.root-me.org\/posts\/reflected_xss\/","datePublished": "2023-02-21T00:00:00+00:00","dateModified": "2023-02-21T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -69,7 +69,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Documentation - Reflected XSS</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://root-me.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Ruulian, Podalirius</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Documentation</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;516 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;501 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -78,31 +78,31 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#prérequis">Prérequis</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
     <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#définition">Définition</a></li>
-    <li><a href="#explication-de-la-faille">Explication de la faille</a></li>
+    <li><a href="#definition">Definition</a></li>
+    <li><a href="#explanation-of-the-vulnerability">Explanation of the vulnerability</a></li>
     <li><a href="#exploitation">Exploitation</a></li>
-    <li><a href="#références">Références</a></li>
+    <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>Le Cross Site Scripting, ou XSS, est la faille la plus présente sur le web, et d’assez loin. Elle est désignée par quantité de noms, parmi lesquels &ldquo;faille des livres d’or&rdquo;, tout simplement car ceux-ci ont permi une généralisation de ces vulnérabilités faille. La faille de type XSS se caractérise par une injection possible de code arbitraire dans le code HTML qui sera rendu au navigateur. Autrement dit, l’attaquant va être capable de modifier un aspect du site ou d’injecter des scripts dans ce que la victime va ensuite voir à l’écran.</p>
-<h2 id="prérequis">Prérequis</h2>
-<p>Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:</p>
+            </div><div class="content" id="content"><p>Cross Site Scripting, or XSS, is the most present vulnerability on the web, by far. It is referred to by many names, among which &ldquo;Golden Book vulnerability&rdquo;, simply because these have allowed a generalization of these vulnerabilities. The XSS flaw is characterized by a possible injection of arbitrary code into the HTML code that will be rendered to the browser. In other words, the attacker will be able to modify an aspect of the site or to inject scripts in what the victim will then see on the screen.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>To understand the whole article, you will need:</p>
 <ul>
-<li>Savoir coder en HTML</li>
-<li>Connaître les bases du PHP et du Javascript</li>
-<li>Savoir ce qu&rsquo;est une XSS</li>
+<li>Know HTML</li>
+<li>Know the basics of PHP and Javascript</li>
+<li>Know what an XSS is</li>
 </ul>
 <h2 id="introduction">Introduction</h2>
-<p>Il existe plusieurs types de failes XSS :</p>
-<p>Les vulnérabilités XSS de type &ldquo;réfléchie&rdquo; ou reflected en anglais résultent de l&rsquo;utilisation de données fournies par l&rsquo;utilisateur dans un script quelconque, sans les modifier. Typiquement, une simulation en ligne ou une page de statistiques. Ainsi, si ces données ne sont pas modifiées, on peut ajouter du &ldquo;script dans le script&rdquo; qui sera lui-même éxécuté.</p>
-<p>Ceci dit, en modifiant les données qui doivent être traitées, le résultat du XSS ne va modifier que la page que peut afficher l&rsquo;utilisateur. Cela peut paraître bénin, mais ça l&rsquo;est beaucoup moins quand l&rsquo;attaquant utilise le Social Engineering et diffuse des pages piégées de cette façon. Ce genre de vulnérabilités est souvent utilisé pour lancer des campagnes de spam afin de ternir l&rsquo;image d&rsquo;un site (redirections, modifications d&rsquo;apprence) ou de voler des informations (phishing).</p>
-<h2 id="définition">Définition</h2>
-<p>Une XSS volatile (Reflected XSS) est un type de XSS où l&rsquo;entrée utilisateur est dans un paramètre de l&rsquo;url et que ce paramètre est affiché sur la page.</p>
-<h2 id="explication-de-la-faille">Explication de la faille</h2>
-<p>Prenons comme exemple une page d&rsquo;un site qui affiche les résultats de la recherche de l&rsquo;utilisateur.</p>
-<p>Voici le code PHP de la page vulnérable:</p>
+<p>There are several types of XSS vulnerabilities:</p>
+<p>Reflected XSS vulnerabilities result from the use of user-supplied data in a script of some kind, without modifying it. Typically, an online simulation or a statistics page. Thus, if this data is not modified, one can add &ldquo;script within a script&rdquo; which will itself be executed.</p>
+<p>That said, by modifying the data that needs to be processed, the result of the XSS will only modify the page that the user can view. This may seem benign, but it is much less so when the attacker uses Social Engineering and spreads trapped pages in this way. This kind of vulnerability is often used to launch spam campaigns in order to tarnish the image of a site (redirects, appearance changes) or to steal information (phishing).</p>
+<h2 id="definition">Definition</h2>
+<p>A Reflected XSS is a type of XSS where the user input is in a parameter of the URL and that parameter is displayed on the page.</p>
+<h2 id="explanation-of-the-vulnerability">Explanation of the vulnerability</h2>
+<p>Let&rsquo;s take as an example a page of a site that displays the results of the user&rsquo;s search.</p>
+<p>Here is the PHP code of the vulnerable page :</p>
 <div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="p">&lt;</span><span class="nt">cadre</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;php&#34;</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span> <span class="na">method</span><span class="o">=</span><span class="s">&#34;get&#34;</span><span class="p">&gt;</span>
 <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;search&#34;</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;search&#34;</span><span class="p">&gt;</span>
@@ -111,16 +111,16 @@
 
 <span class="cp">&lt;?php</span>
 <span class="k">if</span><span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;search&#39;</span><span class="p">]))</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s1">&#39;Résultats pour la recherche &#34;&#39;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;search&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;&#34;&#39;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s1">&#39;Search results &#34;&#39;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;search&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39;&#34;&#39;</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span>
-</code></pre></div><p>La partie intéressante dans ce code, est la fonction <!-- raw HTML omitted -->echo<!-- raw HTML omitted -->, qui affiche le contenu la recherche sans filtre. Ceci nous permet donc d&rsquo;entrer des balises qui vont être envoyées au navigateur sans filtres, et celui ci les interprétera comme n&rsquo;importe quelle autre balise HTML de la page.</p>
-<p>Par exemple si on tente d&rsquo;envoyer <code>&lt;u&gt;bonjour&lt;/u&gt;</code> dans le champ de recherce, le rendu sur la page sera: <!-- raw HTML omitted -->bonjour<!-- raw HTML omitted --></p>
-<p>La fonction <!-- raw HTML omitted -->echo<!-- raw HTML omitted --> a collé les balises HTML sans filtre dans la page, et le navigateur a interprété ces balises <!-- raw HTML omitted -->u<!-- raw HTML omitted -->.</p>
-<p>Vous vous demandez sûrement en quoi c&rsquo;est dangereux qu&rsquo;un utilisateur envoie un message souligné, et bien c&rsquo;est parce que si <!-- raw HTML omitted -->echo<!-- raw HTML omitted --> interprète les balises <!-- raw HTML omitted -->u<!-- raw HTML omitted -->, il va aussi interpréter les balises <!-- raw HTML omitted -->script<!-- raw HTML omitted -->.</p>
+</code></pre></div><p>The interesting part in this code, is the <code>echo</code> function, which displays the content of the search without filters. So this allows us to enter tags that will be sent to the browser without filters, and the browser will interpret them as any other HTML tag on the page.</p>
+<p>For example if we try to send <code>&lt;b&gt;hello&lt;/b&gt;</code> in the search field, it will render on the page: <strong>hello</strong></p>
+<p>The <code>echo</code> function pasted the unfiltered HTML tags into the page, and the browser interpreted these <code>b</code> tags.</p>
+<p>You&rsquo;re probably wondering why it&rsquo;s dangerous for a user to send a message in bold, well that&rsquo;s because if <code>echo</code> interprets <code>b</code> tags, it will also interpret <code>script</code> tags.</p>
 <h2 id="exploitation">Exploitation</h2>
-<p>Maintenant qu&rsquo;on a la capacité d&rsquo;interpréter nos balises, on peut passer à l&rsquo;exploitation. En entrant <code>&lt;script&gt;alert()&lt;/script&gt;</code> au moment du chargement de la page le script va être exécuté, et l&rsquo;alert va être affiché. A partir du moment où on peut exécuter du Javascript on peut par exemple récupérer les cookies des autres utilisateurs.</p>
-<h2 id="références">Références</h2>
+<p>Now that we have the ability to interpret our tags, we can move on to exploitation. By entering <code>&lt;script&gt;alert()&lt;/script&gt;</code> at the time of loading the page the script will be executed, and the alert will be displayed. From the moment we can execute JavaScript we can for example retrieve cookies from other users.</p>
+<h2 id="references">References</h2>
 <ul>
 <li><a href="https://portswigger.net/web-security/cross-site-scripting">https://portswigger.net/web-security/cross-site-scripting</a></li>
 <li><a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet">https://portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></li>

@@ -4,28 +4,27 @@
         <link>https://blog.root-me.org/tags/documentation/</link>
         <description>documentation - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</lastBuildDate><atom:link href="https://blog.root-me.org/tags/documentation/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/documentation/" rel="self" type="application/rss+xml" /><item>
     <title>Documentation - DOM-Based XSS</title>
     <link>https://blog.root-me.org/posts/dom_based_xss/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/dom_based_xss/</guid>
-    <description><![CDATA[Prérequis Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:
- Savoir coder en HTML Connaître les bases du Javascript Connaître la définition d&rsquo;une XSS  Qu&rsquo;est-ce que le DOM ? Le Document Object Model (DOM) est une interface de programmation normalisée par le W3C, qui permet à des scripts d&rsquo;examiner et de modifier le contenu du navigateur web. On peut utiliser le DOM pour changer de couleur le texte au moment du clic d&rsquo;un bouton, ou encore rendre visible ou invisible certaines parties de la page en fonction des actions utilisateur.]]></description>
+    <description><![CDATA[Cross Site Scripting, or XSS, is the most present vulnerability on the web, by far. It is referred to by many names, among which &ldquo;Golden Book vulnerability&rdquo;, simply because these have allowed a generalization of these vulnerabilities. The XSS flaw is characterized by a possible injection of arbitrary code into the HTML code that will be rendered to the browser. In other words, the attacker will be able to modify an aspect of the site or to inject scripts in what the victim will then see on the screen.]]></description>
 </item>
 <item>
     <title>Documentation - HTTP Response Splitting</title>
     <link>https://blog.root-me.org/posts/http_response_splitting/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/http_response_splitting/</guid>
-    <description><![CDATA[Brève explication de comment le cache fonctionne Pour exploiter cette vulnérabilité nous devrons comprendre comment le cache fonctionne. Pour augmenter la vitesse de réponse, le cache stocke les réponses du serveur associées aux requêtes comme ceci:
-/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page Donc quand on fait une requête sur /posts par exemple, le cache nous envoie la réponse du serveur qui est associée à /posts stockée en cache.]]></description>
+    <description><![CDATA[Short explanation of how the cache works To exploit this vulnerability we will need to understand how the cache works. To increase response speed, the cache stores server responses associated with requests like this:
+/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page So when we make a request on /posts for example, the cache sends us the answer of the server which is associated to /posts stored in cache.]]></description>
 </item>
 <item>
     <title>Documentation - La couche Transport</title>
     <link>https://blog.root-me.org/posts/couche_transport/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>n3rada</author>
     <guid>https://blog.root-me.org/posts/couche_transport/</guid>
     <description><![CDATA[Introduction La couche transport est une pièce centrale de l&rsquo;architecture réseau en couches. Elle a le rôle critique de fournir des services de communication directement aux processus d&rsquo;application (i.e. communication logique) s&rsquo;exécutant sur différents hôtes.
@@ -34,20 +33,21 @@ Les processus applicatifs utilisent la communication logique fournie par la couc
 <item>
     <title>Documentation - Reflected XSS</title>
     <link>https://blog.root-me.org/posts/reflected_xss/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/reflected_xss/</guid>
-    <description><![CDATA[Le Cross Site Scripting, ou XSS, est la faille la plus présente sur le web, et d’assez loin. Elle est désignée par quantité de noms, parmi lesquels &ldquo;faille des livres d’or&rdquo;, tout simplement car ceux-ci ont permi une généralisation de ces vulnérabilités faille. La faille de type XSS se caractérise par une injection possible de code arbitraire dans le code HTML qui sera rendu au navigateur. Autrement dit, l’attaquant va être capable de modifier un aspect du site ou d’injecter des scripts dans ce que la victime va ensuite voir à l’écran.]]></description>
+    <description><![CDATA[Cross Site Scripting, or XSS, is the most present vulnerability on the web, by far. It is referred to by many names, among which &ldquo;Golden Book vulnerability&rdquo;, simply because these have allowed a generalization of these vulnerabilities. The XSS flaw is characterized by a possible injection of arbitrary code into the HTML code that will be rendered to the browser. In other words, the attacker will be able to modify an aspect of the site or to inject scripts in what the victim will then see on the screen.]]></description>
 </item>
 <item>
     <title>Documentation - Stored XSS</title>
     <link>https://blog.root-me.org/posts/stored_xss/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/stored_xss/</guid>
-    <description><![CDATA[Prérequis Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:
- Savoir coder en HTML Connaître les bases du PHP et du Javascript Savoir ce qu&rsquo;est une XSS  Définition Une XSS stockée est possible lorsque l&rsquo;entrée utilisateur est stockée en base de données et afficher sur la page. On peut prendre comme exemple une page de forum.
-Explication de la faille Prenons comme exemple une page de forum qui affiche les messages postés.]]></description>
+    <description><![CDATA[Prerequisites To understand the whole article, you will need:
+ Know HTML Know the basics of PHP and Javascript Know what an XSS is  Définition A stored XSS is possible when the user input is stored in a database and displayed on the page. An example is a forum page.
+Explanation of the vulnerability Let&rsquo;s take as an example a forum page that displays the posted messages.
+Here is the part of the PHP code that displays the messages:]]></description>
 </item>
 </channel>
 </rss>

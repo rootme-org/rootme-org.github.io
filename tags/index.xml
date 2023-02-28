@@ -4,10 +4,10 @@
         <link>https://blog.root-me.org/tags/</link>
         <description>Tags - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
     <title>couche transport</title>
     <link>https://blog.root-me.org/tags/couche-transport/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/couche-transport/</guid>
     <description><![CDATA[]]></description>
@@ -15,7 +15,7 @@
 <item>
     <title>documentation</title>
     <link>https://blog.root-me.org/tags/documentation/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/documentation/</guid>
     <description><![CDATA[]]></description>
@@ -23,23 +23,39 @@
 <item>
     <title>dom-based</title>
     <link>https://blog.root-me.org/tags/dom-based/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/dom-based/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
+    <title>interview</title>
+    <link>https://blog.root-me.org/tags/interview/</link>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/interview/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>MPTCP</title>
     <link>https://blog.root-me.org/tags/mptcp/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/mptcp/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
+    <title>posts</title>
+    <link>https://blog.root-me.org/tags/posts/</link>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/posts/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>reflected</title>
     <link>https://blog.root-me.org/tags/reflected/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/reflected/</guid>
     <description><![CDATA[]]></description>
@@ -47,7 +63,7 @@
 <item>
     <title>response splitting</title>
     <link>https://blog.root-me.org/tags/response-splitting/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/response-splitting/</guid>
     <description><![CDATA[]]></description>
@@ -55,7 +71,7 @@
 <item>
     <title>stored</title>
     <link>https://blog.root-me.org/tags/stored/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/stored/</guid>
     <description><![CDATA[]]></description>
@@ -63,25 +79,9 @@
 <item>
     <title>TCP</title>
     <link>https://blog.root-me.org/tags/tcp/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/tcp/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>UDP</title>
-    <link>https://blog.root-me.org/tags/udp/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/udp/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>xss</title>
-    <link>https://blog.root-me.org/tags/xss/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/xss/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

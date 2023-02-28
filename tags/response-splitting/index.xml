@@ -4,14 +4,14 @@
         <link>https://blog.root-me.org/tags/response-splitting/</link>
         <description>response splitting - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</lastBuildDate><atom:link href="https://blog.root-me.org/tags/response-splitting/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/response-splitting/" rel="self" type="application/rss+xml" /><item>
     <title>Documentation - HTTP Response Splitting</title>
     <link>https://blog.root-me.org/posts/http_response_splitting/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/http_response_splitting/</guid>
-    <description><![CDATA[Brève explication de comment le cache fonctionne Pour exploiter cette vulnérabilité nous devrons comprendre comment le cache fonctionne. Pour augmenter la vitesse de réponse, le cache stocke les réponses du serveur associées aux requêtes comme ceci:
-/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page Donc quand on fait une requête sur /posts par exemple, le cache nous envoie la réponse du serveur qui est associée à /posts stockée en cache.]]></description>
+    <description><![CDATA[Short explanation of how the cache works To exploit this vulnerability we will need to understand how the cache works. To increase response speed, the cache stores server responses associated with requests like this:
+/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page So when we make a request on /posts for example, the cache sends us the answer of the server which is associated to /posts stored in cache.]]></description>
 </item>
 </channel>
 </rss>

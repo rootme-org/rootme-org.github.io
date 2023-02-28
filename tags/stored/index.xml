@@ -4,15 +4,16 @@
         <link>https://blog.root-me.org/tags/stored/</link>
         <description>stored - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</lastBuildDate><atom:link href="https://blog.root-me.org/tags/stored/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/stored/" rel="self" type="application/rss+xml" /><item>
     <title>Documentation - Stored XSS</title>
     <link>https://blog.root-me.org/posts/stored_xss/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/stored_xss/</guid>
-    <description><![CDATA[Prérequis Pour comprendre l&rsquo;ensemble de cet article, il vous faudra:
- Savoir coder en HTML Connaître les bases du PHP et du Javascript Savoir ce qu&rsquo;est une XSS  Définition Une XSS stockée est possible lorsque l&rsquo;entrée utilisateur est stockée en base de données et afficher sur la page. On peut prendre comme exemple une page de forum.
-Explication de la faille Prenons comme exemple une page de forum qui affiche les messages postés.]]></description>
+    <description><![CDATA[Prerequisites To understand the whole article, you will need:
+ Know HTML Know the basics of PHP and Javascript Know what an XSS is  Définition A stored XSS is possible when the user input is stored in a database and displayed on the page. An example is a forum page.
+Explanation of the vulnerability Let&rsquo;s take as an example a forum page that displays the posted messages.
+Here is the part of the PHP code that displays the messages:]]></description>
 </item>
 </channel>
 </rss>

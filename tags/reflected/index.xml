@@ -4,13 +4,13 @@
         <link>https://blog.root-me.org/tags/reflected/</link>
         <description>reflected - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</lastBuildDate><atom:link href="https://blog.root-me.org/tags/reflected/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/reflected/" rel="self" type="application/rss+xml" /><item>
     <title>Documentation - Reflected XSS</title>
     <link>https://blog.root-me.org/posts/reflected_xss/</link>
-    <pubDate>Tue, 21 Feb 2023 17:46:16 &#43;0100</pubDate>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/reflected_xss/</guid>
-    <description><![CDATA[Le Cross Site Scripting, ou XSS, est la faille la plus présente sur le web, et d’assez loin. Elle est désignée par quantité de noms, parmi lesquels &ldquo;faille des livres d’or&rdquo;, tout simplement car ceux-ci ont permi une généralisation de ces vulnérabilités faille. La faille de type XSS se caractérise par une injection possible de code arbitraire dans le code HTML qui sera rendu au navigateur. Autrement dit, l’attaquant va être capable de modifier un aspect du site ou d’injecter des scripts dans ce que la victime va ensuite voir à l’écran.]]></description>
+    <description><![CDATA[Cross Site Scripting, or XSS, is the most present vulnerability on the web, by far. It is referred to by many names, among which &ldquo;Golden Book vulnerability&rdquo;, simply because these have allowed a generalization of these vulnerabilities. The XSS flaw is characterized by a possible injection of arbitrary code into the HTML code that will be rendered to the browser. In other words, the attacker will be able to modify an aspect of the site or to inject scripts in what the victim will then see on the screen.]]></description>
 </item>
 </channel>
 </rss>

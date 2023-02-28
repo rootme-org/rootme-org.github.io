@@ -5,16 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Documentation - HTTP Response Splitting - Root-Me Blog</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Documentation - HTTP Response Splitting" />
-<meta property="og:description" content="Brève explication de comment le cache fonctionne Pour exploiter cette vulnérabilité nous devrons comprendre comment le cache fonctionne. Pour augmenter la vitesse de réponse, le cache stocke les réponses du serveur associées aux requêtes comme ceci:
-/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page Donc quand on fait une requête sur /posts par exemple, le cache nous envoie la réponse du serveur qui est associée à /posts stockée en cache." />
+<meta property="og:description" content="Short explanation of how the cache works To exploit this vulnerability we will need to understand how the cache works. To increase response speed, the cache stores server responses associated with requests like this:
+/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page So when we make a request on /posts for example, the cache sends us the answer of the server which is associated to /posts stored in cache." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.root-me.org/posts/http_response_splitting/" />
-<meta property="article:published_time" content="2023-02-21T17:46:16+01:00" />
-<meta property="article:modified_time" content="2023-02-21T17:46:16+01:00" /><meta property="og:site_name" content="Root-Me Blog" />
+<meta property="article:published_time" content="2023-02-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-21T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Documentation - HTTP Response Splitting"/>
-<meta name="twitter:description" content="Brève explication de comment le cache fonctionne Pour exploiter cette vulnérabilité nous devrons comprendre comment le cache fonctionne. Pour augmenter la vitesse de réponse, le cache stocke les réponses du serveur associées aux requêtes comme ceci:
-/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page Donc quand on fait une requête sur /posts par exemple, le cache nous envoie la réponse du serveur qui est associée à /posts stockée en cache."/>
+<meta name="twitter:description" content="Short explanation of how the cache works To exploit this vulnerability we will need to understand how the cache works. To increase response speed, the cache stores server responses associated with requests like this:
+/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page So when we make a request on /posts for example, the cache sends us the answer of the server which is associated to /posts stored in cache."/>
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -29,8 +29,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.root-me.org\/posts\/http_response_splitting\/"
-        },"genre": "posts","keywords": "documentation, response splitting","wordcount":  423 ,
-        "url": "https:\/\/blog.root-me.org\/posts\/http_response_splitting\/","datePublished": "2023-02-21T17:46:16+01:00","dateModified": "2023-02-21T17:46:16+01:00","publisher": {
+        },"genre": "posts","keywords": "documentation, response splitting","wordcount":  433 ,
+        "url": "https:\/\/blog.root-me.org\/posts\/http_response_splitting\/","datePublished": "2023-02-21T00:00:00+00:00","dateModified": "2023-02-21T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -70,9 +70,9 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Documentation - HTTP Response Splitting</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://0xhorizon.eu" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Ruulian, Podalirius</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Documentation</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;423 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="https://root-me.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Ruulian, Podalirius</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Documentation</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;433 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -80,44 +80,44 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#brève-explication-de-comment-le-cache-fonctionne">Brève explication de comment le cache fonctionne</a></li>
-    <li><a href="#quest-ce-que-la-faille-http-response-splitting-">Qu&rsquo;est ce que la faille HTTP Response Splitting ?</a></li>
-    <li><a href="#comment-utiliser-cette-faille-pour-exploiter-une-xss-">Comment utiliser cette faille pour exploiter une XSS ?</a></li>
+    <li><a href="#short-explanation-of-how-the-cache-works">Short explanation of how the cache works</a></li>
+    <li><a href="#what-is-the-http-response-splitting-flaw">What is the HTTP Response Splitting flaw?</a></li>
+    <li><a href="#how-to-use-this-flaw-to-exploit-an-xss">How to use this flaw to exploit an XSS?</a></li>
     <li><a href="#exploit">Exploit</a></li>
-    <li><a href="#comment-savoir-si-lexploit-a-réussi">Comment savoir si l&rsquo;exploit a réussi</a></li>
+    <li><a href="#how-to-know-if-the-feat-was-successful">How to know if the feat was successful</a></li>
     <li><a href="#références">Références</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h2 id="brève-explication-de-comment-le-cache-fonctionne">Brève explication de comment le cache fonctionne</h2>
-<p>Pour exploiter cette vulnérabilité nous devrons comprendre comment le cache fonctionne. Pour augmenter la vitesse de réponse, le cache stocke les réponses du serveur associées aux requêtes comme ceci:</p>
+            </div><div class="content" id="content"><h2 id="short-explanation-of-how-the-cache-works">Short explanation of how the cache works</h2>
+<p>To exploit this vulnerability we will need to understand how the cache works. To increase response speed, the cache stores server responses associated with requests like this:</p>
 <pre><code>/login =&gt; login page
 /admin =&gt; admin page
 /register =&gt; register page
 /posts =&gt; posts page
-</code></pre><p>Donc quand on fait une requête sur /posts par exemple, le cache nous envoie la réponse du serveur qui est associée à /posts stockée en cache.</p>
-<h2 id="quest-ce-que-la-faille-http-response-splitting-">Qu&rsquo;est ce que la faille HTTP Response Splitting ?</h2>
-<p>La faille HTTP Response Splitting est un type de CRLF où le but est d&rsquo;injecter une seconde réponse.</p>
+</code></pre><p>So when we make a request on /posts for example, the cache sends us the answer of the server which is associated to /posts stored in cache.</p>
+<h2 id="what-is-the-http-response-splitting-flaw">What is the HTTP Response Splitting flaw?</h2>
+<p>The HTTP Response Splitting flaw is a type of CRLF where the goal is to inject a second response.</p>
 <pre><code>HTTP/1.1 302 FOUND
 [...]
 Set-Cookie: theme=dark
 
 HTTP/1.1 200 OK
 [...]
-</code></pre><p>Ici, on a la réponse prévue par le serveur avec notre cookie dans les headers. Grâce à la présence d&rsquo;une entrée utilisateur dans les headers, on peut exploiter une CRLF pour injecter non pas un nouvel header, mais une réponse toute entière !</p>
-<h2 id="comment-utiliser-cette-faille-pour-exploiter-une-xss-">Comment utiliser cette faille pour exploiter une XSS ?</h2>
-<p>En effectuant cette injection, il n&rsquo;y a pas d&rsquo;impact apparent dans notre navigateur mais on peut exploiter le cache. Après l&rsquo;injection, la seconde réponse (la réponse injectée) n&rsquo;est pas stockée dans le cache car elle n&rsquo;a pas de requête associée, le cache va donc attendre quelques secondes de recevoir une requête à laquelle accrocher cette réponse &ldquo;célibataire&rdquo;.</p>
-<p>Ce qui signifie que si on fait une requête juste après l&rsquo;injection, cette requête va être associée à la réponse injectée et quand d&rsquo;autres utilisateurs vont GET cette url, ils vont recevoir la réponse injectée.
-Maintenant nous avons juste à ajouter du code Javascript dans le contenu de notre réponse injectée.</p>
+</code></pre><p>Here we have the response expected by the server with our cookie in the headers. Thanks to the presence of a user entry in the headers, we can exploit a CRLF to inject not a new header, but an entire response !</p>
+<h2 id="how-to-use-this-flaw-to-exploit-an-xss">How to use this flaw to exploit an XSS?</h2>
+<p>By performing this injection, there is no apparent impact in our browser, but we can exploit the cache. After the injection, the second response (the injected response) is not stored in the cache because it has no associated request, so the cache will wait a few seconds to receive a request to which to attach this &ldquo;single&rdquo; response.</p>
+<p>This means that if we make a request right after the injection, this request will be associated with the injected response and when other users will GET this URL, they will receive the injected response.
+Now we just have to add some JavaScript code in the content of our injected response.</p>
 <h2 id="exploit">Exploit</h2>
-<p>Premièrement, nous devons vider le cache pour supprimer toutes les réponses associées aux requêtes ou nous ne serons pas en capacité de les modifier.
-Deuxièmement, nous devons effectuer notre injection.
-Enfin, on doit faire une requête sur la page dont qu&rsquo;on souhaite associer à notre réponse.</p>
-<p>Voici un pseudo-code pour réussir notre exploit:</p>
-<pre><code># Requête sur la page à exploiter pour vider le cache
-# Requête contenant notre injection
-# Requête sur la page à exploiter pour associer cette requête à la réponse qui attend en cache
-</code></pre><h2 id="comment-savoir-si-lexploit-a-réussi">Comment savoir si l&rsquo;exploit a réussi</h2>
-<p>Pour savoir si l&rsquo;exploit a réussi il suffit de regarder le contenu de la page à exploiter, si le contenu affiché est le code Javascript injecté alors l&rsquo;exploit a fonctionné, si à l&rsquo;inverse le contenu de la page est le même que celui prévu initialement on est bon pour revoir notre exploit.</p>
+<p>First, we need to flush the cache to remove all responses associated with the requests, or we will not be able to modify them.
+Second, we need to perform our injection.
+Finally, we need to make a request on the page we want to associate with our response.</p>
+<p>Here is a pseudocode to achieve our exploit:</p>
+<pre><code># Request on the page to exploit to clear the cache
+# Request containing our injection
+# Request on the page to exploit to associate this request with the answer waiting in the cache
+</code></pre><h2 id="how-to-know-if-the-feat-was-successful">How to know if the feat was successful</h2>
+<p>To know if the exploit has succeeded you just have to look at the content of the page to be exploited, if the content displayed is the injected JavaScript code then the exploit has worked, if on the contrary the content of the page is the same as the one initially planned we are good to review our exploit.</p>
 <h2 id="références">Références</h2>
 <ul>
 <li><a href="https://owasp.org/www-community/attacks/HTTP_Response_Splitting">https://owasp.org/www-community/attacks/HTTP_Response_Splitting</a></li>
@@ -157,5 +157,5 @@ Enfin, on doit faire une requête sur la page dont qu&rsquo;on souhaite associer
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"lightgallery":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
