@@ -4,13 +4,29 @@
         <link>https://blog.root-me.org/posts/</link>
         <description>All Posts | Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Root-Me CTF 10k - The White Rabbit</title>
+    <link>https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/</link>
+    <pubDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>Nishacid</author>
+    <guid>https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/</guid>
+    <description><![CDATA[Writeup of the &lsquo;The White Rabbit&rsquo; challenge during the Root-Me CTF 10k]]></description>
+</item>
+<item>
+    <title>Writeup - Root-Me CTF 10k - Cheshire cat</title>
+    <link>https://blog.root-me.org/posts/writeup_ctf10k_cheshire_cat/</link>
+    <pubDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>Nishacid</author>
+    <guid>https://blog.root-me.org/posts/writeup_ctf10k_cheshire_cat/</guid>
+    <description><![CDATA[Writeup of the &lsquo;Cheshire Cat&rsquo; challenge during the Root-Me CTF 10k]]></description>
+</item>
+<item>
     <title>Documentation - DOM-Based XSS</title>
     <link>https://blog.root-me.org/posts/dom_based_xss/</link>
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/dom_based_xss/</guid>
-    <description><![CDATA[Cross Site Scripting, or XSS, is the most present vulnerability on the web, by far. It is referred to by many names, among which &ldquo;Golden Book vulnerability&rdquo;, simply because these have allowed a generalization of these vulnerabilities. The XSS flaw is characterized by a possible injection of arbitrary code into the HTML code that will be rendered to the browser. In other words, the attacker will be able to modify an aspect of the site or to inject scripts in what the victim will then see on the screen.]]></description>
+    <description><![CDATA[What is a DOM-based XSS vulnerability and how to exploit it ?]]></description>
 </item>
 <item>
     <title>Documentation - HTTP Response Splitting</title>
@@ -18,17 +34,7 @@
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/http_response_splitting/</guid>
-    <description><![CDATA[Short explanation of how the cache works To exploit this vulnerability we will need to understand how the cache works. To increase response speed, the cache stores server responses associated with requests like this:
-/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page So when we make a request on /posts for example, the cache sends us the answer of the server which is associated to /posts stored in cache.]]></description>
-</item>
-<item>
-    <title>Documentation - La couche Transport</title>
-    <link>https://blog.root-me.org/posts/couche_transport/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>n3rada</author>
-    <guid>https://blog.root-me.org/posts/couche_transport/</guid>
-    <description><![CDATA[Introduction La couche transport est une pièce centrale de l&rsquo;architecture réseau en couches. Elle a le rôle critique de fournir des services de communication directement aux processus d&rsquo;application (i.e. communication logique) s&rsquo;exécutant sur différents hôtes.
-Les processus applicatifs utilisent la communication logique fournie par la couche transport pour s&rsquo;envoyer des messages, sans se soucier des détails de l&rsquo;infrastructure physique utilisée pour transporter ces messages (on n&rsquo;a à se soucier ni des NATs possiblement présents ni des redirections de ports).]]></description>
+    <description><![CDATA[What is an HTTP Response Splitting vulnerability and how to exploit it ?]]></description>
 </item>
 <item>
     <title>Documentation - Reflected XSS</title>
@@ -36,7 +42,7 @@ Les processus applicatifs utilisent la communication logique fournie par la couc
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/reflected_xss/</guid>
-    <description><![CDATA[Cross Site Scripting, or XSS, is the most present vulnerability on the web, by far. It is referred to by many names, among which &ldquo;Golden Book vulnerability&rdquo;, simply because these have allowed a generalization of these vulnerabilities. The XSS flaw is characterized by a possible injection of arbitrary code into the HTML code that will be rendered to the browser. In other words, the attacker will be able to modify an aspect of the site or to inject scripts in what the victim will then see on the screen.]]></description>
+    <description><![CDATA[What is a Reflected XSS vulnerability and how to exploit it ?]]></description>
 </item>
 <item>
     <title>Documentation - Stored XSS</title>
@@ -44,18 +50,23 @@ Les processus applicatifs utilisent la communication logique fournie par la couc
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/stored_xss/</guid>
-    <description><![CDATA[Prerequisites To understand the whole article, you will need:
- Know HTML Know the basics of PHP and Javascript Know what an XSS is  Définition A stored XSS is possible when the user input is stored in a database and displayed on the page. An example is a forum page.
-Explanation of the vulnerability Let&rsquo;s take as an example a forum page that displays the posted messages.
-Here is the part of the PHP code that displays the messages:]]></description>
+    <description><![CDATA[What is a Stored XSS vulnerability and how to exploit it ?]]></description>
 </item>
 <item>
-    <title>Interview de M4tou - 41 ans - Spécialiste de navigation maritime en reconversion</title>
+    <title>Documentation - The Transport Layer</title>
+    <link>https://blog.root-me.org/posts/couche_transport/</link>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>n3rada</author>
+    <guid>https://blog.root-me.org/posts/couche_transport/</guid>
+    <description><![CDATA[Explanation of the transport layer (TCP, UDP, MPTCP)]]></description>
+</item>
+<item>
+    <title>Interview of M4tou - 41 years old - Marine navigation specialist in reconversion</title>
     <link>https://blog.root-me.org/posts/interview_m4tou/</link>
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/posts/interview_m4tou/</guid>
-    <description><![CDATA[Interview de M4tou - 41 ans - Spécialiste de navigation maritime en reconversion Spécialiste en navigation maritime, M4tou a démarré une réorientation en 2017 afin de travailler à terme dans la sécurité informatique. C’est en parallèle de sa formation en conception d’architectures informatiques, parcours cyber, qu’il a découvert Root-Me. En 2022, grâce à son implication au sein de l’association, il intègre l’équipe QA qui veille à garder la plateforme et les challenges Root-Me opérationnels.]]></description>
+    <description><![CDATA[Specialist in maritime navigation, M4tou started a reorientation in 2017 in order to work in computer security. It was during his training in computer architecture design, cyber path, that he discovered Root-Me]]></description>
 </item>
 </channel>
 </rss>

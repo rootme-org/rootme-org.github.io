@@ -5,13 +5,12 @@
         <description>TCP - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
             <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/tcp/" rel="self" type="application/rss+xml" /><item>
-    <title>Documentation - La couche Transport</title>
+    <title>Documentation - The Transport Layer</title>
     <link>https://blog.root-me.org/posts/couche_transport/</link>
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>n3rada</author>
     <guid>https://blog.root-me.org/posts/couche_transport/</guid>
-    <description><![CDATA[Introduction La couche transport est une pièce centrale de l&rsquo;architecture réseau en couches. Elle a le rôle critique de fournir des services de communication directement aux processus d&rsquo;application (i.e. communication logique) s&rsquo;exécutant sur différents hôtes.
-Les processus applicatifs utilisent la communication logique fournie par la couche transport pour s&rsquo;envoyer des messages, sans se soucier des détails de l&rsquo;infrastructure physique utilisée pour transporter ces messages (on n&rsquo;a à se soucier ni des NATs possiblement présents ni des redirections de ports).]]></description>
+    <description><![CDATA[Explanation of the transport layer (TCP, UDP, MPTCP)]]></description>
 </item>
 </channel>
 </rss>

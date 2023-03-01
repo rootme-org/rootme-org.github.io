@@ -10,10 +10,7 @@
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/stored_xss/</guid>
-    <description><![CDATA[Prerequisites To understand the whole article, you will need:
- Know HTML Know the basics of PHP and Javascript Know what an XSS is  Définition A stored XSS is possible when the user input is stored in a database and displayed on the page. An example is a forum page.
-Explanation of the vulnerability Let&rsquo;s take as an example a forum page that displays the posted messages.
-Here is the part of the PHP code that displays the messages:]]></description>
+    <description><![CDATA[What is a Stored XSS vulnerability and how to exploit it ?]]></description>
 </item>
 </channel>
 </rss>

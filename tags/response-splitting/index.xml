@@ -10,8 +10,7 @@
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/http_response_splitting/</guid>
-    <description><![CDATA[Short explanation of how the cache works To exploit this vulnerability we will need to understand how the cache works. To increase response speed, the cache stores server responses associated with requests like this:
-/login =&gt; login page /admin =&gt; admin page /register =&gt; register page /posts =&gt; posts page So when we make a request on /posts for example, the cache sends us the answer of the server which is associated to /posts stored in cache.]]></description>
+    <description><![CDATA[What is an HTTP Response Splitting vulnerability and how to exploit it ?]]></description>
 </item>
 </channel>
 </rss>
