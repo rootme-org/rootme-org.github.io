@@ -4,10 +4,10 @@
         <link>https://blog.root-me.org/tags/</link>
         <description>Tags - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
     <title>Challenge</title>
     <link>https://blog.root-me.org/tags/challenge/</link>
-    <pubDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/challenge/</guid>
     <description><![CDATA[]]></description>
@@ -15,9 +15,65 @@
 <item>
     <title>CTF10k</title>
     <link>https://blog.root-me.org/tags/ctf10k/</link>
-    <pubDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/ctf10k/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>DOM Clobbering</title>
+    <link>https://blog.root-me.org/tags/dom-clobbering/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/dom-clobbering/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>LFI</title>
+    <link>https://blog.root-me.org/tags/lfi/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/lfi/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Protocol Confusion</title>
+    <link>https://blog.root-me.org/tags/protocol-confusion/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/protocol-confusion/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Prototype Poisoning</title>
+    <link>https://blog.root-me.org/tags/prototype-poisoning/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/prototype-poisoning/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>SQLi</title>
+    <link>https://blog.root-me.org/tags/sqli/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/sqli/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>writeups</title>
+    <link>https://blog.root-me.org/tags/writeups/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/writeups/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>xss</title>
+    <link>https://blog.root-me.org/tags/xss/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/xss/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -26,62 +82,6 @@
     <pubDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/discord/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>writeups</title>
-    <link>https://blog.root-me.org/tags/writeups/</link>
-    <pubDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/writeups/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>couche transport</title>
-    <link>https://blog.root-me.org/tags/couche-transport/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/couche-transport/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>documentation</title>
-    <link>https://blog.root-me.org/tags/documentation/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/documentation/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>dom-based</title>
-    <link>https://blog.root-me.org/tags/dom-based/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/dom-based/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>interview</title>
-    <link>https://blog.root-me.org/tags/interview/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/interview/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>MPTCP</title>
-    <link>https://blog.root-me.org/tags/mptcp/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/mptcp/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>posts</title>
-    <link>https://blog.root-me.org/tags/posts/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/posts/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

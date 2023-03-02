@@ -4,9 +4,33 @@
         <link>https://blog.root-me.org/</link>
         <description>Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.root-me.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Writeup - Root-Me CTF 10k - Perfect Notes</title>
+    <link>https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Kévin_Mizu</author>
+    <guid>https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/</guid>
+    <description><![CDATA[Writeup of the &lsquo;Perfect Notes&rsquo; challenge during the Root-Me CTF 10k]]></description>
+</item>
+<item>
+    <title>Writeup - Root-Me CTF 10k - Proxifier</title>
+    <link>https://blog.root-me.org/posts/writeup_ctf10k_proxifier/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Kévin_Mizu</author>
+    <guid>https://blog.root-me.org/posts/writeup_ctf10k_proxifier/</guid>
+    <description><![CDATA[Writeup of the &lsquo;Proxifier&rsquo; challenge during the Root-Me CTF 10k]]></description>
+</item>
+<item>
+    <title>Writeup - Root-Me CTF 10k - Simple Login</title>
+    <link>https://blog.root-me.org/posts/writeup_ctf10k_simple_login/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Kévin_Mizu</author>
+    <guid>https://blog.root-me.org/posts/writeup_ctf10k_simple_login/</guid>
+    <description><![CDATA[Writeup of the &lsquo;Simple Login&rsquo; challenge during the Root-Me CTF 10k]]></description>
+</item>
+<item>
     <title>Root-Me CTF 10k - The White Rabbit</title>
     <link>https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/</link>
     <pubDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</pubDate>
@@ -61,14 +85,6 @@
     <author>n3rada</author>
     <guid>https://blog.root-me.org/posts/couche_transport/</guid>
     <description><![CDATA[Explanation of the transport layer (TCP, UDP, MPTCP)]]></description>
-</item>
-<item>
-    <title>Interview of M4tou - 41 years old - Marine navigation specialist in reconversion</title>
-    <link>https://blog.root-me.org/posts/interview_m4tou/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/posts/interview_m4tou/</guid>
-    <description><![CDATA[Specialist in maritime navigation, M4tou started a reorientation in 2017 in order to work in computer security. It was during his training in computer architecture design, cyber path, that he discovered Root-Me]]></description>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>DOM Clobbering - Tag - Root-Me Blog</title>
+        <link>https://blog.root-me.org/tags/dom-clobbering/</link>
+        <description>DOM Clobbering - Tag - Root-Me Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/dom-clobbering/" rel="self" type="application/rss+xml" /><item>
+    <title>Writeup - Root-Me CTF 10k - Perfect Notes</title>
+    <link>https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Kévin_Mizu</author>
+    <guid>https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/</guid>
+    <description><![CDATA[Writeup of the &lsquo;Perfect Notes&rsquo; challenge during the Root-Me CTF 10k]]></description>
+</item>
+</channel>
+</rss>
