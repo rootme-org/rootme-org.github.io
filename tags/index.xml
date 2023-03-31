@@ -4,7 +4,39 @@
         <link>https://blog.root-me.org/tags/</link>
         <description>Tags - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>e-learning</title>
+    <link>https://blog.root-me.org/tags/e-learning/</link>
+    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/e-learning/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>misc</title>
+    <link>https://blog.root-me.org/tags/misc/</link>
+    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/misc/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>non-technical</title>
+    <link>https://blog.root-me.org/tags/non-technical/</link>
+    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/non-technical/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>tips</title>
+    <link>https://blog.root-me.org/tags/tips/</link>
+    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/tips/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Challenge</title>
     <link>https://blog.root-me.org/tags/challenge/</link>
     <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
@@ -50,38 +82,6 @@
     <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/prototype-poisoning/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>SQLi</title>
-    <link>https://blog.root-me.org/tags/sqli/</link>
-    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/sqli/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>writeups</title>
-    <link>https://blog.root-me.org/tags/writeups/</link>
-    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/writeups/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>xss</title>
-    <link>https://blog.root-me.org/tags/xss/</link>
-    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/xss/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Discord</title>
-    <link>https://blog.root-me.org/tags/discord/</link>
-    <pubDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/discord/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

