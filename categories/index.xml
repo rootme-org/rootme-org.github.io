@@ -5,6 +5,14 @@
         <description>Categories - Category - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
             <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>Interview</title>
+    <link>https://blog.root-me.org/categories/interview/</link>
+    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/categories/interview/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>Misc</title>
     <link>https://blog.root-me.org/categories/misc/</link>
     <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
@@ -26,14 +34,6 @@
     <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/categories/documentation/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Interview</title>
-    <link>https://blog.root-me.org/categories/interview/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/categories/interview/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
