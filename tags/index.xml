@@ -13,14 +13,6 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>interview</title>
-    <link>https://blog.root-me.org/tags/interview/</link>
-    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/interview/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
     <title>misc</title>
     <link>https://blog.root-me.org/tags/misc/</link>
     <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
@@ -34,14 +26,6 @@
     <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/non-technical/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>posts</title>
-    <link>https://blog.root-me.org/tags/posts/</link>
-    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/posts/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -82,6 +66,22 @@
     <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/lfi/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Protocol Confusion</title>
+    <link>https://blog.root-me.org/tags/protocol-confusion/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/protocol-confusion/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Prototype Poisoning</title>
+    <link>https://blog.root-me.org/tags/prototype-poisoning/</link>
+    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/prototype-poisoning/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

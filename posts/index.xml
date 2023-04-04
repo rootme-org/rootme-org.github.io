@@ -18,14 +18,6 @@ Typically:
  Why do you want to learn cybersecurity?]]></description>
 </item>
 <item>
-    <title>Interview of Isis - Kévin Monfermé</title>
-    <link>https://blog.root-me.org/posts/interview_isis/</link>
-    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Isis</author>
-    <guid>https://blog.root-me.org/posts/interview_isis/</guid>
-    <description><![CDATA[Kévin Monfermé, better known on Root-Me under the nickname of Isis, started his reorientation a year and a half ago in cybersecurity]]></description>
-</item>
-<item>
     <title>Writeup - Root-Me CTF 10k - Perfect Notes</title>
     <link>https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/</link>
     <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
@@ -88,6 +80,14 @@ Typically:
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/reflected_xss/</guid>
     <description><![CDATA[What is a Reflected XSS vulnerability and how to exploit it ?]]></description>
+</item>
+<item>
+    <title>Documentation - Stored XSS</title>
+    <link>https://blog.root-me.org/posts/stored_xss/</link>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>Ruulian, Podalirius</author>
+    <guid>https://blog.root-me.org/posts/stored_xss/</guid>
+    <description><![CDATA[What is a Stored XSS vulnerability and how to exploit it ?]]></description>
 </item>
 </channel>
 </rss>
