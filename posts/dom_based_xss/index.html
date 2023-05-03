@@ -4,12 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Documentation - DOM-Based XSS - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic"><meta property="og:title" content="Documentation - DOM-Based XSS" />
+        <title>Documentation - DOM-Based XSS - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic."><meta property="og:title" content="Documentation - DOM-Based XSS" />
 <meta property="og:description" content="What is a DOM-based XSS vulnerability and how to exploit it ?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.root-me.org/posts/dom_based_xss/" />
+<meta property="og:url" content="https://blog.root-me.org/posts/dom_based_xss/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-02-21T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-02-21T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Documentation - DOM-Based XSS"/>
 <meta name="twitter:description" content="What is a DOM-based XSS vulnerability and how to exploit it ?"/>
@@ -41,7 +42,14 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="Root-Me Blog">Root-Me Blog</a>
+            <a href="/" title="Root-Me Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="https://www.root-me.org/IMG/logo/siteon0.svg"
+        data-srcset="https://www.root-me.org/IMG/logo/siteon0.svg, https://www.root-me.org/IMG/logo/siteon0.svg 1.5x, https://www.root-me.org/IMG/logo/siteon0.svg 2x"
+        data-sizes="auto"
+        alt="https://www.root-me.org/IMG/logo/siteon0.svg"
+        title="https://www.root-me.org/IMG/logo/siteon0.svg" />Root-Me Blog</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
@@ -53,7 +61,14 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="Root-Me Blog">Root-Me Blog</a>
+                <a href="/" title="Root-Me Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="https://www.root-me.org/IMG/logo/siteon0.svg"
+        data-srcset="https://www.root-me.org/IMG/logo/siteon0.svg, https://www.root-me.org/IMG/logo/siteon0.svg 1.5x, https://www.root-me.org/IMG/logo/siteon0.svg 2x"
+        data-sizes="auto"
+        alt="https://www.root-me.org/IMG/logo/siteon0.svg"
+        title="https://www.root-me.org/IMG/logo/siteon0.svg" />Root-Me Blog</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -107,7 +122,7 @@
 <h2 id="exploitation">Exploitation</h2>
 <p>Let&rsquo;s take for example a page that gets the user input and multiplies it by 10.</p>
 <p>Here is the code of the page:</p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
 <span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">entrée</span> <span class="nx">utilisateur</span><span class="o">&gt;</span><span class="p">;</span>
 
 <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
@@ -123,9 +138,9 @@
 <p>Errors allow us to understand many things about the code, and often in this kind of XSS errors are a good sign! It means that we managed to make the site do things that were not initially planned. Looking at the errors is therefore essential.</p>
 <h2 id="references">References</h2>
 <ul>
-<li><a href="https://portswigger.net/web-security/cross-site-scripting">https://portswigger.net/web-security/cross-site-scripting</a></li>
-<li><a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet">https://portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></li>
-<li><a href="https://owasp.org/www-community/attacks/DOM_Based_XSS">https://owasp.org/www-community/attacks/DOM_Based_XSS</a></li>
+<li><a href="https://portswigger.net/web-security/cross-site-scripting" target="_blank" rel="noopener noreffer ">https://portswigger.net/web-security/cross-site-scripting</a></li>
+<li><a href="https://portswigger.net/web-security/cross-site-scripting/cheat-sheet" target="_blank" rel="noopener noreffer ">https://portswigger.net/web-security/cross-site-scripting/cheat-sheet</a></li>
+<li><a href="https://owasp.org/www-community/attacks/DOM_Based_XSS" target="_blank" rel="noopener noreffer ">https://owasp.org/www-community/attacks/DOM_Based_XSS</a></li>
 </ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">

