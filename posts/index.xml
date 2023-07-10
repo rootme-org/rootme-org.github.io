@@ -4,7 +4,15 @@
         <link>https://blog.root-me.org/posts/</link>
         <description>All Posts | Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 10 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Interview of Isis - Kévin Monfermé</title>
+    <link>https://blog.root-me.org/posts/interview_isis/</link>
+    <pubDate>Mon, 10 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <author>Isis</author>
+    <guid>https://blog.root-me.org/posts/interview_isis/</guid>
+    <description><![CDATA[Kévin Monfermé, better known on Root-Me under the nickname of Isis, started his reorientation a year and a half ago in cybersecurity]]></description>
+</item>
+<item>
     <title>How to start in cybersecurity</title>
     <link>https://blog.root-me.org/posts/how-to-start/</link>
     <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
@@ -80,14 +88,6 @@ Typically:
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/reflected_xss/</guid>
     <description><![CDATA[What is a Reflected XSS vulnerability and how to exploit it ?]]></description>
-</item>
-<item>
-    <title>Documentation - Stored XSS</title>
-    <link>https://blog.root-me.org/posts/stored_xss/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Ruulian, Podalirius</author>
-    <guid>https://blog.root-me.org/posts/stored_xss/</guid>
-    <description><![CDATA[What is a Stored XSS vulnerability and how to exploit it ?]]></description>
 </item>
 </channel>
 </rss>
