@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>write - Tag - Root-Me Blog</title>
+        <link>https://blog.root-me.org/tags/write/</link>
+        <description>write - Tag - Root-Me Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 12 Sep 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/write/" rel="self" type="application/rss+xml" /><item>
+    <title>10 commandments of writing solution</title>
+    <link>https://blog.root-me.org/posts/10_commandments_solution/</link>
+    <pubDate>Tue, 12 Sep 2023 00:00:00 &#43;0000</pubDate>
+    <author>Nishacid</author>
+    <guid>https://blog.root-me.org/posts/10_commandments_solution/</guid>
+    <description><![CDATA[Ever wanted to write (good) solution on Root-Me ? You are in the right place]]></description>
+</item>
+</channel>
+</rss>
