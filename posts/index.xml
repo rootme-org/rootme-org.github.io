@@ -4,15 +4,7 @@
         <link>https://blog.root-me.org/posts/</link>
         <description>All Posts | Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 12 Sep 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>10 commandments of writing solution</title>
-    <link>https://blog.root-me.org/posts/10_commandments_solution/</link>
-    <pubDate>Tue, 12 Sep 2023 00:00:00 &#43;0000</pubDate>
-    <author>Nishacid</author>
-    <guid>https://blog.root-me.org/posts/10_commandments_solution/</guid>
-    <description><![CDATA[Ever wanted to write (good) solution on Root-Me ? You are in the right place]]></description>
-</item>
-<item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 10 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Interview of Isis - Kévin Monfermé</title>
     <link>https://blog.root-me.org/posts/interview_isis/</link>
     <pubDate>Mon, 10 Jul 2023 00:00:00 &#43;0000</pubDate>
@@ -88,6 +80,14 @@ Typically:
     <author>Ruulian, Podalirius</author>
     <guid>https://blog.root-me.org/posts/http_response_splitting/</guid>
     <description><![CDATA[What is an HTTP Response Splitting vulnerability and how to exploit it ?]]></description>
+</item>
+<item>
+    <title>Documentation - Reflected XSS</title>
+    <link>https://blog.root-me.org/posts/reflected_xss/</link>
+    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
+    <author>Ruulian, Podalirius</author>
+    <guid>https://blog.root-me.org/posts/reflected_xss/</guid>
+    <description><![CDATA[What is a Reflected XSS vulnerability and how to exploit it ?]]></description>
 </item>
 </channel>
 </rss>
