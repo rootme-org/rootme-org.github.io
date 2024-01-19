@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "style.min.css",
-	"sourceRoot": "/DATA/RMP_ELY/Root-Me-PRO/blog/blog",
+	"sourceRoot": "/DATA/RMP_ELY/Root-Me-PRO/blog.root-me.org/blog",
 	"sources": [
 		"themes/LoveIt/assets/css/style.scss",
 		"themes/LoveIt/assets/lib/normalize/normalize.css",

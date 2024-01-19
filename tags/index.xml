@@ -4,10 +4,18 @@
         <link>https://blog.root-me.org/tags/</link>
         <description>Tags - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 10 Jul 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 19 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>geoide</title>
+    <link>https://blog.root-me.org/tags/geoide/</link>
+    <pubDate>Fri, 19 Jan 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/geoide/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>interview</title>
     <link>https://blog.root-me.org/tags/interview/</link>
-    <pubDate>Mon, 10 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Fri, 19 Jan 2024 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/interview/</guid>
     <description><![CDATA[]]></description>
@@ -15,7 +23,7 @@
 <item>
     <title>posts</title>
     <link>https://blog.root-me.org/tags/posts/</link>
-    <pubDate>Mon, 10 Jul 2023 00:00:00 &#43;0000</pubDate>
+    <pubDate>Fri, 19 Jan 2024 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/posts/</guid>
     <description><![CDATA[]]></description>
@@ -74,14 +82,6 @@
     <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/dom-clobbering/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>LFI</title>
-    <link>https://blog.root-me.org/tags/lfi/</link>
-    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/lfi/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
