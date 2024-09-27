@@ -4,7 +4,39 @@
         <link>https://blog.root-me.org/tags/</link>
         <description>Tags - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 19 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>documentation</title>
+    <link>https://blog.root-me.org/tags/documentation/</link>
+    <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/documentation/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>solution</title>
+    <link>https://blog.root-me.org/tags/solution/</link>
+    <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/solution/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>write</title>
+    <link>https://blog.root-me.org/tags/write/</link>
+    <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/write/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>writeup</title>
+    <link>https://blog.root-me.org/tags/writeup/</link>
+    <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/writeup/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>geoide</title>
     <link>https://blog.root-me.org/tags/geoide/</link>
     <pubDate>Fri, 19 Jan 2024 00:00:00 &#43;0000</pubDate>
@@ -50,38 +82,6 @@
     <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/non-technical/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>tips</title>
-    <link>https://blog.root-me.org/tags/tips/</link>
-    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/tips/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Challenge</title>
-    <link>https://blog.root-me.org/tags/challenge/</link>
-    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/challenge/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>CTF10k</title>
-    <link>https://blog.root-me.org/tags/ctf10k/</link>
-    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/ctf10k/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>DOM Clobbering</title>
-    <link>https://blog.root-me.org/tags/dom-clobbering/</link>
-    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/dom-clobbering/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
