@@ -4,9 +4,17 @@
         <link>https://blog.root-me.org/</link>
         <description>Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic.</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.root-me.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Writeup - ComCyber Recrutement CTF</title>
+    <link>https://blog.root-me.org/posts/writeup_comcyber/</link>
+    <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>
+    <author>Nishacid</author>
+    <guid>https://blog.root-me.org/posts/writeup_comcyber/</guid>
+    <description><![CDATA[Solution of the recruitment CTF of ComCyber during September 2024]]></description>
+</item>
+<item>
     <title>10 commandments of writing solution</title>
     <link>https://blog.root-me.org/posts/10_commandments_solution/</link>
     <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
@@ -82,14 +90,6 @@ Typically:
     <author>Nishacid</author>
     <guid>https://blog.root-me.org/posts/writeup_ctf10k_cheshire_cat/</guid>
     <description><![CDATA[Writeup of the &lsquo;Cheshire Cat&rsquo; challenge during the Root-Me CTF 10k]]></description>
-</item>
-<item>
-    <title>Documentation - DOM-Based XSS</title>
-    <link>https://blog.root-me.org/posts/dom_based_xss/</link>
-    <pubDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Ruulian, Podalirius</author>
-    <guid>https://blog.root-me.org/posts/dom_based_xss/</guid>
-    <description><![CDATA[What is a DOM-based XSS vulnerability and how to exploit it ?]]></description>
 </item>
 </channel>
 </rss>

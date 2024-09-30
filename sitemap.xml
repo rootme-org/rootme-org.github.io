@@ -2,6 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://blog.root-me.org/posts/writeup_comcyber/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/posts/10_commandments_solution/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/posts/interview_gregory_gille/</loc><lastmod>2024-01-19T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/posts/interview_isis/</loc><lastmod>2023-07-10T00:00:00&#43;00:00</lastmod></url><url>
@@ -18,15 +19,17 @@
             <loc>https://blog.root-me.org/posts/couche_transport/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/posts/interview_m4tou/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/privacy/</loc></url><url>
-            <loc>https://blog.root-me.org/categories/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/categories/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/comcyber/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/posts/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/solution/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/writeup/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/categories/writeups/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/categories/documentation/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/documentation/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/posts/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/tags/solution/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/tags/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/write/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/tags/writeup/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/geoide/</loc><lastmod>2024-01-19T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/categories/interview/</loc><lastmod>2024-01-19T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/interview/</loc><lastmod>2024-01-19T00:00:00&#43;00:00</lastmod></url><url>
@@ -43,7 +46,6 @@
             <loc>https://blog.root-me.org/tags/protocol-confusion/</loc><lastmod>2023-03-02T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/prototype-poisoning/</loc><lastmod>2023-03-02T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/sqli/</loc><lastmod>2023-03-02T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/categories/writeups/</loc><lastmod>2023-03-02T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/writeups/</loc><lastmod>2023-03-02T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/xss/</loc><lastmod>2023-03-02T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/discord/</loc><lastmod>2023-02-28T00:00:00&#43;00:00</lastmod></url><url>

@@ -4,7 +4,31 @@
         <link>https://blog.root-me.org/tags/</link>
         <description>Tags - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>comcyber</title>
+    <link>https://blog.root-me.org/tags/comcyber/</link>
+    <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/comcyber/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>solution</title>
+    <link>https://blog.root-me.org/tags/solution/</link>
+    <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/solution/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>writeup</title>
+    <link>https://blog.root-me.org/tags/writeup/</link>
+    <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/writeup/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>documentation</title>
     <link>https://blog.root-me.org/tags/documentation/</link>
     <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
@@ -13,27 +37,11 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>solution</title>
-    <link>https://blog.root-me.org/tags/solution/</link>
-    <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/solution/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
     <title>write</title>
     <link>https://blog.root-me.org/tags/write/</link>
     <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/write/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>writeup</title>
-    <link>https://blog.root-me.org/tags/writeup/</link>
-    <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/writeup/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -74,14 +82,6 @@
     <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/misc/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>non-technical</title>
-    <link>https://blog.root-me.org/tags/non-technical/</link>
-    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/non-technical/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
