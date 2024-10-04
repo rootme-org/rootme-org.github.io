@@ -4,7 +4,17 @@
         <link>https://blog.root-me.org/tags/writeup/</link>
         <description>writeup - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/writeup/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/writeup/" rel="self" type="application/rss+xml" /><item>
+    <title>Code Snippet Serie - 01 - SQL Like injection</title>
+    <link>https://blog.root-me.org/posts/writeup_snippet_01/</link>
+    <pubDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</pubDate>
+    <author>Elweth</author>
+    <guid>https://blog.root-me.org/posts/writeup_snippet_01/</guid>
+    <description><![CDATA[Challenge Description This challenge, authored by @Elweth, involves exploiting a vulnerability in a SQL Query which lets you abuse the LIKE clause to first bypass authentication and then retrieve the entire API key.
+Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the SQL query, which remains vulnerable despite the use of the prepare statement system in Python.
+Conventional SQL injection exploitation methods won&rsquo;t work here, because the query is correctly prepared with python.]]></description>
+</item>
+<item>
     <title>Writeup - ComCyber Recrutement CTF</title>
     <link>https://blog.root-me.org/posts/writeup_comcyber/</link>
     <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>

@@ -4,7 +4,39 @@
         <link>https://blog.root-me.org/tags/</link>
         <description>Tags - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>code snippet</title>
+    <link>https://blog.root-me.org/tags/code-snippet/</link>
+    <pubDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/code-snippet/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>like</title>
+    <link>https://blog.root-me.org/tags/like/</link>
+    <pubDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/like/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>sql</title>
+    <link>https://blog.root-me.org/tags/sql/</link>
+    <pubDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/sql/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>writeup</title>
+    <link>https://blog.root-me.org/tags/writeup/</link>
+    <pubDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/writeup/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
     <title>comcyber</title>
     <link>https://blog.root-me.org/tags/comcyber/</link>
     <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>
@@ -18,14 +50,6 @@
     <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/solution/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>writeup</title>
-    <link>https://blog.root-me.org/tags/writeup/</link>
-    <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/writeup/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -58,30 +82,6 @@
     <pubDate>Fri, 19 Jan 2024 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/interview/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>posts</title>
-    <link>https://blog.root-me.org/tags/posts/</link>
-    <pubDate>Fri, 19 Jan 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/posts/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>e-learning</title>
-    <link>https://blog.root-me.org/tags/e-learning/</link>
-    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/e-learning/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>misc</title>
-    <link>https://blog.root-me.org/tags/misc/</link>
-    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/misc/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>
