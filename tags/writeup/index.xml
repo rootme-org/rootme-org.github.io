@@ -4,7 +4,17 @@
         <link>https://blog.root-me.org/tags/writeup/</link>
         <description>writeup - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/writeup/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/writeup/" rel="self" type="application/rss+xml" /><item>
+    <title>Code Snippet Serie - 02 - Memory Exhaustion via Unchecked Input Length</title>
+    <link>https://blog.root-me.org/posts/writeup_snippet_02/</link>
+    <pubDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</pubDate>
+    <author>Ethnical</author>
+    <guid>https://blog.root-me.org/posts/writeup_snippet_02/</guid>
+    <description><![CDATA[Challenge Description This challenge, authored by @Ethnical and @fadam, involves exploiting a vulnerability in a blockchain network server that processes incoming network messages. The vulnerability allows an attacker to cause a Denial of Service (DoS) by exhausting the server&rsquo;s memory.
+Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the unchecked allocation of memory based on user-controlled input length, leading to potential memory exhaustion.
+Technical Analysis Vulnerability Details   Unchecked Length Parameter:]]></description>
+</item>
+<item>
     <title>Code Snippet Serie - 01 - SQL Like injection</title>
     <link>https://blog.root-me.org/posts/writeup_snippet_01/</link>
     <pubDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</pubDate>
