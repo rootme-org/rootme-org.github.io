@@ -4,7 +4,16 @@
         <link>https://blog.root-me.org/tags/writeup/</link>
         <description>writeup - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/writeup/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 03 Dec 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/writeup/" rel="self" type="application/rss+xml" /><item>
+    <title>Code Snippet Serie - 03 - Cross-Function-Reentrancy</title>
+    <link>https://blog.root-me.org/posts/writeup_snippet_03/</link>
+    <pubDate>Tue, 03 Dec 2024 00:00:00 &#43;0000</pubDate>
+    <author>K.L.M</author>
+    <guid>https://blog.root-me.org/posts/writeup_snippet_03/</guid>
+    <description><![CDATA[Challenge Description This challenge, authored by @KLM, involves exploiting a vulnerability in a vyper smart contract that utilize a Cross-Function-Reentrancy due to a problem in the vyper version. This smart contract is made for a company to sell shares on the blockchain to help and ensure everything is secure, tracked and transparent.
+Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the insecure version of Vyper that desynchronise the values of the @nonreentrant(&quot;lock&quot;) between function in a contract and the bad execution flow management.]]></description>
+</item>
+<item>
     <title>Code Snippet Serie - 02 - Memory Exhaustion via Unchecked Input Length</title>
     <link>https://blog.root-me.org/posts/writeup_snippet_02/</link>
     <pubDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</pubDate>
