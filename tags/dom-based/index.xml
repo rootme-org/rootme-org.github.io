@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>dom-based - Tag - Root-Me Blog</title>
+        <title>Dom-Based - Tag - Root-Me Blog</title>
         <link>https://blog.root-me.org/tags/dom-based/</link>
-        <description>dom-based - Tag - Root-Me Blog</description>
+        <description>Dom-Based - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
             <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 21 Feb 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/dom-based/" rel="self" type="application/rss+xml" /><item>
     <title>Documentation - DOM-Based XSS</title>

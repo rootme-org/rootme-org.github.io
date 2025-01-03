@@ -11,9 +11,9 @@
 <meta property="article:published_time" content="2023-02-21T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-02-21T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Documentation - DOM-Based XSS"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Documentation - DOM-Based XSS"/>
 <meta name="twitter:description" content="What is a DOM-based XSS vulnerability and how to exploit it ?"/>
+<meta name="twitter:site" content="@rootme_org"/>
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.root-me.org\/posts\/dom_based_xss\/"
-        },"genre": "posts","keywords": "documentation, xss, dom-based","wordcount":  437 ,
+        },"genre": "posts","keywords": "documentation, xss, dom-based","wordcount":  438 ,
         "url": "https:\/\/blog.root-me.org\/posts\/dom_based_xss\/","datePublished": "2023-02-21T00:00:00+00:00","dateModified": "2023-02-21T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -84,7 +84,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Documentation - DOM-Based XSS</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://www.root-me.org/Podalirius" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Ruulian, Podalirius</a></span>&nbsp;<span class="post-category">included in <a href="/categories/documentation/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Documentation</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;437 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-21">2023-02-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;438 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -122,14 +122,14 @@
 <h2 id="exploitation">Exploitation</h2>
 <p>Let&rsquo;s take for example a page that gets the user input and multiplies it by 10.</p>
 <p>Here is the code of the page:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">entrée</span> <span class="nx">utilisateur</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;The result is &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">);</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-</code></pre></div><p>Here the variable &ldquo;number&rdquo; stores the user input which will be multiplied by 10 afterward. The problem with this script is that if we enter something other than a number, for example <code>hello</code>, we will get the error <code>{{undefined}}</code> in the console. This means that our input is interpreted as JavaScript code.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="o">&lt;</span><span class="nx">entrée</span> <span class="nx">utilisateur</span><span class="o">&gt;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;The result is &#39;</span> <span class="o">+</span> <span class="nx">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>Here the variable &ldquo;number&rdquo; stores the user input which will be multiplied by 10 afterward. The problem with this script is that if we enter something other than a number, for example <code>hello</code>, we will get the error <code>{{undefined}}</code> in the console. This means that our input is interpreted as JavaScript code.</p>
 <p>On peut donc entrer une fonction qui sera appelée par la variable, par exemple <!-- raw HTML omitted -->alert(1)<!-- raw HTML omitted --> ou des payloads plus complexes. À partir de là on peut facilement faire une redirection et voler les cookies d&rsquo;autres utilisateurs. :)</p>
 <h2 id="small-tips-for-dom-based-xss">Small tips for DOM-based XSS</h2>
 <h3 id="look-at-the-rendering-of-your-input-on-the-source-code">Look at the rendering of your input on the source code.</h3>
@@ -157,7 +157,7 @@
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/documentation/">documentation</a>,&nbsp;<a href="/tags/xss/">xss</a>,&nbsp;<a href="/tags/dom-based/">dom-based</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/documentation/">Documentation</a>,&nbsp;<a href="/tags/xss/">XSS</a>,&nbsp;<a href="/tags/dom-based/">Dom-Based</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -168,7 +168,7 @@
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
         </div>
     </footer></div>
 

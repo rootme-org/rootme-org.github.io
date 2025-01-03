@@ -11,9 +11,9 @@
 <meta property="article:published_time" content="2024-09-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2024-09-01T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="10 commandments of writing solution"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="10 commandments of writing solution"/>
 <meta name="twitter:description" content="Ever wanted to write (good) solution on Root-Me ? You are in the right place"/>
+<meta name="twitter:site" content="@rootme_org"/>
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -169,36 +169,35 @@ Do this prevent people from leaking your solution on the Internet with the flag 
         title="upload image backend" /></p>
 <h2 id="7-explain-your-code">7. Explain your code</h2>
 <p>If you decide to include your script in your solution, describe as detailed as you can how it works. Your reader might not know what the line 19 does, even if it&rsquo;s pretty clear for you. Comments are not mandatory but they are a great way to achieve it.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
-
-<span class="c1"># Define your API key</span>
-<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&#34;your_api_key_here&#34;</span>
-
-<span class="c1"># Make a request to the API using the API key in the headers</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&#34;Authorization&#34;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&#34;Bearer </span><span class="si">{</span><span class="n">api_key</span><span class="si">}</span><span class="s2">&#34;</span>
-<span class="p">}</span>
-
-    <span class="c1"># Send a GET request to the API endpoint</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;https://api.example.com/data&#34;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-    <span class="c1"># Check if the response status code is 200 (OK)</span>
-    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-        <span class="c1"># Parse the JSON data from the response</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-
-        <span class="c1"># Now you can work with the JSON data</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Item ID: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Item Name: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Item Description: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Data parsing successful.&#34;</span><span class="p">)</span>
-
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error: Unable to fetch data from the API. Status code: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-
-</code></pre></div><h2 id="8-test-your-solution">8. Test your solution</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">json</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Define your API key</span>
+</span></span><span class="line"><span class="cl"><span class="n">api_key</span> <span class="o">=</span> <span class="s2">&#34;your_api_key_here&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Make a request to the API using the API key in the headers</span>
+</span></span><span class="line"><span class="cl"><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;Authorization&#34;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&#34;Bearer </span><span class="si">{</span><span class="n">api_key</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Send a GET request to the API endpoint</span>
+</span></span><span class="line"><span class="cl">    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&#34;https://api.example.com/data&#34;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1"># Check if the response status code is 200 (OK)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Parse the JSON data from the response</span>
+</span></span><span class="line"><span class="cl">        <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1"># Now you can work with the JSON data</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Item ID: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Item Name: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Item Description: </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Data parsing successful.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error: Unable to fetch data from the API. Status code: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><h2 id="8-test-your-solution">8. Test your solution</h2>
 <p>Your original solution might be ugly and you polished it later. Or you found an elegant trick right after solving the challenge. The challenge could even have been fixed and prevent your workaround. You have to make sure that everything you are proposing is fully functionnal. It would be ironic that a solution doesn&rsquo;t even work, right ?</p>
 <h2 id="9-quote-your-sources">9. Quote your sources</h2>
 <p>It might happen that someone find your solution deeply interesting. This person would obviously want to dig the subject. Leave some links of what you used as a reference, or what you came through during your research. It&rsquo;s also a way to give credit to the ones who wrote it.</p>
@@ -237,10 +236,10 @@ In iaculis odio non ligula pulvinar aliquet. Sed in turpis non lacus malesuada m
 
 - Exploitation code
 
-&lt;code class=&quot;python&quot;&gt;
+&lt;code class=&#34;python&#34;&gt;
 from requests get
 
-get(&quot;https://challenge01.root-me.org/&quot;)
+get(&#34;https://challenge01.root-me.org/&#34;)
 &lt;/code&gt;
 
 { Lorem ipsum dolor sit amet, consectetur adipiscing elit }
@@ -269,7 +268,7 @@ Special thanks for <a href="https://www.root-me.org/B-A-Seven" target="_blank" r
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/documentation/">documentation</a>,&nbsp;<a href="/tags/write/">write</a>,&nbsp;<a href="/tags/writeup/">writeup</a>,&nbsp;<a href="/tags/solution/">solution</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/documentation/">Documentation</a>,&nbsp;<a href="/tags/write/">Write</a>,&nbsp;<a href="/tags/writeup/">Writeup</a>,&nbsp;<a href="/tags/solution/">Solution</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -280,7 +279,7 @@ Special thanks for <a href="https://www.root-me.org/B-A-Seven" target="_blank" r
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
         </div>
     </footer></div>
 

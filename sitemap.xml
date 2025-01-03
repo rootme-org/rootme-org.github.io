@@ -2,6 +2,8 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://blog.root-me.org/posts/writeup_snippet_04/</loc><lastmod>2025-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/posts/writeup_snippet_03/</loc><lastmod>2024-12-03T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/posts/writeup_snippet_02/</loc><lastmod>2024-11-05T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/posts/writeup_snippet_01/</loc><lastmod>2024-10-04T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/posts/writeup_comcyber/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
@@ -21,29 +23,34 @@
             <loc>https://blog.root-me.org/posts/couche_transport/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/posts/interview_m4tou/</loc><lastmod>2023-02-21T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/privacy/</loc></url><url>
-            <loc>https://blog.root-me.org/categories/</loc><lastmod>2024-11-05T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/tags/code-snippet/</loc><lastmod>2024-11-05T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/categories/</loc><lastmod>2025-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/code-snippet/</loc><lastmod>2025-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/hop-by-hop/</loc><lastmod>2025-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/posts/</loc><lastmod>2025-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/</loc><lastmod>2025-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/ssrf/</loc><lastmod>2025-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/</loc><lastmod>2025-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/writeup/</loc><lastmod>2025-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/categories/writeups/</loc><lastmod>2025-01-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/cross-function-reentrancy/</loc><lastmod>2024-12-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/vyper/</loc><lastmod>2024-12-03T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/tags/web3/</loc><lastmod>2024-12-03T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/exhaustion/</loc><lastmod>2024-11-05T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/memory/</loc><lastmod>2024-11-05T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/posts/</loc><lastmod>2024-11-05T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/</loc><lastmod>2024-11-05T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/tags/</loc><lastmod>2024-11-05T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/tags/writeup/</loc><lastmod>2024-11-05T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/categories/writeups/</loc><lastmod>2024-11-05T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/like/</loc><lastmod>2024-10-04T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/sql/</loc><lastmod>2024-10-04T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/comcyber/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/solution/</loc><lastmod>2024-09-30T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/categories/documentation/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/documentation/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/categories/documentation/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/write/</loc><lastmod>2024-09-01T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/geoide/</loc><lastmod>2024-01-19T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/categories/interview/</loc><lastmod>2024-01-19T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/interview/</loc><lastmod>2024-01-19T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/categories/interview/</loc><lastmod>2024-01-19T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/posts/</loc><lastmod>2024-01-19T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/e-learning/</loc><lastmod>2023-03-30T00:00:00&#43;00:00</lastmod></url><url>
-            <loc>https://blog.root-me.org/categories/misc/</loc><lastmod>2023-03-30T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/misc/</loc><lastmod>2023-03-30T00:00:00&#43;00:00</lastmod></url><url>
+            <loc>https://blog.root-me.org/categories/misc/</loc><lastmod>2023-03-30T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/non-technical/</loc><lastmod>2023-03-30T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/tips/</loc><lastmod>2023-03-30T00:00:00&#43;00:00</lastmod></url><url>
             <loc>https://blog.root-me.org/tags/challenge/</loc><lastmod>2023-03-02T00:00:00&#43;00:00</lastmod></url><url>

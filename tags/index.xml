@@ -4,16 +4,64 @@
         <link>https://blog.root-me.org/tags/</link>
         <description>Tags - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>code snippet</title>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Code Snippet</title>
     <link>https://blog.root-me.org/tags/code-snippet/</link>
-    <pubDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</pubDate>
+    <pubDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/code-snippet/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>exhaustion</title>
+    <title>Hop-by-Hop</title>
+    <link>https://blog.root-me.org/tags/hop-by-hop/</link>
+    <pubDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/hop-by-hop/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Ssrf</title>
+    <link>https://blog.root-me.org/tags/ssrf/</link>
+    <pubDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/ssrf/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Writeup</title>
+    <link>https://blog.root-me.org/tags/writeup/</link>
+    <pubDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/writeup/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Cross-Function-Reentrancy</title>
+    <link>https://blog.root-me.org/tags/cross-function-reentrancy/</link>
+    <pubDate>Tue, 03 Dec 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/cross-function-reentrancy/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Vyper</title>
+    <link>https://blog.root-me.org/tags/vyper/</link>
+    <pubDate>Tue, 03 Dec 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/vyper/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Web3</title>
+    <link>https://blog.root-me.org/tags/web3/</link>
+    <pubDate>Tue, 03 Dec 2024 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/web3/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Exhaustion</title>
     <link>https://blog.root-me.org/tags/exhaustion/</link>
     <pubDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
@@ -21,7 +69,7 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>memory</title>
+    <title>Memory</title>
     <link>https://blog.root-me.org/tags/memory/</link>
     <pubDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
@@ -29,59 +77,11 @@
     <description><![CDATA[]]></description>
 </item>
 <item>
-    <title>writeup</title>
-    <link>https://blog.root-me.org/tags/writeup/</link>
-    <pubDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/writeup/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>like</title>
+    <title>Like</title>
     <link>https://blog.root-me.org/tags/like/</link>
     <pubDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/like/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>sql</title>
-    <link>https://blog.root-me.org/tags/sql/</link>
-    <pubDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/sql/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>comcyber</title>
-    <link>https://blog.root-me.org/tags/comcyber/</link>
-    <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/comcyber/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>solution</title>
-    <link>https://blog.root-me.org/tags/solution/</link>
-    <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/solution/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>documentation</title>
-    <link>https://blog.root-me.org/tags/documentation/</link>
-    <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/documentation/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>write</title>
-    <link>https://blog.root-me.org/tags/write/</link>
-    <pubDate>Sun, 01 Sep 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/write/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

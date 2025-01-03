@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>memory - Tag - Root-Me Blog</title>
+        <title>Memory - Tag - Root-Me Blog</title>
         <link>https://blog.root-me.org/tags/memory/</link>
-        <description>memory - Tag - Root-Me Blog</description>
+        <description>Memory - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
             <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/memory/" rel="self" type="application/rss+xml" /><item>
     <title>Code Snippet Serie - 02 - Memory Exhaustion via Unchecked Input Length</title>
@@ -12,7 +12,7 @@
     <guid>https://blog.root-me.org/posts/writeup_snippet_02/</guid>
     <description><![CDATA[Challenge Description This challenge, authored by @Ethnical and @fadam, involves exploiting a vulnerability in a blockchain network server that processes incoming network messages. The vulnerability allows an attacker to cause a Denial of Service (DoS) by exhausting the server&rsquo;s memory.
 Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the unchecked allocation of memory based on user-controlled input length, leading to potential memory exhaustion.
-Technical Analysis Vulnerability Details   Unchecked Length Parameter:]]></description>
+Technical Analysis Vulnerability Details Unchecked Length Parameter:]]></description>
 </item>
 </channel>
 </rss>

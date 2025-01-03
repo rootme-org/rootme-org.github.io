@@ -1,10 +1,28 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>code snippet - Tag - Root-Me Blog</title>
+        <title>Code Snippet - Tag - Root-Me Blog</title>
         <link>https://blog.root-me.org/tags/code-snippet/</link>
-        <description>code snippet - Tag - Root-Me Blog</description>
+        <description>Code Snippet - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/code-snippet/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/code-snippet/" rel="self" type="application/rss+xml" /><item>
+    <title>Code Snippet Serie - 04 - SSRF and HTTP Hop-by-Hop Header Injection</title>
+    <link>https://blog.root-me.org/posts/writeup_snippet_04/</link>
+    <pubDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <author>baguette</author>
+    <guid>https://blog.root-me.org/posts/writeup_snippet_04/</guid>
+    <description><![CDATA[Challenge Description This challenge, authored by @baguette, involves exploiting vulnerabilities in a Flask application that acts as a proxy. The application is behind a cache server managed by a varnish and a load balancer managed by a nginx. The application has two main routes: / and /admin. The / route proxies requests to https://root-me.org, while the /admin route restricts access based on the presence of the X-Real-IP header.
+Vulnerability Overview 🛑 Vulnerabilities: The application is vulnerable to Server-Side Request Forgery (SSRF) and HTTP Hop-by-Hop Header Injection.]]></description>
+</item>
+<item>
+    <title>Code Snippet Serie - 03 - Cross-Function-Reentrancy</title>
+    <link>https://blog.root-me.org/posts/writeup_snippet_03/</link>
+    <pubDate>Tue, 03 Dec 2024 00:00:00 &#43;0000</pubDate>
+    <author>K.L.M</author>
+    <guid>https://blog.root-me.org/posts/writeup_snippet_03/</guid>
+    <description><![CDATA[Challenge Description This challenge, authored by @KLM, involves exploiting a vulnerability in a vyper smart contract that utilize a Cross-Function-Reentrancy due to a problem in the vyper version. This smart contract is made for a company to sell shares on the blockchain to help and ensure everything is secure, tracked and transparent.
+Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the insecure version of Vyper that desynchronise the values of the @nonreentrant(&quot;lock&quot;) between function in a contract and the bad execution flow management.]]></description>
+</item>
+<item>
     <title>Code Snippet Serie - 02 - Memory Exhaustion via Unchecked Input Length</title>
     <link>https://blog.root-me.org/posts/writeup_snippet_02/</link>
     <pubDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</pubDate>
@@ -12,7 +30,7 @@
     <guid>https://blog.root-me.org/posts/writeup_snippet_02/</guid>
     <description><![CDATA[Challenge Description This challenge, authored by @Ethnical and @fadam, involves exploiting a vulnerability in a blockchain network server that processes incoming network messages. The vulnerability allows an attacker to cause a Denial of Service (DoS) by exhausting the server&rsquo;s memory.
 Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the unchecked allocation of memory based on user-controlled input length, leading to potential memory exhaustion.
-Technical Analysis Vulnerability Details   Unchecked Length Parameter:]]></description>
+Technical Analysis Vulnerability Details Unchecked Length Parameter:]]></description>
 </item>
 <item>
     <title>Code Snippet Serie - 01 - SQL Like injection</title>
