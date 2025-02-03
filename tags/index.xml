@@ -4,12 +4,36 @@
         <link>https://blog.root-me.org/tags/</link>
         <description>Tags - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
     <title>Code Snippet</title>
     <link>https://blog.root-me.org/tags/code-snippet/</link>
-    <pubDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</pubDate>
+    <pubDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/code-snippet/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Integer Overflow</title>
+    <link>https://blog.root-me.org/tags/integer-overflow/</link>
+    <pubDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/integer-overflow/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Stack Overflow</title>
+    <link>https://blog.root-me.org/tags/stack-overflow/</link>
+    <pubDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/stack-overflow/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Writeup</title>
+    <link>https://blog.root-me.org/tags/writeup/</link>
+    <pubDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/writeup/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -26,14 +50,6 @@
     <pubDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/ssrf/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Writeup</title>
-    <link>https://blog.root-me.org/tags/writeup/</link>
-    <pubDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/writeup/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -66,22 +82,6 @@
     <pubDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/exhaustion/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Memory</title>
-    <link>https://blog.root-me.org/tags/memory/</link>
-    <pubDate>Tue, 05 Nov 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/memory/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>Like</title>
-    <link>https://blog.root-me.org/tags/like/</link>
-    <pubDate>Fri, 04 Oct 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/like/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

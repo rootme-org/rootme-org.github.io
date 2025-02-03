@@ -4,7 +4,17 @@
         <link>https://blog.root-me.org/categories/writeups/</link>
         <description>Writeups - Category - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/categories/writeups/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/categories/writeups/" rel="self" type="application/rss+xml" /><item>
+    <title>Code Snippet Serie - 05 - Integer Overflow &amp; Stack Overflow</title>
+    <link>https://blog.root-me.org/posts/writeup_snippet_05/</link>
+    <pubDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>baguette</author>
+    <guid>https://blog.root-me.org/posts/writeup_snippet_05/</guid>
+    <description><![CDATA[Challenge Description This challenge, authored by @baguette, involves exploiting an integer overflow vulnerability combined with a stack overflow, allowing arbitrary writes to the stack.
+Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the improper handling of integer values and the use of the read function, which allows writing arbitrary data to the stack.
+Exploitation Process 1. Triggering the Integer Overflow: When len is set to -2147483648 (minimum value of a signed 32-bit integer), the call to abs(len) results in an overflow.]]></description>
+</item>
+<item>
     <title>Code Snippet Serie - 04 - SSRF and HTTP Hop-by-Hop Header Injection</title>
     <link>https://blog.root-me.org/posts/writeup_snippet_04/</link>
     <pubDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</pubDate>
@@ -81,14 +91,6 @@ Conventional SQL injection exploitation methods won&rsquo;t work here, because t
     <author>Nishacid</author>
     <guid>https://blog.root-me.org/posts/writeup_ctf10k_the_white_rabbit/</guid>
     <description><![CDATA[Writeup of the &lsquo;The White Rabbit&rsquo; challenge during the Root-Me CTF 10k]]></description>
-</item>
-<item>
-    <title>Writeup - Root-Me CTF 10k - Cheshire cat</title>
-    <link>https://blog.root-me.org/posts/writeup_ctf10k_cheshire_cat/</link>
-    <pubDate>Tue, 28 Feb 2023 00:00:00 &#43;0000</pubDate>
-    <author>Nishacid</author>
-    <guid>https://blog.root-me.org/posts/writeup_ctf10k_cheshire_cat/</guid>
-    <description><![CDATA[Writeup of the &lsquo;Cheshire Cat&rsquo; challenge during the Root-Me CTF 10k]]></description>
 </item>
 </channel>
 </rss>

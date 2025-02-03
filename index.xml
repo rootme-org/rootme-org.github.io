@@ -4,9 +4,19 @@
         <link>https://blog.root-me.org/</link>
         <description>Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic.</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://blog.root-me.org/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Code Snippet Serie - 05 - Integer Overflow &amp; Stack Overflow</title>
+    <link>https://blog.root-me.org/posts/writeup_snippet_05/</link>
+    <pubDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>baguette</author>
+    <guid>https://blog.root-me.org/posts/writeup_snippet_05/</guid>
+    <description><![CDATA[Challenge Description This challenge, authored by @baguette, involves exploiting an integer overflow vulnerability combined with a stack overflow, allowing arbitrary writes to the stack.
+Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the improper handling of integer values and the use of the read function, which allows writing arbitrary data to the stack.
+Exploitation Process 1. Triggering the Integer Overflow: When len is set to -2147483648 (minimum value of a signed 32-bit integer), the call to abs(len) results in an overflow.]]></description>
+</item>
+<item>
     <title>Code Snippet Serie - 04 - SSRF and HTTP Hop-by-Hop Header Injection</title>
     <link>https://blog.root-me.org/posts/writeup_snippet_04/</link>
     <pubDate>Fri, 03 Jan 2025 00:00:00 &#43;0000</pubDate>
@@ -88,14 +98,6 @@ This article is for beginners.
 1. The mindset First of all, before even talking about how to begin and where, you should answer this question: why?
 Typically:
 Why do you want to learn cybersecurity?]]></description>
-</item>
-<item>
-    <title>Writeup - Root-Me CTF 10k - Perfect Notes</title>
-    <link>https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/</link>
-    <pubDate>Thu, 02 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Kévin_Mizu</author>
-    <guid>https://blog.root-me.org/posts/writeup_ctf10k_perfect_notes/</guid>
-    <description><![CDATA[Writeup of the &lsquo;Perfect Notes&rsquo; challenge during the Root-Me CTF 10k]]></description>
 </item>
 </channel>
 </rss>
