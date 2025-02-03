@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Integer Overflow - Tag - Root-Me Blog</title>
+        <link>https://blog.root-me.org/tags/integer-overflow/</link>
+        <description>Integer Overflow - Tag - Root-Me Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/integer-overflow/" rel="self" type="application/rss+xml" /><item>
+    <title>Code Snippet Serie - 05 - Integer Overflow &amp; Stack Overflow</title>
+    <link>https://blog.root-me.org/posts/writeup_snippet_05/</link>
+    <pubDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</pubDate>
+    <author>baguette</author>
+    <guid>https://blog.root-me.org/posts/writeup_snippet_05/</guid>
+    <description><![CDATA[Challenge Description This challenge, authored by @baguette, involves exploiting an integer overflow vulnerability combined with a stack overflow, allowing arbitrary writes to the stack.
+Vulnerability Overview 🛑 Vulnerability: The vulnerability lies in the improper handling of integer values and the use of the read function, which allows writing arbitrary data to the stack.
+Exploitation Process 1. Triggering the Integer Overflow: When len is set to -2147483648 (minimum value of a signed 32-bit integer), the call to abs(len) results in an overflow.]]></description>
+</item>
+</channel>
+</rss>
