@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Tips - Tag - Root-Me Blog</title>
+        <title>tips - Tag - Root-Me Blog</title>
         <link>https://blog.root-me.org/tags/tips/</link>
-        <description>Tips - Tag - Root-Me Blog</description>
+        <description>tips - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
             <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/tips/" rel="self" type="application/rss+xml" /><item>
     <title>How to start in cybersecurity</title>

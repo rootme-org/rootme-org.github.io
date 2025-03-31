@@ -1,10 +1,18 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Comcyber - Tag - Root-Me Blog</title>
+        <title>comcyber - Tag - Root-Me Blog</title>
         <link>https://blog.root-me.org/tags/comcyber/</link>
-        <description>Comcyber - Tag - Root-Me Blog</description>
+        <description>comcyber - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/comcyber/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 31 Mar 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/comcyber/" rel="self" type="application/rss+xml" /><item>
+    <title>Writeup - ComCyber - Marine Nationale Recrutement CTF</title>
+    <link>https://blog.root-me.org/posts/writeup_comcyber_marine/</link>
+    <pubDate>Mon, 31 Mar 2025 00:00:00 &#43;0000</pubDate>
+    <author>Nishacid</author>
+    <guid>https://blog.root-me.org/posts/writeup_comcyber_marine/</guid>
+    <description><![CDATA[Solution of the recruitment CTF of ComCyber during September 2024]]></description>
+</item>
+<item>
     <title>Writeup - ComCyber Recrutement CTF</title>
     <link>https://blog.root-me.org/posts/writeup_comcyber/</link>
     <pubDate>Mon, 30 Sep 2024 00:00:00 &#43;0000</pubDate>

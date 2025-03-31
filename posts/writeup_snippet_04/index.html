@@ -12,10 +12,10 @@ Vulnerability Overview 🛑 Vulnerabilities: The application is vulnerable to Se
 <meta property="article:published_time" content="2025-01-03T00:00:00+00:00" />
 <meta property="article:modified_time" content="2025-01-03T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Code Snippet Serie - 04 - SSRF and HTTP Hop-by-Hop Header Injection"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Code Snippet Serie - 04 - SSRF and HTTP Hop-by-Hop Header Injection"/>
 <meta name="twitter:description" content="Challenge Description This challenge, authored by @baguette, involves exploiting vulnerabilities in a Flask application that acts as a proxy. The application is behind a cache server managed by a varnish and a load balancer managed by a nginx. The application has two main routes: / and /admin. The / route proxies requests to https://root-me.org, while the /admin route restricts access based on the presence of the X-Real-IP header.
 Vulnerability Overview 🛑 Vulnerabilities: The application is vulnerable to Server-Side Request Forgery (SSRF) and HTTP Hop-by-Hop Header Injection."/>
-<meta name="twitter:site" content="@rootme_org"/>
 <meta name="application-name" content="Root-Me Blog">
 <meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -153,8 +153,8 @@ Vulnerability Overview 🛑 Vulnerabilities: The application is vulnerable to Se
 <li>The proxy route constructs a URL using the <code>path</code> parameter without proper validation.</li>
 <li>An attacker can manipulate the URL to make the server request arbitrary resources.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
-</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&lt;path:path&gt;&#39;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;path&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&lt;path:path&gt;&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">proxy</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="n">SITE_NAME</span> <span class="o">=</span> <span class="s1">&#39;https://root-me.org&#39;</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">SITE_NAME</span><span class="si">}{</span><span class="n">path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
@@ -200,7 +200,7 @@ Vulnerability Overview 🛑 Vulnerabilities: The application is vulnerable to Se
 </code></pre><ul>
 <li><strong>flask</strong> will not have the <code>X-Real-IP</code> header, so it will consider that the request has not been sent by <strong>varnish</strong>, so it was an admin.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/admin&#39;</span><span class="p">)</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/admin&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">admin_panel</span><span class="p">():</span>
 </span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="n">client_ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;X-Real-IP&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -265,7 +265,7 @@ Vulnerability Overview 🛑 Vulnerabilities: The application is vulnerable to Se
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/writeup/">Writeup</a>,&nbsp;<a href="/tags/code-snippet/">Code Snippet</a>,&nbsp;<a href="/tags/ssrf/">Ssrf</a>,&nbsp;<a href="/tags/hop-by-hop/">Hop-by-Hop</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/writeup/">writeup</a>,&nbsp;<a href="/tags/code-snippet/">code snippet</a>,&nbsp;<a href="/tags/ssrf/">ssrf</a>,&nbsp;<a href="/tags/hop-by-hop/">hop-by-hop</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>

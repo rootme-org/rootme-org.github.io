@@ -1,8 +1,8 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Interview - Tag - Root-Me Blog</title>
+        <title>interview - Tag - Root-Me Blog</title>
         <link>https://blog.root-me.org/tags/interview/</link>
-        <description>Interview - Tag - Root-Me Blog</description>
+        <description>interview - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
             <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Fri, 19 Jan 2024 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/interview/" rel="self" type="application/rss+xml" /><item>
     <title>Interview of Gregory Gille - CEO of GEOIDE</title>

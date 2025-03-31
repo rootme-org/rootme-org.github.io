@@ -4,7 +4,15 @@
         <link>https://blog.root-me.org/posts/</link>
         <description>All Posts | Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 31 Mar 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Writeup - ComCyber - Marine Nationale Recrutement CTF</title>
+    <link>https://blog.root-me.org/posts/writeup_comcyber_marine/</link>
+    <pubDate>Mon, 31 Mar 2025 00:00:00 &#43;0000</pubDate>
+    <author>Nishacid</author>
+    <guid>https://blog.root-me.org/posts/writeup_comcyber_marine/</guid>
+    <description><![CDATA[Solution of the recruitment CTF of ComCyber during September 2024]]></description>
+</item>
+<item>
     <title>Code Snippet Serie - 05 - Integer Overflow &amp; Stack Overflow</title>
     <link>https://blog.root-me.org/posts/writeup_snippet_05/</link>
     <pubDate>Mon, 03 Feb 2025 00:00:00 &#43;0000</pubDate>
@@ -83,19 +91,6 @@ Conventional SQL injection exploitation methods won&rsquo;t work here, because t
     <author>Isis</author>
     <guid>https://blog.root-me.org/posts/interview_isis/</guid>
     <description><![CDATA[Kévin Monfermé, better known on Root-Me under the nickname of Isis, started his reorientation a year and a half ago in cybersecurity]]></description>
-</item>
-<item>
-    <title>How to start in cybersecurity</title>
-    <link>https://blog.root-me.org/posts/how-to-start/</link>
-    <pubDate>Thu, 30 Mar 2023 00:00:00 &#43;0000</pubDate>
-    <author>Ech0</author>
-    <guid>https://blog.root-me.org/posts/how-to-start/</guid>
-    <description><![CDATA[Every person in this community was once a begginer and it&rsquo;s usually a hard domain to begin with if you&rsquo;re not guided.
-I will try to guide you through this article and give you some tips to start your cybersecurity journey.
-This article is for beginners.
-1. The mindset First of all, before even talking about how to begin and where, you should answer this question: why?
-Typically:
-Why do you want to learn cybersecurity?]]></description>
 </item>
 </channel>
 </rss>
