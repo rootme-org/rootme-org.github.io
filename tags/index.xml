@@ -4,18 +4,18 @@
         <link>https://blog.root-me.org/tags/</link>
         <description>Tags - Tag - Root-Me Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>contact@root-me.org (Root-Me)</managingEditor>
-            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Mon, 31 Mar 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>comcyber</title>
-    <link>https://blog.root-me.org/tags/comcyber/</link>
-    <pubDate>Mon, 31 Mar 2025 00:00:00 &#43;0000</pubDate>
+            <webMaster>contact@root-me.org (Root-Me)</webMaster><lastBuildDate>Wed, 07 May 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://blog.root-me.org/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>dgse</title>
+    <link>https://blog.root-me.org/tags/dgse/</link>
+    <pubDate>Wed, 07 May 2025 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/comcyber/</guid>
+    <guid>https://blog.root-me.org/tags/dgse/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>solution</title>
     <link>https://blog.root-me.org/tags/solution/</link>
-    <pubDate>Mon, 31 Mar 2025 00:00:00 &#43;0000</pubDate>
+    <pubDate>Wed, 07 May 2025 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/solution/</guid>
     <description><![CDATA[]]></description>
@@ -23,9 +23,17 @@
 <item>
     <title>writeup</title>
     <link>https://blog.root-me.org/tags/writeup/</link>
-    <pubDate>Mon, 31 Mar 2025 00:00:00 &#43;0000</pubDate>
+    <pubDate>Wed, 07 May 2025 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/writeup/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>comcyber</title>
+    <link>https://blog.root-me.org/tags/comcyber/</link>
+    <pubDate>Mon, 31 Mar 2025 00:00:00 &#43;0000</pubDate>
+    <author>Root-Me</author>
+    <guid>https://blog.root-me.org/tags/comcyber/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
@@ -74,14 +82,6 @@
     <pubDate>Tue, 03 Dec 2024 00:00:00 &#43;0000</pubDate>
     <author>Root-Me</author>
     <guid>https://blog.root-me.org/tags/cross-function-reentrancy/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>vyper</title>
-    <link>https://blog.root-me.org/tags/vyper/</link>
-    <pubDate>Tue, 03 Dec 2024 00:00:00 &#43;0000</pubDate>
-    <author>Root-Me</author>
-    <guid>https://blog.root-me.org/tags/vyper/</guid>
     <description><![CDATA[]]></description>
 </item>
 </channel>

